@@ -22,5 +22,4 @@ export function asyncPost() {
 }
 
 export function login() {
-  
 }

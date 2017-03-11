@@ -3,6 +3,8 @@ import { Route, IndexRoute } from 'react-router';
 import { Main, Home, Counter, Login } from './containers';
 import { loadAuthIfNeeded } from './actions/auth';
 
+import { FirstMainPage } from './components/index';
+
 const preload = promise => (nextState, replace, cb) => {
   if (__SERVER__ || nextState.location.action === 'PUSH') {
     promise().then(() => cb());
@@ -21,12 +23,13 @@ export default store => {
     cb();
   };
   return (
-    <Route path="/" component={Main} onEnter={preload(authPromise)}>
-      <IndexRoute component={Home} />
+    <Route path="/" component={Home} onEnter={preload(authPromise)}>
+      <IndexRoute component={Main} />
       <Route path="login" component={Login} />
       <Route onEnter={requireLogin}>
         <Route path="counter" component={Counter} />
       </Route>
+      <Route path="test" component={FirstMainPage} />
     </Route>
   );
 };
