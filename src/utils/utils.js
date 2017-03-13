@@ -35,6 +35,6 @@ export function customFetch(url, option) {
   }
   console.log(prefix + url);
   return fetch(prefix + url, opt)
-    // .then(handle401)
+    .then(handle401)
     .then(handleErrors);
 }

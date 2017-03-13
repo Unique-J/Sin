@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import config from '../../config';
 
-import createAnimal from '../models/Animals';
+import { createAnimal, createUser } from '../models/index';
 
 export default function dbHandle() {
   mongoose.connect(config.dataBase);
@@ -13,5 +13,6 @@ export default function dbHandle() {
     console.info('==> Connect DataBase succeed');
 
     createAnimal();
+    createUser();
   });
 }

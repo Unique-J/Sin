@@ -20,6 +20,3 @@ export function asyncPost() {
     customFetch('/counter').then(json => dispatch(writeResult(json)));
   };
 }
-
-export function login() {
-}

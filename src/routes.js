@@ -28,8 +28,8 @@ export default store => {
       <Route path="login" component={Login} />
       <Route onEnter={requireLogin}>
         <Route path="counter" component={Counter} />
+        <Route path="test" component={FirstMainPage} />
       </Route>
-      <Route path="test" component={FirstMainPage} />
     </Route>
   );
 };

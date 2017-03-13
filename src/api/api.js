@@ -14,7 +14,7 @@ app.use(session({
   secret: 'react project',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 10000 }
 }));
 
 dbHandle();

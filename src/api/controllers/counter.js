@@ -5,7 +5,7 @@ export default app => {
   app.get('/counter', (req, res) => {
     const Animal = mongoose.model('animal');
 
-    Animal.findByName('dog', (err, animal) => {
+    Animal.findByName('cat', (err, animal) => {
       console.info(animal);
     });
 

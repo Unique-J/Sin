@@ -58,7 +58,7 @@ app.use((req, res) => {
       res.status(200);
       const component = (
         <Provider store={store}>
-          <RouterContext {...renderProps} />
+          <RouterContext {...renderProps}/>
         </Provider>
       );
       res.send('<!doctype html>\n' +

@@ -25,7 +25,7 @@ export function loadAuthIfNeeded() {
   };
 }
 
-export function login(name) {
+export function login(username, pwd) {
   const url = '/login';
   const option = {
     method: 'post',
@@ -34,7 +34,8 @@ export function login(name) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name
+      username,
+      pwd
     })
   };
   return {

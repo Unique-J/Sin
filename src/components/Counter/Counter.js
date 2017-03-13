@@ -3,16 +3,16 @@ import Helmet from 'react-helmet';
 
 function Counter(props) {
   const { counter, increment, asyncPost } = props;
-
+  console.log(counter.counter);
   return (
     <div>
       <Helmet title="TEST" />
       {counter.counter}
       {' '}
-      <button onClick={increment}>Add</button>
+      <button onClick={() => increment()}>Add</button>
       <br />
       {JSON.stringify(counter.async)}
-      <button onClick={asyncPost}>Async Post</button>
+      <button onClick={() => asyncPost()}>Async Post</button>
     </div>
   );
 }
