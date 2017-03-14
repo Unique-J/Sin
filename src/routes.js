@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { Main, Home, Counter, Login } from './containers';
+import { Main, Home, Counter, Login, Register } from './containers';
 import { loadAuthIfNeeded } from './actions/auth';
 
 import { FirstMainPage } from './components/index';
@@ -30,6 +30,7 @@ export default store => {
         <Route path="counter" component={Counter} />
         <Route path="test" component={FirstMainPage} />
       </Route>
+      <Route path="register" component={Register} />
     </Route>
   );
 };

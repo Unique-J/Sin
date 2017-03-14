@@ -4,7 +4,7 @@ import md5 from 'md5';
 export default app => {
   app.post('/login', (req, res) => {
     const user = {
-      username: req.body.username,
+      name: req.body.name,
       pwd: md5(req.body.pwd)
     };
     console.log(user);

@@ -34,7 +34,7 @@ export function login(username, pwd) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      username,
+      name,
       pwd
     })
   };

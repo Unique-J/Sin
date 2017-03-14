@@ -3,16 +3,16 @@ module.exports = {
   port: process.env.PORT || (process.env.NODE_ENV === 'production' ? 8080 : 3000),
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT || 3030,
-  dataBase: 'mongodb://localhost/Test',
+  dataBase: 'mongodb://localhost/Sin',
   app: {
-    title: 'React Redux Book',
-    description: 'React Redux Book Example',
+    title: 'Sin',
+    description: 'Just a Blog',
     head: {
-      titleTemplate: 'React Redux Book: %s',
+      titleTemplate: 'Sin: %s',
       meta: [
         {
           name: 'description',
-          content: 'React Redux Book Example'
+          content: 'Just a Blog'
         },
         { charset: 'utf-8' }
       ]

@@ -1,2 +1,7 @@
-export createUser from './Users';
-export createAnimal from './Animals';
+import createStudent from './Student';
+import createTeacher from './Teacher';
+
+export function createModels() {
+  createStudent();
+  createTeacher();
+}
