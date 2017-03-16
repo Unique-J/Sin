@@ -29,7 +29,7 @@ export default app => {
   //     secureConnection: true,
   //     auth: {
   //       user: 'yangji_1005@sina.com',
-  //       pass: 'yjlMY2401--'
+  //       pass: ''
   //     }
   //   });
 
