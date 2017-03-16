@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as mainCreators from '../../actions/main';
 import { Carousel } from 'react-bootstrap';
+import { Login } from '../index';
 import Helmet from 'react-helmet';
 import config from '../../config';
 import { FirstMainPage } from '../../components/index';
@@ -9,14 +10,14 @@ import { FirstMainPage } from '../../components/index';
 @connect(
   state => ({
     user: state.async.user,
-    main: state.main
+    loginContainer: state.loginContainer
   }),
   mainCreators
 )
-class Main extends Component {
+class LoginContainer extends Component {
   static propTypes = {
     user: PropTypes.any,
-    main: PropTypes.any,
+    loginContainer: PropTypes.any,
     addActiveIndex: PropTypes.func.isRequired,
     subtractActiveIndex: PropTypes.func.isRequired,
     changeScrollState: PropTypes.func.isRequired,
@@ -33,9 +34,9 @@ class Main extends Component {
     } = this.props;
 
     carouselNode.onmousewheel = e => {
-      const { main } = this.props;
+      const { loginContainer } = this.props;
 
-      if (main.scrollState) {
+      if (loginContainer.scrollState) {
         changeScrollState();
 
         if (e.wheelDelta < 0) {
@@ -61,8 +62,8 @@ class Main extends Component {
   }
 
   render() {
-    const styles = require('./Main.scss');
-    const { user, main } = this.props;
+    const styles = require('./LoginContainer.scss');
+    const { user, loginContainer } = this.props;
     return (
       <div>
         <Helmet {...config.app.head} />
@@ -72,10 +73,10 @@ class Main extends Component {
           <Carousel
             className={styles.carousel}
             controls={false}
-            activeIndex={main.activeIndex}
+            activeIndex={loginContainer.activeIndex}
           >
             <Carousel.Item>
-              <FirstMainPage />
+              <Login />
             </Carousel.Item>
             <Carousel.Item>
             </Carousel.Item>
@@ -86,4 +87,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default LoginContainer;

@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 
 export default app => {
   app.get('/counter', (req, res) => {
-    const Animal = mongoose.model('animal');
+    // const Animal = mongoose.model('animal');
 
-    Animal.findByName('cat', (err, animal) => {
-      console.info(animal);
-    });
+    // Animal.findByName('cat', (err, animal) => {
+    //   console.info(animal);
+    // });
 
     // ADD
     // const dog = new Animal({ name: 'dog' });

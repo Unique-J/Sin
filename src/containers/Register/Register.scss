@@ -1,4 +1,6 @@
 $blue: #198FFF;
+$light_grey: #D8DADE;
+$red: #DD1037;
 .container {
   width: 100%;
 }
@@ -52,20 +54,27 @@ $blue: #198FFF;
   text-align: center;
   // background: red;
 }
-.email_input {
+.id_input {
   margin-top: 10px;
   border-radius: 0;
   border: 0;
-  border-bottom: 1px solid #D8DADE;
+  border-bottom: 1px solid $light_grey;
   box-shadow:  inset 0 1px 1px #FFF;
+  &:focus {
+    outline: 0;
+    border: 0;
+    border-bottom: 1px solid $blue;
+    box-shadow: inset 0 1px 1px #FFF, 0 0 8px #FFF;  
+  }
+}
+.email_input {
+  @extend .id_input;
+  margin-top: -12px;
+  // background: red;
 }
 .email_input:focus {
-  outline: 0;
-  border-bottom: 1px solid $blue;
-  color: #FFF;
-  margin: 20px 0;
-  border: 0;
-  box-shadow: inset 0 1px 1px #FFF, 0 0 8px #FFF;
+  @extend .id_input:focus;
+  margin-top: -12px;
 }
 .pwd_input {
   @extend .email_input;
@@ -73,14 +82,57 @@ $blue: #198FFF;
 .pwd_input:focus {
   @extend .email_input:focus;
 }
+.sex_select {
+  width: 100%;
+  height: 34px;
+  padding: 6px;
+  border: 0;
+  border-bottom: 1px solid $light_grey;
+  color: #999;
+  border-radius: 2px;
+  margin-top: -10px;
+  // background: red;
+  &:focus {
+    border-bottom-color: $blue;
+    outline: 0;
+  }
+}
 .submit_button {
   border-radius: 2px;
   background: $blue;
   color: #FFF;
-  margin: 20px 0;
+  margin-top: 30px;
   border: 0;
   &:hover, &:visited {
     color: #FFF;
     background: $blue;
   }
+}
+.txt {
+  text-align: center;
+  font-size: 12px;
+}
+.sign_in {
+  @extend .txt;
+  margin-top: 20px;
+}
+.item {
+  @extend .txt;
+  margin-top: 30px;
+}
+.link {
+  color: $blue;
+}
+.prompt {
+  font-size: 12px;
+  color: $blue;
+  margin-top: 5px;
+  margin-bottom: -6px;
+  padding-left: 10px;
+  // background: red;
+}
+.prompt_danger {
+  @extend .prompt;
+  color: $red;
+  margin-bottom: 5px;
 }

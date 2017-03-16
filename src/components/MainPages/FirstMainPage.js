@@ -1,5 +1,9 @@
 import React from 'react';
-import { Link, IndexLink } from 'react-router';
+import { browserHistory } from 'react-router';
+
+function goToPages(link) {
+  browserHistory.push(link);
+}
 
 function FirstMainPage() {
   const styles = require('./FirstMainPage.scss');
@@ -17,10 +21,16 @@ function FirstMainPage() {
               <h2 className={styles.subtitle}>为你的所爱而来。</h2>
               <h2 className={styles.subtitle}>为你的发现停留。</h2>
             </div>
-            <button className={`${styles.btn_start} btn`}>
+            <button
+              className={`${styles.btn_start} btn`}
+              onClick={() => { goToPages('/register'); }}
+            >
               <span className={styles.text_start}>开 始 吧</span>
             </button>
-            <button className={`${styles.btn_login} btn`}>
+            <button
+              className={`${styles.btn_login} btn`}
+              onClick={() => { goToPages('/login'); }}
+            >
               <span className={styles.text_login}>登 录</span>
             </button>
           </div>

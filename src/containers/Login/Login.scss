@@ -108,12 +108,17 @@ $body_height: $screen_height - $header_height * 2;
 .form_group {
   margin-top: 20px;
   margin-bottom: 10px;
-  background: #FFF;
+  // background: #FFF;
   width: 100%;
   border-radius: 2px;
-}
-.form_control {
-  border: 0;
+  .form_id_control {
+    border: 0;
+    border-radius: 2px 2px 0 0;
+  }
+  .form_pwd_control {
+    border: 0;
+    border-radius: 0 0 2px 2px;
+  }
 }
 .forget_pwd {
   margin-top: 30px;
@@ -123,4 +128,16 @@ $body_height: $screen_height - $header_height * 2;
   color: #FFF;
   text-decoration: none;
   cursor: pointer;
+}
+.prompt_container {
+  background: rgba(0, 0, 0, 0.33);
+  height: 46px;
+  text-align: center;
+  line-height: 46px;
+  margin: 15px 0 5px 0;
+  border-radius: 2px;
+}
+.prompt_text {
+  color: #FFF;
+  text-align: center;
 }

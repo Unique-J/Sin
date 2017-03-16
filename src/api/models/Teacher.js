@@ -9,7 +9,7 @@ export default function createTeacher() {
     pwd: String,
     email: String,
     birthday: String,
-    sex: { type: String, enum: ['man', 'woman'] },
+    gender: { type: String, enum: ['male', 'female'] },
     identity: { type: Number, default: 1 },
     portrait: Buffer,
     description: String,
@@ -35,12 +35,12 @@ export default function createTeacher() {
     } else {
       if (teachers.length === 0) {
         const teacher = new Teacher({
-          tid: '13110033139',
+          tid: '110001',
           name: 'YangJi',
           pwd: md5('111111'),
           email: 'YangJi_1005@163.com',
           birthday: '1994-10-05',
-          sex: 'man',
+          gender: 'male',
           identity: 1,
           description: '123',
           location: '浙江嘉兴',
