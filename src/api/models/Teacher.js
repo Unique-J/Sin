@@ -11,6 +11,8 @@ export default function createTeacher() {
     birthday: String,
     gender: { type: String, enum: ['male', 'female'] },
     identity: { type: Number, default: 1 },
+    createTime: Number,
+    validateCode: { type: String, default: '' },
     portrait: Buffer,
     description: String,
     location: String,
@@ -42,6 +44,7 @@ export default function createTeacher() {
           birthday: '1994-10-05',
           gender: 'male',
           identity: 1,
+          createTime: new Date().getTime(),
           description: '123',
           location: '浙江嘉兴',
         });

@@ -10,6 +10,8 @@ export default function createStudent() {
     email: String,
     birthday: String,
     gender: { type: String, enum: ['male', 'female'] },
+    createTime: Number,
+    validateCode: { type: String, default: '' },
     identity: { type: Number, default: 0 },
     portrait: Buffer,
     description: String,
@@ -42,6 +44,7 @@ export default function createStudent() {
           birthday: '1994-10-05',
           gender: 'male',
           identity: 0,
+          createTime: new Date().getTime(),
           description: '321',
           location: '浙江嘉兴',
         });

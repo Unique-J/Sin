@@ -4,6 +4,7 @@ import login from './login';
 import logout from './logout';
 import judgeUserRegistered from './judgeUserRegistered';
 import registerUser from './registerUser';
+import validateEmail from './validateEmail';
 
 export default app => {
   loadAuth(app);
@@ -11,6 +12,7 @@ export default app => {
   logout(app);
   judgeUserRegistered(app);
   registerUser(app);
+  validateEmail(app);
 
   app.use((req, res, next) => {
     if (req.session.user) {
