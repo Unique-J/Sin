@@ -1,0 +1,99 @@
+$black: #444;
+$light_blue: #529ECC;
+$gray: #8F8F8F;
+.post_container {
+  background: red;
+  border-radius: 4px;
+}
+.post_header {
+  display: flex;
+  padding: 15px;
+  background: yellow;
+  border-radius: 4px 4px 0 0;
+}
+.portrait {
+  width: 30px;
+  height: 30px;
+  background: url('/StockSnap_01.jpg');
+  background-size: cover;
+  margin-right: 10px;
+}
+.author_link {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  text-decoration: none;
+  margin-right: 10px;
+  color: $black;
+  font-weight: bold;
+  &:hover {
+    text-decoration: none;
+    color: $black;
+  }
+}
+.follow_link {
+  display: block;
+  height: 30px;
+  line-height: 30px;
+  text-decoration: none;
+  color: $light_blue;
+  &:hover {
+    text-decoration: none;
+    color: $light_blue;
+  }
+}
+.post_content {
+  padding: 15px;
+  background: green;
+}
+.post_tag {
+  padding: 15px;
+  // background: grey;
+}
+.post_tag_draggable {
+  cursor: col-resize;
+  transform: translate(0px, 0px);
+  transition-property: transform;
+  transition-duration: .5s;
+  transition-timing-function: ease-in-out;
+}
+.post_tag_link {
+  color: $gray;
+  &:focus {
+    color: $gray;
+    text-decoration: none;
+  }
+}
+.post_footer {
+  padding: 15px;
+  background: greenyellow;
+  border-radius: 0 0 4px 4px
+}
+.note_link {
+  color: $gray;
+  font-weight: bold;
+  &:hover {
+    text-decoration: none;
+    color: $gray;
+  }
+}
+.glyphicon_chat_link {
+  font-size: 18px;
+  float: right;
+  margin-right: 10px;
+  color: $gray;
+  &:hover {
+    text-decoration: none;
+    color: $gray;
+  }
+}
+.glyphicon_heart_link {
+  font-size: 18px;
+  float: right;
+  font-weight: bold;
+  color: $gray;
+  &:hover {
+    text-decoration: none;
+    color: $gray;
+  }
+}

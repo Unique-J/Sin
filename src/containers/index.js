@@ -4,3 +4,4 @@ export Counter from './Counter/Counter';
 export Login from './Login/Login';
 export Register from './Register/Register';
 export LoginContainer from './Login/LoginContainer';
+export Article from './Article/Article';
