@@ -1,15 +1,21 @@
 $black: #444;
 $light_blue: #529ECC;
 $gray: #8F8F8F;
+$light_gray: #EEE;
 .post_container {
-  background: red;
+  // background: red;
   border-radius: 4px;
+  user-select: none;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px 0 rgba(255, 255, 255, .5);
+  background: #FFF;
 }
 .post_header {
   display: flex;
   padding: 15px;
-  background: yellow;
+  // background: yellow;
   border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid $light_gray;
 }
 .portrait {
   width: 30px;
@@ -44,34 +50,46 @@ $gray: #8F8F8F;
 }
 .post_content {
   padding: 15px;
-  background: green;
+  // background: green;
 }
 .post_tag {
   padding: 15px;
+  // background: pink;
   // background: grey;
+}
+.post_tag_container {
+  position: relative;
+  // background: red;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .post_tag_draggable {
   cursor: col-resize;
+  float: left;
   transform: translate(0px, 0px);
   transition-property: transform;
   transition-duration: .5s;
   transition-timing-function: ease-in-out;
+  // background: white;
 }
 .post_tag_link {
   color: $gray;
-  &:focus {
+  margin-right: 15px;
+  user-select: none;
+  &:hover {
     color: $gray;
     text-decoration: none;
   }
 }
 .post_footer {
   padding: 15px;
-  background: greenyellow;
+  // background: greenyellow;
   border-radius: 0 0 4px 4px
 }
 .note_link {
   color: $gray;
   font-weight: bold;
+  cursor: pointer;
   &:hover {
     text-decoration: none;
     color: $gray;
@@ -82,6 +100,7 @@ $gray: #8F8F8F;
   float: right;
   margin-right: 10px;
   color: $gray;
+  cursor: pointer;
   &:hover {
     text-decoration: none;
     color: $gray;
@@ -92,7 +111,8 @@ $gray: #8F8F8F;
   float: right;
   font-weight: bold;
   color: $gray;
-  &:hover {
+  cursor: pointer;
+  &:hover, &:focus {
     text-decoration: none;
     color: $gray;
   }

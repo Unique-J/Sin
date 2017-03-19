@@ -5,3 +5,8 @@ export Login from './Login/Login';
 export Register from './Register/Register';
 export LoginContainer from './Login/LoginContainer';
 export Article from './Article/Article';
+export Dashboard from './Dashboard/Dashboard';
+export Headbar from './Headbar/Headbar';
+export FollowList from './FollowList/FollowList';
+export UserItem from './UserItem/UserItem';
+export Editor from './Editor/Editor';

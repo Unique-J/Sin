@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { Main, Home, Counter, Article, Register, LoginContainer } from './containers';
+import { Main, Home, Counter, Article, Register, LoginContainer,
+  Dashboard, Headbar, FollowList, UserItem, Editor } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
 
 import { FirstMainPage } from './components/index';
@@ -33,6 +34,11 @@ export default store => {
       </Route>
       <Route path="register" component={Register} />
       <Route path="article" component={Article} />
+      <Route path="dashboard" component={Dashboard} />
+      <Route path="headbar" component={Headbar} />
+      <Route path="followlist" component={FollowList} />
+      <Route path="useritem" component={UserItem} />
+      <Route path="editor" component={Editor} />
     </Route>
   );
 };

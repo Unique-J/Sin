@@ -1,0 +1,58 @@
+.item_container {
+  width: 320px;
+  height: 55px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, .07);
+  // border-bottom: 1px solid #000;
+  // background: red;
+  background: #36465D;
+  display: flex;
+  &:hover {
+    text-decoration: none;
+    background-color: hsla(0, 0%, 100%, .07);
+  }
+}
+.portrait_wrapper {
+  display: flex;
+  flex: 1;
+  // background: lightgreen;
+  justify-content: center;
+}
+.portrait {
+  width: 37px;
+  height: 37px;
+  margin-top: 8px;
+  border-radius: 2px;
+}
+.user_info {
+  display: flex;
+  flex: 4;
+  flex-direction: column;
+  justify-content: center;
+  // background: deepskyblue;
+}
+.user_name {
+  color: hsla(0, 0%, 100%, .6);
+}
+.user_introduce {
+  color: hsla(0, 0%, 100%, .25);
+  font-size: 12px;
+}
+.follow_icon {
+  display: flex;
+  flex: 1;
+  // background: mediumpurple;
+}
+.follow_icon_btn {
+  margin: 14px auto;
+  border: 0;
+  border-radius: 2px;
+  color: #36465D;
+  background: hsla(0,0%,100%,.2);
+  &:hover {
+    color: #FFF;
+    background: #529ECC;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
