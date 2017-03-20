@@ -19,7 +19,8 @@ export default class UserItem extends Component {
         <div className={styles.follow_icon}>
           <button
             onClick={this.followUser}
-            className={`glyphicon glyphicon-plus ${styles.follow_icon_btn}`}>
+            className={`glyphicon glyphicon-plus ${styles.follow_icon_btn}`}
+          >
           </button>
         </div>
       </a>

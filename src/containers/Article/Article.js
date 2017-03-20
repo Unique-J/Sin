@@ -1,6 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class Article extends Component {
+  static propTypes = {
+    article: PropTypes.object.isRequired
+  };
+
   constructor() {
     super();
     this.state = {
@@ -70,16 +74,12 @@ export default class Article extends Component {
             href="#"
           >关注</a>
         </section>
-        <section className={styles.post_content}>
-          content "You’ll get over it…” It’s the clichés
-          that cause the trouble. To lose someone you love
-          is to alter your life for ever. You don’t get over
-          it because ‘it” is the person you loved. The pain
-          stops, there are new people, but the gap never
-          closes. How could it? The particularness of someone
-          who mattered enough to grieve over is not made anodyne
-          by death. This hole in my heart is in the shape of you
-          and no-one else can fit it. Why would I want them to?"
+        <section
+          className={styles.post_content}
+          dangerouslySetInnerHTML={{
+            __html: this.props.article.content
+          }}
+        >
         </section>
         <section className={styles.post_tag}>
           <div className={styles.post_tag_container}>

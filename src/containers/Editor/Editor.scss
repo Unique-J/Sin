@@ -82,6 +82,8 @@
   height: 354px;
   padding: 6px 12px;
   flex: 1;
+  word-wrap: break-word;
+  word-break: break-all;
   overflow: auto;
   background: #FBFBFB;
 }

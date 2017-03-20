@@ -50,6 +50,8 @@ $light_gray: #EEE;
 }
 .post_content {
   padding: 15px;
+  word-wrap: break-word;
+  word-break: break-all;
   // background: green;
 }
 .post_tag {
