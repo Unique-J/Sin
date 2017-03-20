@@ -10,3 +10,5 @@ export Headbar from './Headbar/Headbar';
 export FollowList from './FollowList/FollowList';
 export UserItem from './UserItem/UserItem';
 export Editor from './Editor/Editor';
+export ArticleModal from './ArticleModal/ArticleModal';
+export ArticleDetail from './ArticleDetail/ArticleDetail';

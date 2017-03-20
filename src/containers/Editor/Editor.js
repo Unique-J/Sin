@@ -3,8 +3,24 @@ import { Modal, Button, FormGroup, FormControl,
   OverlayTrigger, Popover, DropdownButton, MenuItem
  } from 'react-bootstrap';
 import marked from 'marked';
+import { connect } from 'react-redux';
+import * as ActionCreators from '../../actions/editor';
 
+@connect(
+  state => ({
+    dashboard: state.dashboard,
+    saveState: state.async.saveArticle
+  }),
+  ActionCreators
+)
 export default class Editor extends Component {
+  static propTypes = {
+    dashboard: PropTypes.any,
+    saveState: PropTypes.any,
+    showEditor: PropTypes.func.isRequired,
+    saveArticle: PropTypes.func.isRequired
+  };
+
   constructor() {
     super();
     this.state = {
@@ -23,6 +39,15 @@ export default class Editor extends Component {
     this.setState({ showPreviewArea: !this.state.showPreviewArea });
   }
 
+  sendArticle = () => {
+    const title = this.titleInput.value;
+    const description = this.descriptionInput.value;
+    const content = marked(this.editArea.value);
+    const tags = this.tagInput.value;
+    this.props.saveArticle(title, description, content, tags, new Date())
+      .then(() => console.log('Save Article Successfully.'));
+  }
+
   render() {
     const styles = require('./Editor.scss');
     const popoverFocus = (
@@ -33,9 +58,13 @@ export default class Editor extends Component {
         可以使用 Markdown 语法，点击预览可预览编辑效果
       </Popover>
     );
+    const { showEditorFlag } = this.props.dashboard;
+    const { showEditor } = this.props;
+
     return (
       <Modal
-        show
+        show={showEditorFlag}
+        onHide={showEditor}
         bsSize="large"
         dialogClassName={styles.editor_modal}
       >
@@ -54,6 +83,7 @@ export default class Editor extends Component {
               bsSize="large"
               placeholder="标 题"
               className={styles.title_input}
+              inputRef={ref => { this.titleInput = ref; }}
             />
           </FormGroup>
           <FormGroup className={styles.description_group}>
@@ -61,6 +91,7 @@ export default class Editor extends Component {
               type="text"
               placeholder="描 述"
               className={styles.description_input}
+              inputRef={ref => { this.descriptionInput = ref; }}
             />
           </FormGroup>
           <div className={styles.tabs}>
@@ -111,16 +142,20 @@ export default class Editor extends Component {
               type="text"
               placeholder="#标 签  [ 以 # 分隔 ] "
               className={styles.tag_input}
+              inputRef={ref => { this.tagInput = ref; }}
             />
           </FormGroup>
         </Modal.Body>
         <Modal.Footer>
-          <Button className={styles.close_btn}>关闭</Button>
+          <Button
+            className={styles.close_btn}
+            onClick={showEditor}
+          >关闭</Button>
           <DropdownButton
             bsStyle="info" title="发送" key={1}
             id="dropdown-btn" pullRight dropup
           >
-            <MenuItem eventKey="1">现在发送</MenuItem>
+            <MenuItem eventKey="1" onClick={this.sendArticle}>现在发送</MenuItem>
             <MenuItem eventKey="2">保存为草稿</MenuItem>
           </DropdownButton>
         </Modal.Footer>

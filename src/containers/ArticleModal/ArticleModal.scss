@@ -1,0 +1,99 @@
+$gray: #8F8F8F;
+$line_gray: #E5E5E5;
+.modal_container {
+  user-select: none;
+}
+.dialog {
+  width: 60%;
+}
+.modal_header {
+  border: 0;
+  padding: 40px 40px;
+  padding-bottom: 0;
+  // background: greenyellow;
+}
+.article_title {
+  height: 50px;
+  // background: palevioletred;
+  border-bottom: 1px solid $line_gray;
+}
+.author_wrapper {
+  display: flex;
+  // background: cadetblue;
+  height: 60px;
+}
+.author_portrait_wrapper {
+  // background: red;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  border-radius: 40px;
+  background: url('/StockSnap_01.jpg');
+  background-size: cover;
+}
+.author_info_wrapper {
+  margin: 10px;
+  flex: 10;
+}
+.author_name {
+  color: #333;
+}
+.author_description {
+  color: #333;
+}
+.follow_wrapper {
+  flex: 1;
+  margin-top: 16px;
+  // right: 0;
+}
+.follow_link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #2B6DAD;
+  &:hover {
+    color: #95B6D6;
+  }
+}
+.modal_body {
+  padding: 10px 40px;
+  // background: lightskyblue; 
+}
+.article_content {
+  padding-bottom: 10px;
+  border-bottom: 1px solid $line_gray;
+}
+.modal_footer {
+  padding: 0 40px 20px 40px;
+  border: 0;
+}
+.note_link {
+  color: $gray;
+  font-weight: bold;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: $gray;
+  }
+}
+.glyphicon_chat_link {
+  font-size: 18px;
+  float: right;
+  margin-right: 10px;
+  color: $gray;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+    color: $gray;
+  }
+}
+.glyphicon_heart_link {
+  font-size: 18px;
+  float: right;
+  font-weight: bold;
+  color: $gray;
+  cursor: pointer;
+  &:hover, &:focus {
+    text-decoration: none;
+    color: $gray;
+  }
+}

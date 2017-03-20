@@ -5,6 +5,7 @@ import logout from './logout';
 import judgeUserRegistered from './judgeUserRegistered';
 import registerUser from './registerUser';
 import validateEmail from './validateEmail';
+import saveArticle from './saveArticle';
 
 export default app => {
   loadAuth(app);
@@ -13,6 +14,9 @@ export default app => {
   judgeUserRegistered(app);
   registerUser(app);
   validateEmail(app);
+
+  // Validate
+  saveArticle(app);
 
   app.use((req, res, next) => {
     if (req.session.user) {

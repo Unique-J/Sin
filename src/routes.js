@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { Main, Home, Counter, Article, Register, LoginContainer,
-  Dashboard, Headbar, FollowList, UserItem, Editor } from './containers';
+  Dashboard, Headbar, FollowList, UserItem, Editor, ArticleModal,
+  ArticleDetail } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
 
 import { FirstMainPage } from './components/index';
@@ -39,6 +40,8 @@ export default store => {
       <Route path="followlist" component={FollowList} />
       <Route path="useritem" component={UserItem} />
       <Route path="editor" component={Editor} />
+      <Route path="articlemodal" component={ArticleModal} />
+      <Route path="articledetail" component={ArticleDetail} />
     </Route>
   );
 };
