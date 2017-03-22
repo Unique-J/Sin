@@ -2,9 +2,15 @@ import React, { Component, PropTypes } from 'react';
 import { Nav, Navbar, NavItem, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
+@connect(
+  state => ({
+    user: state.async.login
+  }),
+)
 export default class Headbar extends Component {
   static propTypes = {
-    showEditor: PropTypes.func.isRequired
+    showEditor: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired
   };
 
   componentDidMount() {
@@ -19,7 +25,8 @@ export default class Headbar extends Component {
 
   render() {
     const styles = require('./Headbar.scss');
-    const { showEditor } = this.props;
+    const { showEditor, user } = this.props;
+    console.log(user);
 
     return (
       <header className={styles.header}>
@@ -60,9 +67,9 @@ export default class Headbar extends Component {
             <NavItem eventKey={5} href="#">
               <span className={`glyphicon glyphicon-user ${styles.icon_link}`}></span>
             </NavItem>
-            <NavItem eventKey={6} href="#" onClick={showEditor}>
+            {user.tid && <NavItem eventKey={6} href="#" onClick={showEditor}>
               <span className={`glyphicon glyphicon-pencil ${styles.icon_link}`}></span>
-            </NavItem>
+            </NavItem>}
           </Nav>
         </Navbar>
       </header>

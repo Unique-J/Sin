@@ -52,7 +52,7 @@ export default class Login extends Component {
     let userid = this.useridInput.value;
     let pwd = this.pwdInput.value;
     // console.log(userid + ' ' + pwd);
-    this.props.login(userid, pwd).then(() => { browserHistory.push('/test'); console.log(123); });
+    this.props.login(userid, pwd).then(() => { browserHistory.push('/dashboard'); });
     userid = '';
     pwd = '';
   };

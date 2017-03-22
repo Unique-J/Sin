@@ -4,6 +4,7 @@ import counter from './counter';
 import main from './main';
 import loginContainer from './loginContainer';
 import dashboard from './dashboard';
+import articleModal from './articleModal';
 
 const rootReducers = combineReducers({
   counter,

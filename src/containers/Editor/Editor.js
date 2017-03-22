@@ -8,6 +8,7 @@ import * as ActionCreators from '../../actions/editor';
 
 @connect(
   state => ({
+    user: state.async.login,
     dashboard: state.dashboard,
     saveState: state.async.saveArticle
   }),
@@ -17,8 +18,10 @@ export default class Editor extends Component {
   static propTypes = {
     dashboard: PropTypes.any,
     saveState: PropTypes.any,
+    user: PropTypes.object.isRequired,
     showEditor: PropTypes.func.isRequired,
-    saveArticle: PropTypes.func.isRequired
+    saveArticle: PropTypes.func.isRequired,
+    getArticlesByTid: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -40,12 +43,16 @@ export default class Editor extends Component {
   }
 
   sendArticle = () => {
+    const tid = this.props.user.tid;
     const title = this.titleInput.value;
     const description = this.descriptionInput.value;
     const content = marked(this.editArea.value);
     const tags = this.tagInput.value;
-    this.props.saveArticle(title, description, content, tags, new Date())
-      .then(() => console.log('Save Article Successfully.'));
+    this.props.saveArticle(title, description, content, tags, new Date(), tid)
+      .then(() => {
+        this.props.showEditor();
+        this.props.getArticlesByTid(tid);
+      });
   }
 
   render() {
@@ -63,6 +70,7 @@ export default class Editor extends Component {
 
     return (
       <Modal
+        backdrop="static"
         show={showEditorFlag}
         onHide={showEditor}
         bsSize="large"

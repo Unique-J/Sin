@@ -7,6 +7,12 @@ import registerUser from './registerUser';
 import validateEmail from './validateEmail';
 import saveArticle from './saveArticle';
 import getArticles from './getArticles';
+import getArticle from './getArticle';
+import getTeachers from './getTeachers';
+import getArticlesByTid from './getArticlesByTid';
+import getStudent from './getStudent';
+import collectArticle from './collectArticle';
+import cancelCollectArticle from './cancelCollectArticle';
 
 export default app => {
   loadAuth(app);
@@ -17,8 +23,6 @@ export default app => {
   validateEmail(app);
 
   // Validate
-  saveArticle(app);
-  getArticles(app);
 
   app.use((req, res, next) => {
     if (req.session.user) {
@@ -29,4 +33,12 @@ export default app => {
   });
 
   counter(app);
+  saveArticle(app);
+  getArticles(app);
+  getArticle(app);
+  getArticlesByTid(app);
+  getTeachers(app);
+  getStudent(app);
+  collectArticle(app);
+  cancelCollectArticle(app);
 };

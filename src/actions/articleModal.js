@@ -1,24 +1,7 @@
 import { ASYNC } from 'redux-amrc';
 import { customFetch } from '../utils/utils';
 
-export function saveArticle(title, description, content, tags, date, tid) {
-  const option = {
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ title, description, content, tags, date, tid })
-  };
-  return {
-    [ASYNC]: {
-      key: 'saveArticle',
-      promise: () => customFetch('/saveArticle', option)
-    }
-  };
-}
-
-export function getArticlesByTid(tid) {
+export function collectArticle(id, sid) {
   const option = {
     method: 'post',
     headers: {
@@ -26,13 +9,34 @@ export function getArticlesByTid(tid) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      tid
+      id,
+      sid
     })
   };
   return {
     [ASYNC]: {
-      key: 'articles',
-      promise: () => customFetch('/getArticlesByTid', option)
+      key: 'student',
+      promise: () => customFetch('/collectArticle', option)
+    }
+  };
+}
+
+export function cancelCollectArticle(id, sid) {
+  const option = {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      id,
+      sid
+    })
+  };
+  return {
+    [ASYNC]: {
+      key: 'student',
+      promise: () => customFetch('/cancelCollectArticle', option)
     }
   };
 }

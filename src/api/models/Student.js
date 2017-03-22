@@ -16,8 +16,8 @@ export default function createStudent() {
     portrait: Buffer,
     description: String,
     location: String,
-    followers: [Number],
-    collections: [Number],
+    followers: [Schema.Types.ObjectId],
+    collections: [Schema.Types.ObjectId],
     commentbox: [Schema.Types.ObjectId],
     messagebox: [Schema.Types.ObjectId]
   });
@@ -30,6 +30,20 @@ export default function createStudent() {
   };
 
   const Student = mongoose.model('student', studentSchema);
+  // const gfs = Grid(mongoose.connection.db, mongoose.mongo); // eslint-disable-line
+  // const writestream = gfs.createWriteStream({
+  //   filename: 'logo',
+  // });
+  // console.log(__dirname + '..\\favicon');
+  // fs.createReadStream(path.join(__dirname, '..', '..', '..', 'static', 'favicon.ico'))
+  //   .pipe(writestream);
+  // const readstream = gfs.createReadStream({
+  //   _id: '0001adbb926bd600c8eec176'
+  // });
+  // console.log(readstream);
+  // gfs.findOne({ filename: 'logo' }, (err, file) => {
+  //   console.log(file);
+  // });
 
   Student.find({}, (err, students) => {
     if (err) {

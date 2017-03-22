@@ -29,19 +29,19 @@ export default store => {
     <Route path="/" component={Home} onEnter={preload(authPromise)}>
       <IndexRoute component={Main} />
       <Route path="login" component={LoginContainer} />
+      <Route path="register" component={Register} />
       <Route onEnter={requireLogin}>
         <Route path="counter" component={Counter} />
         <Route path="test" component={FirstMainPage} />
+        <Route path="article" component={Article} />
+        <Route path="dashboard" component={Dashboard} />
+        <Route path="headbar" component={Headbar} />
+        <Route path="followlist" component={FollowList} />
+        <Route path="useritem" component={UserItem} />
+        <Route path="editor" component={Editor} />
+        <Route path="articlemodal" component={ArticleModal} />
+        <Route path="articledetail" component={ArticleDetail} />
       </Route>
-      <Route path="register" component={Register} />
-      <Route path="article" component={Article} />
-      <Route path="dashboard" component={Dashboard} />
-      <Route path="headbar" component={Headbar} />
-      <Route path="followlist" component={FollowList} />
-      <Route path="useritem" component={UserItem} />
-      <Route path="editor" component={Editor} />
-      <Route path="articlemodal" component={ArticleModal} />
-      <Route path="articledetail" component={ArticleDetail} />
     </Route>
   );
 };
