@@ -11,6 +11,7 @@ export default function createArticle() {
     tags: String,
     viewNum: { type: Number, default: 0 },
     authorid: String,
+    authorName: String,
     collectNum: { type: Number, default: 0 }
   });
 
@@ -29,6 +30,7 @@ export default function createArticle() {
           tags: '#1#2',
           viewNum: 24,
           authorid: 110001,
+          authorName: 'YangJi',
           collectNum: 8
         });
         article.save((error) => {

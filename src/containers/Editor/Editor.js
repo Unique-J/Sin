@@ -18,7 +18,7 @@ export default class Editor extends Component {
   static propTypes = {
     dashboard: PropTypes.any,
     saveState: PropTypes.any,
-    user: PropTypes.object.isRequired,
+    user: PropTypes.any,
     showEditor: PropTypes.func.isRequired,
     saveArticle: PropTypes.func.isRequired,
     getArticlesByTid: PropTypes.func.isRequired,

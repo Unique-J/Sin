@@ -12,14 +12,17 @@ import * as actionCreators from '../../actions/article';
 )
 export default class Article extends Component {
   static propTypes = {
-    user: PropTypes.object.isRequired,
+    user: PropTypes.any,
     student: PropTypes.any,
     article: PropTypes.object.isRequired,
     width: PropTypes.number.isRequired,
-    showArticleModal: PropTypes.func.isRequired,
+    showArticleModal: PropTypes.any,
     getArticle: PropTypes.func.isRequired,
+    getStudent: PropTypes.func.isRequired,
     collectArticle: PropTypes.func.isRequired,
-    cancelCollectArticle: PropTypes.func.isRequired
+    cancelCollectArticle: PropTypes.func.isRequired,
+    followTeacher: PropTypes.func.isRequired,
+    cancelFollowTeacher: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -31,7 +34,7 @@ export default class Article extends Component {
 
   componentDidMount() {
     const tagDraggable = this.refs.tagDraggable;
-    const width = this.props.width;
+    const { width, user, getStudent } = this.props;
 
     const params = {
       startX: 0,
@@ -67,6 +70,10 @@ export default class Article extends Component {
         }
       };
     };
+
+    if (user && user.sid) {
+      getStudent(user.sid);
+    }
   }
 
   collectArticle = () => {
@@ -84,9 +91,32 @@ export default class Article extends Component {
   judgeCollection = () => {
     const { user, article, student } = this.props;
 
-    if (user.sid && student && article) {
+    if (user && user.sid && student && article) {
       const collections = student.collections;
       if (collections.includes(article._id)) {
+        return 1;
+      }
+    }
+
+    return 0;
+  }
+
+  followTeacher = () => {
+    const { student, article, followTeacher } = this.props;
+    followTeacher(article.authorid, student.sid);
+  }
+
+  cancelFollowTeacher = () => {
+    const { student, article, cancelFollowTeacher } = this.props;
+    cancelFollowTeacher(article.authorid, student.sid);
+  }
+
+  judgeFollow = () => {
+    const { user, article, student } = this.props;
+
+    if (user && user.sid && student && article) {
+      const followers = student.followers;
+      if (followers.includes(article.authorid)) {
         return 1;
       }
     }
@@ -110,10 +140,10 @@ export default class Article extends Component {
             className={styles.author_link}
             href="/counter"
           >thegoodvybe</a>
-          {user.sid && <a
+          {user && user.sid && <div
             className={styles.follow_link}
-            href="#"
-          >关注</a>}
+            onClick={this.judgeFollow() ? this.cancelFollowTeacher : this.followTeacher}
+          >{this.judgeFollow() ? '取消关注' : '关注'}</div>}
         </section>
         <section
           className={styles.post_content}
@@ -168,14 +198,14 @@ export default class Article extends Component {
           <a
             className={styles.note_link}
           >1002&nbsp;热度</a>
-          {user.sid && <div
+          {user && user.sid && <div
             onClick={this.judgeCollection() ? this.cancelCollectArticle : this.collectArticle}
             className={`${styles.glyphicon_heart_link} glyphicon
               ${this.judgeCollection() ? 'glyphicon-heart' : 'glyphicon-heart-empty'}`}
             style={this.judgeCollection() ? { color: '#D95E40' }
               : {}}
           ></div>}
-          {user.sid && <div
+          {user && user.sid && <div
             className={`${styles.glyphicon_chat_link} glyphicon glyphicon-edit`}
           ></div>}
         </section>

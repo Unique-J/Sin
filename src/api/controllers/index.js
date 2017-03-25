@@ -13,6 +13,10 @@ import getArticlesByTid from './getArticlesByTid';
 import getStudent from './getStudent';
 import collectArticle from './collectArticle';
 import cancelCollectArticle from './cancelCollectArticle';
+import followTeacher from './followTeacher';
+import cancelFollowTeacher from './cancelFollowTeacher';
+import getComments from './getComments';
+import saveComment from './saveComment';
 
 export default app => {
   loadAuth(app);
@@ -41,4 +45,8 @@ export default app => {
   getStudent(app);
   collectArticle(app);
   cancelCollectArticle(app);
+  followTeacher(app);
+  cancelFollowTeacher(app);
+  getComments(app);
+  saveComment(app);
 };

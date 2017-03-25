@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import * as actionCreators from '../../actions/articleModal';
 
 @connect(
@@ -16,10 +17,12 @@ export default class ArticleModal extends Component {
     article: PropTypes.any,
     student: PropTypes.any,
     dashboard: PropTypes.any,
-    user: PropTypes.object.isRequired,
+    user: PropTypes.any,
     showArticleModal: PropTypes.func.isRequired,
     collectArticle: PropTypes.func.isRequired,
-    cancelCollectArticle: PropTypes.func.isRequired
+    cancelCollectArticle: PropTypes.func.isRequired,
+    followTeacher: PropTypes.func.isRequired,
+    cancelFollowTeacher: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -44,7 +47,7 @@ export default class ArticleModal extends Component {
   judgeCollection = () => {
     const { user, article, student } = this.props;
 
-    if (user.sid && student && article) {
+    if (user && user.sid && student && article) {
       const collections = student.collections;
       if (collections.includes(article._id)) {
         return 1;
@@ -52,6 +55,38 @@ export default class ArticleModal extends Component {
     }
 
     return 0;
+  }
+
+  followTeacher = () => {
+    const { student, article, followTeacher } = this.props;
+    followTeacher(article.authorid, student.sid);
+  }
+
+  cancelFollowTeacher = () => {
+    const { student, article, cancelFollowTeacher } = this.props;
+    cancelFollowTeacher(article.authorid, student.sid);
+  }
+
+  judgeFollow = () => {
+    const { user, article, student } = this.props;
+
+    if (user && user.sid && student && article) {
+      const followers = student.followers;
+      if (followers.includes(article.authorid)) {
+        return 1;
+      }
+    }
+
+    return 0;
+  }
+
+  toArticleDetail = () => {
+    const { article, showArticleModal } = this.props;
+
+    if (article) {
+      browserHistory.push(`/ArticleDetail?articleid=${article._id}`);
+      showArticleModal();
+    }
   }
 
   render() {
@@ -89,8 +124,11 @@ export default class ArticleModal extends Component {
                   介绍: 1231231321321231123123211312313
                 </div>
               </div>
-              {user.sid && <div className={styles.follow_wrapper}>
-                <div className={styles.follow_link}>关注</div>
+              {user && user.sid && <div className={styles.follow_wrapper}>
+                <div
+                  className={styles.follow_link}
+                  onClick={this.judgeFollow() ? this.cancelFollowTeacher : this.followTeacher}
+                >{this.judgeFollow() ? '取消关注' : '关注'}</div>
               </div>}
             </div>
           </Modal.Header>
@@ -98,6 +136,7 @@ export default class ArticleModal extends Component {
             <div
               className={styles.article_content}
               dangerouslySetInnerHTML={{ __html: article && article.content }}
+              onClick={this.toArticleDetail}
             ></div>
           </Modal.Body>
           <Modal.Footer className={styles.modal_footer}>
@@ -106,14 +145,14 @@ export default class ArticleModal extends Component {
                 style={{ float: 'left' }}
                 className={styles.note_link}
               >1002&nbsp;热度</a>
-              {user.sid && <div
+              {user && user.sid && <div
                 onClick={this.judgeCollection() ? this.cancelCollectArticle : this.collectArticle}
                 className={`${styles.glyphicon_heart_link} glyphicon
                   ${this.judgeCollection() ? 'glyphicon-heart' : 'glyphicon-heart-empty'}`}
                 style={this.judgeCollection() ? { color: '#D95E40' }
                   : {}}
               ></div>}
-              {user.sid && <div
+              {user && user.sid && <div
                 className={`${styles.glyphicon_chat_link} glyphicon glyphicon-edit`}
               ></div>}
             </div>

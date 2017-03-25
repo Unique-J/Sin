@@ -10,7 +10,7 @@ export default app => {
         console.error(err);
       } else {
         res.send(student);
-        console.log(student);
+        // console.log(student);
       }
     });
   });

@@ -10,13 +10,13 @@ export default app => {
       res.send(404);
       return;
     }
-    console.log(userid + ' ' + validateCode + ' ' + email);
+    // console.log(userid + ' ' + validateCode + ' ' + email);
     const useridLength = userid.length;
 
     const validateTime = new Date().getTime();
     const limitTime = 3600000;
     const deltaTime = validateTime - limitTime;
-    console.log(deltaTime);
+    // console.log(deltaTime);
 
     const conditions = {
       tid: userid,
@@ -34,7 +34,7 @@ export default app => {
       const Teacher = mongoose.model('teacher');
       Teacher.findOne(conditions, (err, teacher) => {
         if (err) console.error(err);
-        console.log(teacher);
+        // console.log(teacher);
       });
       Teacher.update(conditions, update,
         (err, result) => {

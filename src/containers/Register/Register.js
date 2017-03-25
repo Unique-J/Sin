@@ -69,13 +69,14 @@ class Register extends Component {
     const pwd = this.pwdInput.value;
     const gender = this.refs.genderSelect.value;
     this.props.registerUser(id, email, pwd, gender);
-    console.log(`${id} ${email} ${pwd} ${gender}`);
+    // console.log(`${id} ${email} ${pwd} ${gender}`);
   };
 
   render() {
     const styles = require('./Register.scss');
     const { register, loadState } = this.props;
-    console.log(register);
+    // console.log(register);
+
     return (
       <div className={styles.container}>
         <Navbar className={styles.banner}>

@@ -16,7 +16,7 @@ import * as ActionCreators from '../../actions/dashboard';
 )
 export default class Dashboard extends Component {
   static propTypes = {
-    user: PropTypes.object.isRequired,
+    user: PropTypes.any,
     dashboard: PropTypes.any,
     article: PropTypes.any,
     articles: PropTypes.any,
@@ -28,6 +28,7 @@ export default class Dashboard extends Component {
     getTeachers: PropTypes.func.isRequired,
     getStudent: PropTypes.func.isRequired,
     getArticlesByTid: PropTypes.func.isRequired,
+    logout: PropTypes.func.isRequired,
     // loadAuth: PropTypes.func.isRequired
   };
 
@@ -35,7 +36,7 @@ export default class Dashboard extends Component {
     // this.props.loadAuth();
     const { user, getArticlesByTid, getArticles, getStudent } = this.props;
 
-    if (user.tid) {
+    if (user && user.tid) {
       getArticlesByTid(user.tid);
     } else {
       getArticles();
@@ -56,11 +57,11 @@ export default class Dashboard extends Component {
 
   render() {
     const styles = require('./Dashboard.scss');
-    const { articles, teachers, article, showEditor, showArticleModal } = this.props;
+    const { user, articles, teachers, article, showEditor, showArticleModal, logout } = this.props;
 
     return (
       <div className={styles.dashboard_container}>
-        <Headbar showEditor={showEditor}/>
+        <Headbar showEditor={showEditor} logout={logout} />
         <Editor showEditor={showEditor} />
         <ArticleModal showArticleModal={showArticleModal} article={article} />
         <div className={styles.content_wrapper}>
@@ -69,9 +70,9 @@ export default class Dashboard extends Component {
               {articles ? this.mapArticles(articles, showArticleModal) : ''}
             </li>
           </ul>
-          <div className={styles.follow_list_wrapper}>
+          {user && user.sid && <div className={styles.follow_list_wrapper}>
             {teachers ? <FollowList users={teachers}/> : ''}
-          </div>
+          </div>}
         </div>
       </div>
     );

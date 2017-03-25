@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { Main, Home, Counter, Article, Register, LoginContainer,
   Dashboard, Headbar, FollowList, UserItem, Editor, ArticleModal,
-  ArticleDetail } from './containers';
+  ArticleDetail, Comment, CommentList } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
 
 import { FirstMainPage } from './components/index';
@@ -19,7 +19,7 @@ export default store => {
   const authPromise = () => store.dispatch(loadAuthIfNeeded());
   const requireLogin = (nextState, replace, cb) => {
     const user = store.getState().async.login;
-    console.log(user);
+    // console.log(user);
     if (!user) {
       replace('/');
     }
@@ -41,6 +41,8 @@ export default store => {
         <Route path="editor" component={Editor} />
         <Route path="articlemodal" component={ArticleModal} />
         <Route path="articledetail" component={ArticleDetail} />
+        <Route path="comment" component={Comment} />
+        <Route path="commentlist" component={CommentList} />
       </Route>
     </Route>
   );

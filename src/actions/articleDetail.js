@@ -2,7 +2,6 @@ import { ASYNC } from 'redux-amrc';
 import { customFetch } from '../utils/utils';
 
 export const SHOW_EDITOR = 'SHOW_EDITOR';
-export const SHOW_ARTICLE_MODAL = 'SHOW_ARTICLE_MODAL';
 
 export function showEditor() {
   return {
@@ -10,22 +9,7 @@ export function showEditor() {
   };
 }
 
-export function showArticleModal() {
-  return {
-    type: SHOW_ARTICLE_MODAL
-  };
-}
-
-export function getArticles() {
-  return {
-    [ASYNC]: {
-      key: 'articles',
-      promise: () => customFetch('/getArticles')
-    }
-  };
-}
-
-export function getArticlesByTid(tid) {
+export function getArticle(id) {
   const option = {
     method: 'post',
     headers: {
@@ -33,13 +17,13 @@ export function getArticlesByTid(tid) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      tid
+      id
     })
   };
   return {
     [ASYNC]: {
-      key: 'articles',
-      promise: () => customFetch('/getArticlesByTid', option)
+      key: 'article',
+      promise: () => customFetch('/getArticle', option)
     }
   };
 }
@@ -53,7 +37,16 @@ export function getTeachers() {
   };
 }
 
-export function getStudent(sid) {
+export function logout() {
+  return {
+    [ASYNC]: {
+      key: 'login',
+      promise: () => customFetch('/logout')
+    }
+  };
+}
+
+export function getComments(articleid) {
   const option = {
     method: 'post',
     headers: {
@@ -61,22 +54,36 @@ export function getStudent(sid) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      sid
+      articleid
     })
   };
+
   return {
     [ASYNC]: {
-      key: 'student',
-      promise: () => customFetch('/getStudent', option)
+      key: 'comment',
+      promise: () => customFetch('/getComments', option)
     }
   };
 }
 
-export function logout() {
+export function saveComment(article, content, user) {
+  const option = {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      article,
+      content,
+      user
+    })
+  };
+
   return {
     [ASYNC]: {
-      key: 'login',
-      promise: () => customFetch('/logout')
+      key: 'comment',
+      promise: () => customFetch('/saveComment', option)
     }
   };
 }

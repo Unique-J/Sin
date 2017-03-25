@@ -4,13 +4,14 @@ import counter from './counter';
 import main from './main';
 import loginContainer from './loginContainer';
 import dashboard from './dashboard';
-import articleModal from './articleModal';
+import articleDetail from './articleDetail';
 
 const rootReducers = combineReducers({
   counter,
   main,
   loginContainer,
   dashboard,
+  articleDetail,
   async: reducerCreator()
 });
 

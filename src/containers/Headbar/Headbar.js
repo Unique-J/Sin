@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Nav, Navbar, NavItem, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 @connect(
   state => ({
@@ -10,7 +11,8 @@ import { connect } from 'react-redux';
 export default class Headbar extends Component {
   static propTypes = {
     showEditor: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired
+    user: PropTypes.any,
+    logout: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -23,10 +25,17 @@ export default class Headbar extends Component {
     console.log(searchInput.value);
   };
 
+  logout = () => {
+    const { user, logout } = this.props;
+    if (user) {
+      logout().then(() => browserHistory.push('/'));
+    }
+  }
+
   render() {
     const styles = require('./Headbar.scss');
     const { showEditor, user } = this.props;
-    console.log(user);
+    // console.log(user);
 
     return (
       <header className={styles.header}>
@@ -52,7 +61,7 @@ export default class Headbar extends Component {
             </Navbar.Form>
           </Navbar.Header>
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">
+            <NavItem eventKey={1} href="/dashboard">
               <span className={`glyphicon glyphicon-home ${styles.icon_link}`}></span>
             </NavItem>
             <NavItem eventKey={2} href="#">
@@ -70,6 +79,9 @@ export default class Headbar extends Component {
             {user.tid && <NavItem eventKey={6} href="#" onClick={showEditor}>
               <span className={`glyphicon glyphicon-pencil ${styles.icon_link}`}></span>
             </NavItem>}
+            <NavItem eventKey={user.tid ? 7 : 6} href="#" onClick={this.logout}>
+              <span className={`glyphicon glyphicon-log-out ${styles.icon_link}`}></span>
+            </NavItem>
           </Nav>
         </Navbar>
       </header>

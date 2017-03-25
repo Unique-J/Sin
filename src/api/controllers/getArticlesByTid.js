@@ -12,6 +12,5 @@ export default app => {
         res.send(articles);
       }
     });
-
   });
 };

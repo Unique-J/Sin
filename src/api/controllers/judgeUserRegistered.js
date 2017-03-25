@@ -4,6 +4,7 @@ export default app => {
   app.post('/judgeUserRegistered', (req, res) => {
     const id = req.body.id;
     const idLength = id.length;
+
     if (idLength === 6) {
       const Teacher = mongoose.model('teacher');
       Teacher.findOne({ tid: id }, (err, teacher) => {

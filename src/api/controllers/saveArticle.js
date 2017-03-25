@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 export default app => {
   app.post('/saveArticle', (req, res) => {
-    console.log(111);
+    // console.log(111);
     const { title, description, content, tags, date, tid } = req.body;
     // res.send(200);
     // console.log(title + ' ' + description + ' ' + content + ' ' + tags + ' ' + date);
@@ -15,6 +15,7 @@ export default app => {
       date,
       authorid: tid
     });
+
     article.save(err => {
       if (err) {
         console.error(err);
