@@ -1,35 +1,13 @@
 $black: #444;
+$blue: #198FFF;
 $gray: #8F8F8F;
 $grey: #D8DADE;
-$blue: #198FFF;
-$light_gray: #F9F9FA;
 $light_grey: #F2F2F5;
-$pink: #FFC09F;
 
-.comment_container {
-  width: 500px;
-  // height: 80px;
-  // background: indianred;
-  background: $light_gray;
-  display: flex;
-  padding: 10px 15px;
-  user-select: none;
-  margin-bottom: 10px;
-}
-.portrait_wrapper {
-  flex: 1;
-  // background: url('/StockSnap_01.jpg');
-  // background-size: cover;
-  // background: greenyellow;
-  margin-right: 10px;
-}
-.portrait {
-  width: 50px;
-  height: 50px;
-}
-.comment_wrapper {
-  flex: 9;
-  // background: lightskyblue;
+.child_comments_wrapper {
+  background: $light_grey;
+  margin-top: 10px;
+  padding: 10px;
 }
 .username {
   color: $black;
@@ -52,11 +30,6 @@ $pink: #FFC09F;
 .reply_link {
   // right: 0;
   cursor:pointer;
-}
-.child_comments_wrapper {
-  background: $light_grey;
-  margin-top: 10px;
-  padding: 10px;
 }
 .input_group {
   display: flex;
@@ -91,18 +64,5 @@ $pink: #FFC09F;
   text-align: center;
   line-height: 26px;
   cursor: pointer;
-  background: $pink;
-}
-.reply_count_wrapper {
-  // background: $light_grey;
-  color: #D95E40;
-  font-weight: bold;
-  font-size: 12px;
-  margin-top: 10px;
-}
-.reply_count_link {
-  cursor: pointer;
-}
-.modal_container {
-  width: 40%;
+  background: #ffc09f;
 }

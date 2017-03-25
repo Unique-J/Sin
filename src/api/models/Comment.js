@@ -9,6 +9,7 @@ export default function createComment() {
     reviewernameb: String,
     content: String,
     time: Date,
+    comments: [],
     articleid: Schema.Types.ObjectId
   });
 
@@ -23,7 +24,7 @@ export default function createComment() {
           reviewerida: '13110033139',
           reviewernamea: 'YangJi',
           revieweridb: '110001',
-          reviewernameb: 'YangJi',
+          reviewernameb: 'YanJ',
           content: '这是一条评论',
           time: new Date(),
           articleid: '58cfcea4eeec4b3d4cbed6ea'

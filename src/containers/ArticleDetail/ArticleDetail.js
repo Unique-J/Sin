@@ -23,6 +23,7 @@ export default class ArticleDetail extends Component {
     logout: PropTypes.func.isRequired,
     getComments: PropTypes.func.isRequired,
     saveComment: PropTypes.func.isRequired,
+    saveChildComment: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -38,7 +39,7 @@ export default class ArticleDetail extends Component {
   render() {
     const styles = require('./ArticleDetail.scss');
     const { teachers, article, comments,
-      showEditor, saveComment, getComments, logout } = this.props;
+      showEditor, saveComment, getComments, saveChildComment, logout } = this.props;
     // console.log(comments);
 
     return (
@@ -52,6 +53,7 @@ export default class ArticleDetail extends Component {
               <CommentList
                 article={article} comments={comments}
                 saveComment={saveComment} getComments={getComments}
+                saveChildComment={saveChildComment}
               />
             }
           </div>

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { FormGroup, FormControl } from 'react-bootstrap';
+import { FormGroup, FormControl, Modal, Button } from 'react-bootstrap';
+import { ChildComment } from '../index';
 
 @connect(
   state => ({
@@ -14,13 +15,21 @@ export default class Comment extends Component {
     article: PropTypes.any,
     getComments: PropTypes.func.isRequired,
     saveComment: PropTypes.func.isRequired,
+    saveChildComment: PropTypes.func.isRequired
   };
 
   constructor() {
     super();
     this.state = {
-      replyFlag: false
+      replyFlag: false,
+      commentModalFlag: false,
     };
+  }
+
+  componentDidMount() {
+    const { article, getComments } = this.props;
+
+    setInterval(() => getComments(article._id), 5000);
   }
 
   formatTime = (time) => {
@@ -31,23 +40,46 @@ export default class Comment extends Component {
 
   reply = () => {
     this.setState({ replyFlag: !this.state.replyFlag });
+    // console.log(this.props.comment);
   }
 
   saveComment = () => {
-    const { user, article, getComments, saveComment } = this.props;
+    const { user, article, comment, getComments, saveComment } = this.props;
     const content = this.comment_input.value;
 
-    saveComment(article, content, user);
+    saveComment(article, content, user, comment);
     getComments(article._id);
 
     this.comment_input.value = '';
     this.setState({ replyFlag: !this.state.replyFlag });
   }
 
+  mapChildComment = (comment, saveChildComment, getComments) => (
+    comment.comments.map((childComment, index) => (
+      index < 2 && <ChildComment
+        childComment={childComment} key={index} commentid={comment._id}
+        saveChildComment={saveChildComment} getComments={getComments}
+      />
+    ))
+  )
+
+  mapAllChildComment = (comment, saveChildComment, getComments) => (
+    comment.comments.map((childComment, index) => (
+      <ChildComment
+        childComment={childComment} key={index} commentid={comment._id}
+        saveChildComment={saveChildComment} getComments={getComments}
+      />
+    ))
+  )
+
+  showAllComments = () => {
+    this.setState({ commentModalFlag: !this.state.commentModalFlag });
+  }
+
   render() {
     const styles = require('./Comment.scss');
-    const { comment, user } = this.props;
-    // console.log(comment);
+    const { comment, user, saveChildComment, getComments } = this.props;
+    console.log(comment);
 
     return (
       <div className={styles.comment_container}>
@@ -69,6 +101,9 @@ export default class Comment extends Component {
               回&nbsp;复
             </span>}
           </div>
+
+          {comment && this.mapChildComment(comment, saveChildComment, getComments)}
+
           {this.state.replyFlag && <FormGroup
             controlId="formBasicText"
             className={styles.input_group}
@@ -84,7 +119,31 @@ export default class Comment extends Component {
               onClick={this.saveComment}
             >评&nbsp;论</div>
           </FormGroup>}
+          {comment && (comment.comments.length > 0) &&
+            <div className={styles.reply_count_wrapper}>
+              <span
+                className={styles.reply_count_link}
+                onClick={this.showAllComments}
+              >
+                共{comment && (comment.comments.length + 1)}条回复
+              </span>
+            </div>}
         </div>
+
+        <Modal
+          bsSize="large" aria-labelledby="contained-modal-title-lg"
+          show={this.state.commentModalFlag}
+          dialogClassName={styles.modal_container}
+        >
+          <Modal.Header closeButton>
+          </Modal.Header>
+          <Modal.Body>
+            {this.mapAllChildComment(comment, saveChildComment, getComments)}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.showAllComments}>Close</Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }

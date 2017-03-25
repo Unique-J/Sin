@@ -17,6 +17,7 @@ import followTeacher from './followTeacher';
 import cancelFollowTeacher from './cancelFollowTeacher';
 import getComments from './getComments';
 import saveComment from './saveComment';
+import saveChildComment from './saveChildComment';
 
 export default app => {
   loadAuth(app);
@@ -49,4 +50,5 @@ export default app => {
   cancelFollowTeacher(app);
   getComments(app);
   saveComment(app);
+  saveChildComment(app);
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { Main, Home, Counter, Article, Register, LoginContainer,
   Dashboard, Headbar, FollowList, UserItem, Editor, ArticleModal,
-  ArticleDetail, Comment, CommentList } from './containers';
+  ArticleDetail, Comment, CommentList, ChildComment } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
 
 import { FirstMainPage } from './components/index';
@@ -43,6 +43,7 @@ export default store => {
         <Route path="articledetail" component={ArticleDetail} />
         <Route path="comment" component={Comment} />
         <Route path="commentlist" component={CommentList} />
+        <Route path="childcomment" component={ChildComment} />
       </Route>
     </Route>
   );

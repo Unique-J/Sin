@@ -66,7 +66,7 @@ export function getComments(articleid) {
   };
 }
 
-export function saveComment(article, content, user) {
+export function saveComment(article, content, user, comment) {
   const option = {
     method: 'post',
     headers: {
@@ -76,14 +76,40 @@ export function saveComment(article, content, user) {
     body: JSON.stringify({
       article,
       content,
-      user
+      user,
+      comment
+    })
+  };
+  // console.log('Action');
+  // console.log(comment);
+
+  return {
+    [ASYNC]: {
+      key: 'comment',
+      promise: () => customFetch('/saveComment', option)
+    }
+  };
+}
+
+export function saveChildComment(content, user, childComment, commentid) {
+  const option = {
+    method: 'post',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      content,
+      user,
+      childComment,
+      commentid
     })
   };
 
   return {
     [ASYNC]: {
       key: 'comment',
-      promise: () => customFetch('/saveComment', option)
+      promise: () => customFetch('/saveChildComment', option)
     }
   };
 }

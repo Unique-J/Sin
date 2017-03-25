@@ -15,13 +15,15 @@ export default class CommentList extends Component {
     comments: PropTypes.any,
     getComments: PropTypes.func.isRequired,
     saveComment: PropTypes.func.isRequired,
+    saveChildComment: PropTypes.func.isRequired
   };
 
-  mapComments = (comments, article, getComments, saveComment) => (
+  mapComments = (comments, article, getComments, saveComment, saveChildComment) => (
     comments.map((comment, index) => (
       <Comment
         comment={comment} key={index} article={article}
         getComments={getComments} saveComment={saveComment}
+        saveChildComment={saveChildComment}
       />
     ))
   );
@@ -38,7 +40,7 @@ export default class CommentList extends Component {
 
   render() {
     const styles = require('./CommentList.scss');
-    const { user, comments, article, getComments, saveComment } = this.props;
+    const { user, comments, article, getComments, saveComment, saveChildComment } = this.props;
     // console.log(123);
     // console.log(comments);
 
@@ -63,7 +65,7 @@ export default class CommentList extends Component {
             onClick={this.saveComment}
           >评&nbsp;论</div>
         </FormGroup>}
-        {this.mapComments(comments, article, getComments, saveComment)}
+        {this.mapComments(comments, article, getComments, saveComment, saveChildComment)}
       </div>
     );
   }

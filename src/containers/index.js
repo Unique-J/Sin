@@ -14,3 +14,4 @@ export ArticleModal from './ArticleModal/ArticleModal';
 export ArticleDetail from './ArticleDetail/ArticleDetail';
 export Comment from './Comment/Comment.js';
 export CommentList from './CommentList/CommentList';
+export ChildComment from './ChildComment/ChildComment';
