@@ -66,6 +66,7 @@ export default class Login extends Component {
     const styles = require('./Login.scss');
     const { user, loadState } = this.props;
     const { init, idValidFlag, nextStepClicked } = this.state;
+
     return (
       <div className={styles.container}>
         <Helmet title="登录" />

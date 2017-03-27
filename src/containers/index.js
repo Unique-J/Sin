@@ -15,3 +15,6 @@ export ArticleDetail from './ArticleDetail/ArticleDetail';
 export Comment from './Comment/Comment.js';
 export CommentList from './CommentList/CommentList';
 export ChildComment from './ChildComment/ChildComment';
+export ReplyList from './ReplyList/ReplyList';
+export ReplyCard from './ReplyCard/ReplyCard';
+export ReplyModal from './ReplyModal/ReplyModal';

@@ -1,0 +1,137 @@
+$light_orange: #EB7350;
+$light_gray: #F2F2F5;
+$gray: #808080;
+$grey: #D8DADE;
+$black: #444;
+$blue: #198FFF;
+$pink: #FFC09F;
+
+.reply_card_container {
+  user-select: none;
+  width: 600px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  background: #FFF;
+}
+.reply_card_wrapper {
+  font-size: 12px;
+  padding: 10px;
+}
+.reply_wrapper {
+  display: flex;
+  // background: red;
+}
+.portrait_wrapper {
+  flex: 1;
+}
+.portrait {
+  width: 50px;
+  height: 50px;
+  background: url('/StockSnap_01.jpg');
+  background-size: cover;
+  border-radius: 50%;
+  // background: white;
+}
+.reply {
+  flex: 8;
+}
+.reviewer_name_a {
+  padding-top: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: $black;
+}
+.reviewer_name_b {
+  color: $light_orange;
+}
+.reply_content {
+  color: $black;
+  margin-bottom: 10px;
+}
+.my_comment_wrapper {
+  display: flex;
+  // background: lightskyblue;
+}
+.blank_block {
+  flex: 1;
+} 
+.my_comment {
+  flex: 8;
+  background: $light_gray;
+  padding: 5px 16px;
+  cursor: pointer;
+}
+.comment {
+  color: $gray;
+}
+.reply_time_wrapper {
+  display: flex;
+  margin-top: 10px;
+}
+.reply_time {
+  flex: 8;
+  color: $gray;
+}
+.link_wrapper {
+  display: flex;
+  height: 38px;
+  border-top: 1px solid $light_gray;
+  border-bottom: 1px solid $light_gray;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  // background: lightgreen;
+}
+.link {
+  flex: 1;
+  text-align: center;
+  line-height: 22px;
+  color: $black;
+  font-size: 12px;
+  margin: 7px 0;
+  cursor: pointer;
+  &:hover {
+    color: $light_orange;
+  }
+}
+.watch_link {
+  @extend .link;
+  border-right: 1px solid $light_gray;
+}
+.reply_link {
+  @extend .link;
+}
+.form_group {
+  display: flex;
+  padding: 10px;
+}
+.reply_block {
+  display: flex;
+  flex: 8;
+  margin-bottom: 5px;
+}
+.reply_input {
+  // height: 24px;
+  font-size: 12px;
+  border-radius: 0;
+  border: 0;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
+  border-bottom: 1px solid $grey;
+  margin-right: 10px;
+  &:focus {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
+    border-bottom: 1px solid $blue;
+  }
+}
+.reply_button {
+  width: 70px;
+  height: 24px;
+  border: 0;
+  background: $pink;
+  font-size: 12px;
+  color: #FFF;
+  margin-top: 10px;
+  border-radius: 2px;
+  text-align: center;
+  line-height: 24px;
+  cursor:pointer;
+}

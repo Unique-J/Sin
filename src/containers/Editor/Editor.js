@@ -43,16 +43,18 @@ export default class Editor extends Component {
   }
 
   sendArticle = () => {
-    const tid = this.props.user.tid;
-    const title = this.titleInput.value;
-    const description = this.descriptionInput.value;
-    const content = marked(this.editArea.value);
-    const tags = this.tagInput.value;
-    this.props.saveArticle(title, description, content, tags, new Date(), tid)
-      .then(() => {
-        this.props.showEditor();
-        this.props.getArticlesByTid(tid);
-      });
+    if (this.props.user) {
+      const tid = this.props.user.tid;
+      const title = this.titleInput.value;
+      const description = this.descriptionInput.value;
+      const content = marked(this.editArea.value);
+      const tags = this.tagInput.value;
+      this.props.saveArticle(title, description, content, tags, new Date(), tid)
+        .then(() => {
+          this.props.showEditor();
+          this.props.getArticlesByTid(tid);
+        });
+    }
   }
 
   render() {

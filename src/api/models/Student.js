@@ -18,8 +18,8 @@ export default function createStudent() {
     location: String,
     followers: [String],
     collections: [Schema.Types.ObjectId],
-    commentbox: [Schema.Types.ObjectId],
-    messagebox: [Schema.Types.ObjectId]
+    commentbox: [],
+    messagebox: []
   });
 
   studentSchema.statics.findStudent = function (student, cb) {   // eslint-disable-line

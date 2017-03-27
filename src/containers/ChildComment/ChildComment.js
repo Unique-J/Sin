@@ -41,11 +41,13 @@ export default class ChildComment extends Component {
     // console.log(childComment);
     // console.log(commentid);
 
-    saveChildComment(content, user, childComment, commentid);
-    getComments(childComment.articleid);
+    if (user) {
+      saveChildComment(content, user, childComment, commentid);
+      getComments(childComment.articleid);
 
-    this.child_comment_input.value = '';
-    this.setState({ childReplyFlag: !this.state.childReplyFlag });
+      this.child_comment_input.value = '';
+      this.setState({ childReplyFlag: !this.state.childReplyFlag });
+    }
   }
 
   childReply = () => {
@@ -67,7 +69,7 @@ export default class ChildComment extends Component {
           <span className={styles.reply_time}>{childComment
             && this.formatTime(childComment.time)}
           </span>
-          {childComment.reviewernamea !== user.name && <span
+          {user && childComment.reviewernamea !== user.name && <span
             className={styles.reply_link}
             onClick={this.childReply}
           >

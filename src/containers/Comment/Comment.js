@@ -47,11 +47,13 @@ export default class Comment extends Component {
     const { user, article, comment, getComments, saveComment } = this.props;
     const content = this.comment_input.value;
 
-    saveComment(article, content, user, comment);
-    getComments(article._id);
+    if (user) {
+      saveComment(article, content, user, comment);
+      getComments(article._id);
 
-    this.comment_input.value = '';
-    this.setState({ replyFlag: !this.state.replyFlag });
+      this.comment_input.value = '';
+      this.setState({ replyFlag: !this.state.replyFlag });
+    }
   }
 
   mapChildComment = (comment, saveChildComment, getComments) => (
@@ -94,7 +96,7 @@ export default class Comment extends Component {
           <span className={styles.comment}>{comment && comment.content}</span>
           <div className={styles.reply}>
             <span className={styles.reply_time}>{comment && this.formatTime(comment.time)}</span>
-            {comment.reviewernamea !== user.name && <span
+            {user && comment.reviewernamea !== user.name && <span
               className={styles.reply_link}
               onClick={this.reply}
             >

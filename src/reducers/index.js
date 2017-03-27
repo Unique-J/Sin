@@ -5,6 +5,7 @@ import main from './main';
 import loginContainer from './loginContainer';
 import dashboard from './dashboard';
 import articleDetail from './articleDetail';
+import replyList from './replyList';
 
 const rootReducers = combineReducers({
   counter,
@@ -12,6 +13,7 @@ const rootReducers = combineReducers({
   loginContainer,
   dashboard,
   articleDetail,
+  replyList,
   async: reducerCreator()
 });
 

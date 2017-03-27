@@ -15,7 +15,7 @@ export default class CommentList extends Component {
     comments: PropTypes.any,
     getComments: PropTypes.func.isRequired,
     saveComment: PropTypes.func.isRequired,
-    saveChildComment: PropTypes.func.isRequired
+    saveChildComment: PropTypes.func.isRequired,
   };
 
   mapComments = (comments, article, getComments, saveComment, saveChildComment) => (
@@ -32,10 +32,12 @@ export default class CommentList extends Component {
     const { user, article, getComments, saveComment } = this.props;
     const content = this.comment_input.value;
 
-    saveComment(article, content, user);
-    getComments(article._id);
+    if (user) {
+      saveComment(article, content, user);
+      getComments(article._id);
 
-    this.comment_input.value = '';
+      this.comment_input.value = '';
+    }
   }
 
   render() {
@@ -47,7 +49,7 @@ export default class CommentList extends Component {
     return (
       <div
         className={styles.commentlist_container}
-        style={comments.length || user.sid ? { padding: 10 } : {}}
+        style={comments.length || (user && user.sid) ? { padding: 10 } : {}}
       >
         {user && user.sid && <FormGroup
           controlId="formBasicText"

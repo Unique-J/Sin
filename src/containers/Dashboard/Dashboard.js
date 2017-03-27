@@ -38,7 +38,9 @@ export default class Dashboard extends Component {
 
     if (user && user.tid) {
       getArticlesByTid(user.tid);
-    } else {
+    }
+
+    if (user && user.sid) {
       getArticles();
       getStudent(user.sid);
     }

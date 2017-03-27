@@ -38,3 +38,9 @@ export function customFetch(url, option) {
     .then(handle401)
     .then(handleErrors);
 }
+
+export function formatTime(time) {
+  const fdate = time.substring(0, 10);
+  const ftime = time.substring(11, 19);
+  return `${fdate}  ${ftime}`;
+}

@@ -1,0 +1,23 @@
+$background: #36455D;
+
+.reply_list_container {
+  display: flex;
+  background: $background;
+  min-height: 100vh; 
+}
+.main {
+  padding: 20px 0;
+  display: flex;
+  flex: 1;
+  margin: 55px 210px 0 210px;
+  // background: red;
+}
+.reply_list {
+  flex: 2;
+  flex-direction: column;
+  // background: red;
+}
+.right_module {
+  flex: 1;
+  background: #FFF;
+}

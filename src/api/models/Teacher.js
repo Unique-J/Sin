@@ -18,8 +18,8 @@ export default function createTeacher() {
     location: String,
     fans: [Number],
     collections: [Number],
-    commentbox: [Schema.Types.ObjectId],
-    messagebox: [Schema.Types.ObjectId]
+    commentbox: [],
+    messagebox: []
   });
 
   teacherSchema.statics.findTeacher = function (teacher, cb) {   // eslint-disable-line

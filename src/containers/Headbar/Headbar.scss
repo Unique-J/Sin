@@ -31,3 +31,11 @@ $gray: #9AA2AD;
   font-size: 20px;
   color: $gray;
 }
+.point {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: red;
+  position: absolute;
+}

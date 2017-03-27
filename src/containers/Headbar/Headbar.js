@@ -2,22 +2,32 @@ import React, { Component, PropTypes } from 'react';
 import { Nav, Navbar, NavItem, FormGroup, FormControl, InputGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import * as actionCreators from '../../actions/headbar';
 
 @connect(
   state => ({
-    user: state.async.login
+    user: state.async.login,
+    commentbox: state.async.commentbox
   }),
+  actionCreators
 )
 export default class Headbar extends Component {
   static propTypes = {
     showEditor: PropTypes.func.isRequired,
     user: PropTypes.any,
+    getCommentbox: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
+    const { user, getCommentbox } = this.props;
     const searchInput = this.searchInput;
     searchInput.onblur = this.searchContent;
+
+    if (user) {
+      const uid = user.sid || user.tid;
+      getCommentbox(uid);
+    }
   }
 
   searchContent = () => {
@@ -34,7 +44,7 @@ export default class Headbar extends Component {
 
   render() {
     const styles = require('./Headbar.scss');
-    const { showEditor, user } = this.props;
+    const { showEditor, user, commentbox } = this.props;
     // console.log(user);
 
     return (
@@ -67,19 +77,21 @@ export default class Headbar extends Component {
             <NavItem eventKey={2} href="#">
               <span className={`glyphicon glyphicon-send ${styles.icon_link}`}></span>
             </NavItem>
-            <NavItem eventKey={3} href="#">
+            <NavItem eventKey={3} href="/replylist">
               <span className={`glyphicon glyphicon-comment ${styles.icon_link}`}></span>
+              <span className={styles.point}></span>
             </NavItem>
             <NavItem eventKey={4} href="#">
               <span className={`glyphicon glyphicon-envelope ${styles.icon_link}`}></span>
+              <span className={styles.point}></span>
             </NavItem>
             <NavItem eventKey={5} href="#">
               <span className={`glyphicon glyphicon-user ${styles.icon_link}`}></span>
             </NavItem>
-            {user.tid && <NavItem eventKey={6} href="#" onClick={showEditor}>
+            {user && user.tid && <NavItem eventKey={6} href="#" onClick={showEditor}>
               <span className={`glyphicon glyphicon-pencil ${styles.icon_link}`}></span>
             </NavItem>}
-            <NavItem eventKey={user.tid ? 7 : 6} href="#" onClick={this.logout}>
+            <NavItem eventKey={(user && user.tid) ? 7 : 6} href="#" onClick={this.logout}>
               <span className={`glyphicon glyphicon-log-out ${styles.icon_link}`}></span>
             </NavItem>
           </Nav>
