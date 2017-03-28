@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
+import { Reply } from '../index';
 
 export default class ReplyModal extends Component {
   render() {
     return (
       <div>
         <Modal
+          show
           aria-labelledby="contained-modal-title"
         >
           <Modal.Header closeButton>
@@ -14,7 +16,8 @@ export default class ReplyModal extends Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4>Wrapped Text</h4>
+            <Reply />
+            <Reply />
           </Modal.Body>
         </Modal>
       </div>

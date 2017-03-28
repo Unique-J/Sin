@@ -29,7 +29,11 @@ export default class Comment extends Component {
   componentDidMount() {
     const { article, getComments } = this.props;
 
-    setInterval(() => getComments(article._id), 5000);
+    this.t = setInterval(() => getComments(article._id), 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.t);
   }
 
   formatTime = (time) => {
@@ -104,7 +108,8 @@ export default class Comment extends Component {
             </span>}
           </div>
 
-          {comment && this.mapChildComment(comment, saveChildComment, getComments)}
+          {comment && comment.comments
+          && this.mapChildComment(comment, saveChildComment, getComments)}
 
           {this.state.replyFlag && <FormGroup
             controlId="formBasicText"
@@ -121,13 +126,13 @@ export default class Comment extends Component {
               onClick={this.saveComment}
             >评&nbsp;论</div>
           </FormGroup>}
-          {comment && (comment.comments.length > 0) &&
+          {comment && comment.comments && (comment.comments.length > 0) &&
             <div className={styles.reply_count_wrapper}>
               <span
                 className={styles.reply_count_link}
                 onClick={this.showAllComments}
               >
-                共{comment && (comment.comments.length + 1)}条回复
+                共{comment && comment.comments && (comment.comments.length + 1)}条回复
               </span>
             </div>}
         </div>
@@ -140,7 +145,8 @@ export default class Comment extends Component {
           <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
-            {this.mapAllChildComment(comment, saveChildComment, getComments)}
+            {comment && comment.comments &&
+            this.mapAllChildComment(comment, saveChildComment, getComments)}
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.showAllComments}>Close</Button>

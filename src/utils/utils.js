@@ -44,3 +44,11 @@ export function formatTime(time) {
   const ftime = time.substring(11, 19);
   return `${fdate}  ${ftime}`;
 }
+
+export function getDate(time) {
+  return time.substring(0, 10);
+}
+
+export function getTime(time) {
+  return time.substring(11, 19);
+}

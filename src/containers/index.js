@@ -18,3 +18,4 @@ export ChildComment from './ChildComment/ChildComment';
 export ReplyList from './ReplyList/ReplyList';
 export ReplyCard from './ReplyCard/ReplyCard';
 export ReplyModal from './ReplyModal/ReplyModal';
+export Reply from './Reply/Reply';

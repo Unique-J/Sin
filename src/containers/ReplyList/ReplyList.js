@@ -28,10 +28,18 @@ export default class ReplyList extends Component {
       const userid = user.tid || user.sid;
 
       getCommentbox(userid);
-      setInterval(() => getCommentbox(userid), 5000);
+      this.t = setInterval(() => getCommentbox(userid), 5000);
     }
     // getCommentbox(userid);
     // console.log(this.props.commentbox);
+  }
+
+  componentWillUnmount() {
+    const { user } = this.props;
+
+    if (user) {
+      clearInterval(this.t);
+    }
   }
 
   mapReplyCard = (commentbox, getArticle, saveChildComment) => (

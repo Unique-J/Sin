@@ -19,6 +19,7 @@ import getComments from './getComments';
 import saveComment from './saveComment';
 import saveChildComment from './saveChildComment';
 import getCommentbox from './getCommentbox';
+import getComment from './getComment';
 
 export default app => {
   loadAuth(app);
@@ -53,4 +54,5 @@ export default app => {
   saveComment(app);
   saveChildComment(app);
   getCommentbox(app);
+  getComment(app);
 };
