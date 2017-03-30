@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/article';
+import { transformTagsToArray } from '../../utils/utils';
+import { browserHistory } from 'react-router';
 
 @connect(
   state => ({
@@ -124,10 +126,19 @@ export default class Article extends Component {
     return 0;
   }
 
+  toUserPage = uid => {
+    browserHistory.push(`/userpage?userid=${uid}`);
+  }
+
+  toArticleDetail = articleid => {
+    browserHistory.push(`/articledetail?articleid=${articleid}`);
+  }
+
   render() {
     const styles = require('./Article.scss');
     const { user, article, width, showArticleModal, getArticle } = this.props;
     // console.log(showArticleModal);
+    // console.log(article);
 
     return (
       <article
@@ -135,11 +146,14 @@ export default class Article extends Component {
         style={{ width }}
       >
         <section className={styles.post_header}>
-          <div className={styles.portrait}></div>
+          <div
+            className={styles.portrait}
+            onClick={() => this.toUserPage(article.authorid)}
+          ></div>
           <a
             className={styles.author_link}
-            href="/counter"
-          >thegoodvybe</a>
+            href={`/userpage?userid=${article.authorid}`}
+          >{article.authorName}</a>
           {user && user.sid && <div
             className={styles.follow_link}
             onClick={this.judgeFollow() ? this.cancelFollowTeacher : this.followTeacher}
@@ -162,35 +176,7 @@ export default class Article extends Component {
               <a
                 href="#"
                 className={styles.post_tag_link}
-              >#tag1</a>
-              <a
-                href="#"
-                className={styles.post_tag_link}
-              >#tag</a>
-              <a
-                href="#"
-                className={styles.post_tag_link}
-              >#tag</a>
-              <a
-                href="#"
-                className={styles.post_tag_link}
-              >#tag</a>
-              <a
-                href="#"
-                className={styles.post_tag_link}
-              >#tag</a>
-              <a
-                href="#"
-                className={styles.post_tag_link}
-              >#tag</a>
-              <a
-                href="#"
-                className={styles.post_tag_link}
-              >#tag</a>
-              <a
-                href="#"
-                className={styles.post_tag_link}
-              >#tag0</a>
+              >{transformTagsToArray(article.tags)}</a>
             </div>
           </div>
         </section>
@@ -207,6 +193,7 @@ export default class Article extends Component {
           ></div>}
           {user && user.sid && <div
             className={`${styles.glyphicon_chat_link} glyphicon glyphicon-edit`}
+            onClick={() => this.toArticleDetail(article._id)}
           ></div>}
         </section>
       </article>

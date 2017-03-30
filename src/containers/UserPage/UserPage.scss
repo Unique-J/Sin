@@ -1,0 +1,23 @@
+.dashboard_container {
+  background: #36455D;
+  min-height: 100vh;
+}
+.content_wrapper {
+  display: flex;
+  margin: 0 250px;
+  margin-top: 56px;
+  padding-top: 30px;
+  background: #36455D;
+}
+.article_wrapper {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  list-style: none;
+}
+.user_introduce_wrapper {
+  display: flex;
+  flex: 1;
+  margin-left: 50px;
+  background: #36455D;
+}

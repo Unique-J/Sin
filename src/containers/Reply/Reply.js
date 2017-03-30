@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { FormGroup, FormControl } from 'react-bootstrap';
 import { getDate, getTime } from '../../utils/utils';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 @connect(
   state => ({
@@ -49,6 +50,10 @@ export default class Reply extends Component {
     }
   }
 
+  toUserPage = uid => {
+    browserHistory.push(`/userpage?userid=${uid}`);
+  }
+
   render() {
     const styles = require('./Reply.scss');
     const { comment, user } = this.props;
@@ -66,13 +71,22 @@ export default class Reply extends Component {
         <div className={styles.right_wrapper}>
           <div className={styles.header}>
             <div className={styles.portrait_wrapper}>
-              <div className={styles.portrait}></div>
+              <div
+                className={styles.portrait}
+                onClick={() => this.toUserPage(comment.reviewerida)}
+              ></div>
             </div>
             <div className={styles.reply_wrapper}>
               <div className={styles.reply}>
-                <span className={styles.reviewernamea}>{comment.reviewernamea}</span>
+                <span
+                  className={styles.reviewernamea}
+                  onClick={() => this.toUserPage(comment.reviewerida)}
+                >{comment.reviewernamea}</span>
                 回复
-                <span className={styles.reviewernameb}>{comment.reviewernameb}</span>:
+                <span
+                  className={styles.reviewernameb}
+                  onClick={() => this.toUserPage(comment.revieweridb)}
+                >{comment.reviewernameb}</span>:
                 <span className={styles.reply_content}>{comment.content}</span>
               </div>
               {user && comment.reviewernamea !== user.name && <div

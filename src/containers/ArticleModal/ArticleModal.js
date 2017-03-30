@@ -3,6 +3,7 @@ import { Modal } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import * as actionCreators from '../../actions/articleModal';
+import { formatTime } from '../../utils/utils';
 
 @connect(
   state => ({
@@ -84,9 +85,16 @@ export default class ArticleModal extends Component {
     const { article, showArticleModal } = this.props;
 
     if (article) {
-      browserHistory.push(`/ArticleDetail?articleid=${article._id}`);
+      browserHistory.push(`/articledetail?articleid=${article._id}`);
       showArticleModal();
     }
+  }
+
+  toUserPage = () => {
+    const { article, showArticleModal } = this.props;
+
+    browserHistory.push(`/userpage?userid=${article.authorid}`);
+    showArticleModal();
   }
 
   render() {
@@ -107,21 +115,28 @@ export default class ArticleModal extends Component {
             <Modal.Title
               id="article-title"
               className={styles.article_title}
-              style={{ fontSize: 30, fontWeight: 'bold', color: '#343434' }}
+              style={{ fontSize: 30, fontWeight: 'bold', color: '#343434', cursor: 'pointer' }}
+              onClick={this.toArticleDetail}
             >
               {article && article.title}
               <span
                 style={{ fontSize: 14, color: '#969696', fontWeight: 500,
                 marginLeft: 20 }}
-              >{article && article.date}</span>
+              >{article && formatTime(article.date)}</span>
             </Modal.Title>
             <div className={styles.author_wrapper}>
-              <div className={styles.author_portrait_wrapper}>
+              <div
+                className={styles.author_portrait_wrapper}
+                onClick={this.toUserPage}
+              >
               </div>
-              <div className={styles.author_info_wrapper}>
-                <div className={styles.author_name}>作者</div>
+              <div
+                className={styles.author_info_wrapper}
+                onClick={this.toUserPage}
+              >
+                <div className={styles.author_name}>作者:&nbsp;{article && article.authorName}</div>
                 <div className={styles.author_description}>
-                  介绍: 1231231321321231123123211312313
+                  介绍:&nbsp;{article && article.description}
                 </div>
               </div>
               {user && user.sid && <div className={styles.follow_wrapper}>

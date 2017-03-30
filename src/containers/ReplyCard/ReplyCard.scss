@@ -30,6 +30,7 @@ $pink: #FFC09F;
   background: url('/StockSnap_01.jpg');
   background-size: cover;
   border-radius: 50%;
+  cursor: pointer;
   // background: white;
 }
 .reply {
@@ -40,9 +41,11 @@ $pink: #FFC09F;
   margin-bottom: 10px;
   font-weight: bold;
   color: $black;
+  cursor: pointer;
 }
 .reviewer_name_b {
   color: $light_orange;
+  cursor: pointer;
 }
 .reply_content {
   color: $black;

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import * as actionCreators from '../../actions/article';
 
 @connect(
@@ -45,18 +46,30 @@ export default class UserItem extends Component {
     return 0;
   }
 
+  toUserPage = () => {
+    const { user } = this.props;
+
+    browserHistory.push(`/userpage?userid=${user.tid}`);
+  }
+
   render() {
     const styles = require('./UserItem.scss');
     const { user } = this.props;
 
     return (
-      <a href="#" className={styles.item_container}>
-        <div className={styles.portrait_wrapper}>
-          <image src="/StockSnap_01.jpg" className={styles.portrait} />
+      <div className={styles.item_container}>
+        <div
+          className={styles.portrait_wrapper}
+          onClick={this.toUserPage}
+        >
+          <div className={styles.portrait}></div>
         </div>
-        <div className={styles.user_info}>
+        <div
+          className={styles.user_info}
+          onClick={this.toUserPage}
+        >
           <div className={styles.user_name}>{user.name}</div>
-          <div className={styles.user_introduce}>MUSIC QUOTES</div>
+          <div className={styles.user_introduce}>{user.description}</div>
         </div>
         <div className={styles.follow_icon}>
           {!this.judgeFollow() && <button
@@ -65,7 +78,7 @@ export default class UserItem extends Component {
           >
           </button>}
         </div>
-      </a>
+      </div>
     );
   }
 }

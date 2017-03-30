@@ -30,10 +30,12 @@ $line_gray: #E5E5E5;
   border-radius: 40px;
   background: url('/StockSnap_01.jpg');
   background-size: cover;
+  cursor: pointer;
 }
 .author_info_wrapper {
   margin: 10px;
   flex: 10;
+  cursor: pointer;
 }
 .author_name {
   color: #333;

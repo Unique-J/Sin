@@ -7,7 +7,7 @@ $light_gray: #EEE;
   border-radius: 4px;
   user-select: none;
   margin-bottom: 20px;
-  box-shadow: 0 2px 4px 0 rgba(255, 255, 255, .5);
+  // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5);
   background: #FFF;
 }
 .post_header {
@@ -23,6 +23,7 @@ $light_gray: #EEE;
   background: url('/StockSnap_01.jpg');
   background-size: cover;
   margin-right: 10px;
+  cursor: pointer;
 }
 .author_link {
   display: block;

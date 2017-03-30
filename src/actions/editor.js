@@ -1,14 +1,14 @@
 import { ASYNC } from 'redux-amrc';
 import { customFetch } from '../utils/utils';
 
-export function saveArticle(title, description, content, tags, date, tid) {
+export function saveArticle(title, description, content, tags, date, tid, authorName) {
   const option = {
     method: 'post',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ title, description, content, tags, date, tid })
+    body: JSON.stringify({ title, description, content, tags, date, tid, authorName })
   };
   return {
     [ASYNC]: {

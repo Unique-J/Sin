@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 
 @connect(
   state => ({
@@ -54,15 +55,25 @@ export default class ChildComment extends Component {
     this.setState({ childReplyFlag: !this.state.childReplyFlag });
   }
 
+  toUserPage = uid => {
+    browserHistory.push(`/userpage?userid=${uid}`);
+  }
+
   render() {
     const styles = require('./ChildComment.scss');
     const { childComment, user } = this.props;
 
     return (
       <div className={styles.child_comments_wrapper}>
-        <span className={styles.username}>{childComment && childComment.reviewernamea}</span>
+        <span
+          className={styles.username}
+          onClick={childComment ? () => this.toUserPage(childComment.reviewerida) : ''}
+        >{childComment && childComment.reviewernamea}</span>
         <span style={{ color: '#198FFF' }}>&nbsp;回复&nbsp;</span>
-        <span className={styles.username}>{childComment && childComment.reviewernameb}</span>
+        <span
+          className={styles.username}
+          onClick={childComment ? () => this.toUserPage(childComment.revieweridb) : ''}
+        >{childComment && childComment.reviewernameb}</span>
         <span>&nbsp;&nbsp;</span>
         <span className={styles.comment}>{childComment && childComment.content}</span>
         <div className={styles.reply}>

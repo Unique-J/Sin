@@ -29,21 +29,24 @@ export default class ReplyCard extends Component {
     super();
     this.state = {
       replyBlockFlag: false,
-      showReplyFlag: false
+      showReplyFlag: false,
     };
   }
 
   componentDidMount() {
-    const { reply, getArticle, getComment } = this.props;
+    const { reply, getArticle } = this.props;
 
-    getArticle(reply.articleid);
+    getArticle(reply.articleid).then(res => {
+      this.article = res.payload.data;
+    });
 
     // getComment(reply.commentid);
     // setInterval(() => getComment(reply.commentid), 5000);
   }
 
   toArticleDetail = () => {
-    const { article } = this.props;
+    // const { article } = this.props;
+    const article = this.article;
 
     if (article) {
       browserHistory.push(`/ArticleDetail?articleid=${article._id}`);
@@ -87,9 +90,14 @@ export default class ReplyCard extends Component {
     ))
   )
 
+  toUserPage = uid => {
+    browserHistory.push(`/userpage?userid=${uid}`);
+  }
+
   render() {
     const styles = require('./ReplyCard.scss');
-    const { article, reply, comments, saveChildComment, getComment } = this.props;
+    const { reply, comments, saveChildComment, getComment } = this.props;
+    const article = this.article;
     // console.log(comments);
 
     return (
@@ -97,12 +105,22 @@ export default class ReplyCard extends Component {
         <div className={styles.reply_card_wrapper}>
           <div className={styles.reply_wrapper}>
             <div className={styles.portrait_wrapper}>
-              <div className={styles.portrait}></div>
+              <div
+                className={styles.portrait}
+                onClick={() => this.toUserPage(reply.reviewerida)}
+              ></div>
             </div>
             <div className={styles.reply}>
-              <div className={styles.reviewer_name_a}>{reply.reviewernamea}</div>
+              <div
+                className={styles.reviewer_name_a}
+                onClick={() => this.toUserPage(reply.reviewerida)}
+              >{reply.reviewernamea}</div>
               <div className={styles.reply_content}>
-                回复<span className={styles.reviewer_name_b}>@{reply.reviewernameb}</span>
+                回复
+                <span
+                  className={styles.reviewer_name_b}
+                  onClick={() => this.toUserPage(reply.revieweridb)}
+                >@{reply.reviewernameb}</span>
                 :{reply.content}
               </div>
             </div>
@@ -120,7 +138,7 @@ export default class ReplyCard extends Component {
                 </div> :
                 <div>
                   <span className={styles.comment}>评论我的文章:</span>
-                  <span>{article && article.content}</span>
+                  <span>{article && article.title}</span>
                 </div>
               }
             </div>

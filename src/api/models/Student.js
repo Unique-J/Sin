@@ -16,8 +16,8 @@ export default function createStudent() {
     portrait: Buffer,
     description: String,
     location: String,
-    followers: [String],
-    collections: [Schema.Types.ObjectId],
+    followers: [{ type: String }],
+    collections: [{ type: Schema.Types.ObjectId, ref: 'Article' }],
     commentbox: [],
     messagebox: []
   });

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import { FormGroup, FormControl, Modal, Button } from 'react-bootstrap';
 import { ChildComment } from '../index';
 
@@ -82,20 +83,33 @@ export default class Comment extends Component {
     this.setState({ commentModalFlag: !this.state.commentModalFlag });
   }
 
+  toUserPage = uid => {
+    browserHistory.push(`/userpage?userid=${uid}`);
+  }
+
   render() {
     const styles = require('./Comment.scss');
     const { comment, user, saveChildComment, getComments } = this.props;
-    console.log(comment);
+    // console.log(comment);
 
     return (
       <div className={styles.comment_container}>
         <div className={styles.portrait_wrapper}>
-          <image src="/StockSnap_01.jpg" className={styles.portrait} />
+          <div
+            className={styles.portrait}
+            onClick={comment ? () => this.toUserPage(comment.reviewerida) : ''}
+          />
         </div>
         <div className={styles.comment_wrapper}>
-          <span className={styles.username}>{comment && comment.reviewernamea}</span>
+          <span
+            className={styles.username}
+            onClick={comment ? () => this.toUserPage(comment.reviewerida) : ''}
+          >{comment && comment.reviewernamea}</span>
           <span style={{ color: '#198FFF' }}>&nbsp;回复&nbsp;</span>
-          <span className={styles.username}>{comment && comment.reviewernameb}</span>
+          <span
+            className={styles.username}
+            onClick={comment ? () => this.toUserPage(comment.revieweridb) : ''}
+          >{comment && comment.reviewernameb}</span>
           <span>&nbsp;&nbsp;</span>
           <span className={styles.comment}>{comment && comment.content}</span>
           <div className={styles.reply}>

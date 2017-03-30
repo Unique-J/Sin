@@ -52,3 +52,7 @@ export function getDate(time) {
 export function getTime(time) {
   return time.substring(11, 19);
 }
+
+export function transformTagsToArray(tagString) {
+  return tagString.split(' ').map(tag => `${tag} `);
+}

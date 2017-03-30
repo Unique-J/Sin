@@ -53,6 +53,7 @@ $blue: #198FFF;
   height: 30px;
   background: url('/StockSnap_01.jpg');
   background-size: cover;
+  cursor: pointer;
 }
 .reply_wrapper {
   flex: 11;
@@ -66,10 +67,12 @@ $blue: #198FFF;
 .reviewernamea {
   color: $light_orange;
   margin-right: 5px;
+  cursor: pointer;
 }
 .reviewernameb {
   color: $light_orange;
   margin-left: 5px;
+  cursor: pointer;
 }
 .reply_content {
   margin-left: 5px;

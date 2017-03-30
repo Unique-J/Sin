@@ -10,6 +10,7 @@ import getArticles from './getArticles';
 import getArticle from './getArticle';
 import getTeachers from './getTeachers';
 import getArticlesByTid from './getArticlesByTid';
+import getArticlesBySid from './getArticlesBySid';
 import getStudent from './getStudent';
 import collectArticle from './collectArticle';
 import cancelCollectArticle from './cancelCollectArticle';
@@ -20,6 +21,7 @@ import saveComment from './saveComment';
 import saveChildComment from './saveChildComment';
 import getCommentbox from './getCommentbox';
 import getComment from './getComment';
+import getPerson from './getPerson';
 
 export default app => {
   loadAuth(app);
@@ -44,6 +46,7 @@ export default app => {
   getArticles(app);
   getArticle(app);
   getArticlesByTid(app);
+  getArticlesBySid(app);
   getTeachers(app);
   getStudent(app);
   collectArticle(app);
@@ -55,4 +58,5 @@ export default app => {
   saveChildComment(app);
   getCommentbox(app);
   getComment(app);
+  getPerson(app);
 };

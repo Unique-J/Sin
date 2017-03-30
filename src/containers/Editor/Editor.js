@@ -49,7 +49,8 @@ export default class Editor extends Component {
       const description = this.descriptionInput.value;
       const content = marked(this.editArea.value);
       const tags = this.tagInput.value;
-      this.props.saveArticle(title, description, content, tags, new Date(), tid)
+      const authorName = this.props.user.name;
+      this.props.saveArticle(title, description, content, tags, new Date(), tid, authorName)
         .then(() => {
           this.props.showEditor();
           this.props.getArticlesByTid(tid);

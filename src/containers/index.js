@@ -19,3 +19,5 @@ export ReplyList from './ReplyList/ReplyList';
 export ReplyCard from './ReplyCard/ReplyCard';
 export ReplyModal from './ReplyModal/ReplyModal';
 export Reply from './Reply/Reply';
+export UserPage from './UserPage/UserPage';
+export PersonCard from './PersonCard/PersonCard';
