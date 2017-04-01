@@ -21,3 +21,6 @@ export ReplyModal from './ReplyModal/ReplyModal';
 export Reply from './Reply/Reply';
 export UserPage from './UserPage/UserPage';
 export PersonCard from './PersonCard/PersonCard';
+export SearchPage from './SearchPage/SearchPage';
+export UserResult from './UserResult/UserResult';
+export ArticleResult from './ArticleResult/ArticleResult';

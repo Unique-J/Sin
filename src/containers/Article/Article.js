@@ -162,7 +162,7 @@ export default class Article extends Component {
         <section
           className={styles.post_content}
           dangerouslySetInnerHTML={{
-            __html: article.content
+            __html: width === 520 ? article.content : `${article.description.substring(0, 37)}...`
           }}
           onClick={() => { showArticleModal(); getArticle(article._id); }}
         >

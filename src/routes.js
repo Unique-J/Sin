@@ -3,7 +3,7 @@ import { Route, IndexRoute } from 'react-router';
 import { Main, Home, Counter, Article, Register, LoginContainer,
   Dashboard, Headbar, FollowList, UserItem, Editor, ArticleModal,
   ArticleDetail, Comment, CommentList, ChildComment, ReplyList,
-  ReplyCard, UserPage } from './containers';
+  ReplyCard, UserPage, SearchPage } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
 
 import { FirstMainPage } from './components/index';
@@ -48,6 +48,7 @@ export default store => {
         <Route path="replylist" component={ReplyList} />
         <Route path="replycard" component={ReplyCard} />
         <Route path="userpage" component={UserPage} />
+        <Route path="searchpage" component={SearchPage} />
       </Route>
     </Route>
   );

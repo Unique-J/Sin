@@ -1,0 +1,16 @@
+$background_color: #36465D;
+.search_page_container {
+  background: $background_color;
+  min-height: 100vh;
+}
+.result_wrapper {
+  margin-top: 55px;
+  padding: 20px 0;
+}
+.search_text {
+  text-align: center;
+  font-size: 24px;
+  color: #FFF;
+  font-weight: bold;
+  margin-bottom: 15px;
+}

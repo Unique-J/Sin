@@ -22,7 +22,12 @@ export default class Headbar extends Component {
   componentDidMount() {
     const { user, getCommentbox } = this.props;
     const searchInput = this.searchInput;
-    searchInput.onblur = this.searchContent;
+
+    searchInput.onkeypress = e => {
+      if (e.keyCode === 13) {
+        this.searchContent();
+      }
+    };
 
     if (user) {
       const uid = user.sid || user.tid;
@@ -31,8 +36,11 @@ export default class Headbar extends Component {
   }
 
   searchContent = () => {
-    const searchInput = this.searchInput;
-    console.log(searchInput.value);
+    const searchCondition = this.searchInput.value;
+    // console.log(searchInput.value);
+    if (searchCondition !== '') {
+      browserHistory.push(`/searchpage?searchcondition=${searchCondition}`);
+    }
   };
 
   logout = () => {
@@ -44,7 +52,7 @@ export default class Headbar extends Component {
 
   render() {
     const styles = require('./Headbar.scss');
-    const { showEditor, user, commentbox } = this.props;
+    const { showEditor, user } = this.props;
     // console.log(user);
 
     return (

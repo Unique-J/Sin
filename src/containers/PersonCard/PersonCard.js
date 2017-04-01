@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../actions/personCard';
+import { browserHistory } from 'react-router';
 
 @connect(
   state => ({
@@ -10,7 +11,7 @@ import * as actionCreators from '../../actions/personCard';
   }),
   actionCreators
 )
-export default class PersonCard extends Component {
+class MyPersonCard extends Component {
   static propTypes = {
     user: PropTypes.any,
     person: PropTypes.any,
@@ -33,6 +34,14 @@ export default class PersonCard extends Component {
     }
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   const { personid, getPerson } = this.props;
+  //   console.log(nextProps.personid + ' ' + personid);
+  //   if (nextProps.personid !== personid) {
+  //     getPerson(nextProps.personid);
+  //   }
+  // }
+
   followTeacher = () => {
     const { student, personid, followTeacher } = this.props;
     // console.log(student);
@@ -47,7 +56,9 @@ export default class PersonCard extends Component {
 
   judgeFollow = () => {
     const { user, personid, student } = this.props;
-    // console.log(student);
+    // getPerson(personid);
+    // console.log(person);
+    // console.log(personid);
 
     if (user && user.sid && student) {
       const followers = student.followers;
@@ -59,15 +70,22 @@ export default class PersonCard extends Component {
     return 0;
   }
 
+  toUserPage = userid => {
+    browserHistory.push(`/userpage?userid=${userid}`);
+  }
+
   render() {
     const styles = require('./PersonCard.scss');
     const { person, personid, student } = this.props;
-    // console.log(person);
+    // console.log(personid);
     // console.log(this.props.student);
 
     return (
       <div className={styles.person_card_container}>
-        <div className={styles.top_wrapper}>
+        <div
+          className={styles.top_wrapper}
+          onClick={() => this.toUserPage(personid)}
+        >
           <div className={styles.portrait_wrapper}></div>
           <div className={styles.name_sex_wrapper}>
             {person && person.name}&nbsp;
@@ -102,3 +120,12 @@ export default class PersonCard extends Component {
     );
   }
 }
+
+export default function PersonCard(props) {
+  // console.log(props.personid);
+  return (<MyPersonCard {...props} key={props.personid} />);
+}
+
+PersonCard.propTypes = {
+  personid: PropTypes.string.isRequired
+};

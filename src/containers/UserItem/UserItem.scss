@@ -39,6 +39,10 @@
 .user_introduce {
   color: hsla(0, 0%, 100%, .25);
   font-size: 12px;
+  width: 210px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .follow_icon {
   display: flex;

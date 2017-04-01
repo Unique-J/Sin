@@ -7,6 +7,7 @@ import dashboard from './dashboard';
 import articleDetail from './articleDetail';
 import replyList from './replyList';
 import userpage from './userpage';
+import searchPage from './searchPage';
 
 const rootReducers = combineReducers({
   counter,
@@ -16,6 +17,7 @@ const rootReducers = combineReducers({
   articleDetail,
   replyList,
   userpage,
+  searchPage,
   async: reducerCreator()
 });
 

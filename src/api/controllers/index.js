@@ -22,6 +22,9 @@ import saveChildComment from './saveChildComment';
 import getCommentbox from './getCommentbox';
 import getComment from './getComment';
 import getPerson from './getPerson';
+import searchTeachers from './searchTeachers';
+import searchStudents from './searchStudents';
+import searchArticles from './searchArticles';
 
 export default app => {
   loadAuth(app);
@@ -59,4 +62,7 @@ export default app => {
   getCommentbox(app);
   getComment(app);
   getPerson(app);
+  searchTeachers(app);
+  searchStudents(app);
+  searchArticles(app);
 };
