@@ -27,3 +27,6 @@ export ArticleResult from './ArticleResult/ArticleResult';
 export UserInfo from './UserInfo/UserInfo';
 export LeftNav from './LeftNav/LeftNav';
 export UserInfoPannel from './UserInfoPannel/UserInfoPannel';
+export MessagePannel from './MessagePannel/MessagePannel';
+export Message from './Message/Message';
+export ContactNav from './ContactNav/ContactNav';

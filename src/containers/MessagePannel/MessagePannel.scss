@@ -1,0 +1,26 @@
+$background: #36465D;
+.message_pannel_container {
+  display: flex;
+}
+.message_list_wrapper {
+  margin: 10px;
+  // padding: 10px;
+  width: 650px;
+  background: $background;
+}
+.message_list_header {
+  height: 40px; 
+  background: $background;
+  line-height: 40px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.07);
+}
+.title {
+  margin-left: 15px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: bold;
+}
+.contact_nav_wrapper {
+  width: 270px;
+  margin: 10px;
+  background: $background;
+}

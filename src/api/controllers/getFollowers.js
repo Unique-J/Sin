@@ -10,7 +10,7 @@ export default app => {
       if (error) {
         console.error(error);
       } else {
-        console.log(student);
+        // console.log(student);
         let followers = [];
         Student.find({ sid: { $in: student.followers } }, (err1, students) => {
           if (err1) {

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Article, ArticleModal, PersonCard } from '../index';
+import { Article, ArticleModal, PersonCard, MessagePannel } from '../index';
 import * as actionCreator from '../../actions/userInfoPannel';
 
 @connect(
@@ -64,7 +64,7 @@ export default class UserInfoPannel extends Component {
         {userInfoPannelType === 1 && <div className={styles.follower_wrpper}>
           {followers && this.mapPersonCard(followers)}
         </div>}
-        {userInfoPannelType === 2 && 'UserInfoPannel-2'}
+        {userInfoPannelType === 2 && <MessagePannel />}
         {userInfoPannelType === 3 && 'UserInfoPannel-3'}
       </div>
     );
