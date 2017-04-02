@@ -93,7 +93,7 @@ export default class Headbar extends Component {
               <span className={`glyphicon glyphicon-envelope ${styles.icon_link}`}></span>
               <span className={styles.point}></span>
             </NavItem>
-            <NavItem eventKey={5} href="#">
+            <NavItem eventKey={5} href="/userinfo">
               <span className={`glyphicon glyphicon-user ${styles.icon_link}`}></span>
             </NavItem>
             {user && user.tid && <NavItem eventKey={6} href="#" onClick={showEditor}>

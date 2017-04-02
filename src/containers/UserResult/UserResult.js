@@ -32,7 +32,7 @@ class MyUserResult extends Component {
 
   mapPersonCard = persons => (
     persons.map((person, index) => (
-      <PersonCard personid={person.sid || person.tid} key={index} />
+      <PersonCard personid={person.sid || person.tid} person={person} key={index} />
     ))
   )
 

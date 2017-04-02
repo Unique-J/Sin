@@ -1,0 +1,32 @@
+$background: #36465D;
+.left_nav_container {
+  // background: red;
+  margin: 10px;
+  width: 200px;
+}
+.nav_wrapper {
+  list-style: none;
+  padding: 0;
+}
+.nav_choice_wrapper {
+  height: 50px;
+  background: $background;
+  cursor: pointer;
+  color: hsla(0, 0%, 100%, .6);
+  padding: 8px 15px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, .07);
+  &:hover {
+    background: hsla(0, 0%, 100%, .07);
+  }
+}
+.last_nav_choice_wrapper {
+  @extend .nav_choice_wrapper;
+  border: 0;
+}
+.choice {
+  // font-size: 12px;
+  font-weight: bold;
+}
+.vice_choice {
+  font-size: 11px;
+}

@@ -25,6 +25,8 @@ import getPerson from './getPerson';
 import searchTeachers from './searchTeachers';
 import searchStudents from './searchStudents';
 import searchArticles from './searchArticles';
+import getCollections from './getCollections';
+import getFollowers from './getFollowers';
 
 export default app => {
   loadAuth(app);
@@ -65,4 +67,6 @@ export default app => {
   searchTeachers(app);
   searchStudents(app);
   searchArticles(app);
+  getCollections(app);
+  getFollowers(app);
 };

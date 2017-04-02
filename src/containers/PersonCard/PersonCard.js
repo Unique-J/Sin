@@ -6,7 +6,7 @@ import { browserHistory } from 'react-router';
 @connect(
   state => ({
     user: state.async.login,
-    person: state.async.person,
+    // person: state.async.person,
     student: state.async.student,
   }),
   actionCreators
@@ -14,20 +14,20 @@ import { browserHistory } from 'react-router';
 class MyPersonCard extends Component {
   static propTypes = {
     user: PropTypes.any,
-    person: PropTypes.any,
     student: PropTypes.any,
+    person: PropTypes.object.isRequired,
     // article: PropTypes.object.isRequired,
     personid: PropTypes.string.isRequired,
-    getPerson: PropTypes.func.isRequired,
+    // getPerson: PropTypes.func.isRequired,
     getStudent: PropTypes.func.isRequired,
     followTeacher: PropTypes.func.isRequired,
     cancelFollowTeacher: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
-    const { user, personid, getPerson, getStudent } = this.props;
+    const { user, getStudent } = this.props;
 
-    getPerson(personid);
+    // getPerson(personid);
 
     if (user && user.sid) {
       getStudent(user.sid);

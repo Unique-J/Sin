@@ -6,6 +6,7 @@ import * as ActionCreators from '../../actions/userpage';
 @connect(
   state => ({
     user: state.async.login,
+    person: state.async.person,
     // user: state.async.user,
     dashboard: state.dashboard,
     article: state.async.article,
@@ -22,6 +23,7 @@ export default class UserPage extends Component {
     dashboard: PropTypes.any,
     article: PropTypes.any,
     articles: PropTypes.any,
+    person: PropTypes.any,
     // teachers: PropTypes.any,
     student: PropTypes.any,
     showEditor: PropTypes.func.isRequired,
@@ -29,6 +31,7 @@ export default class UserPage extends Component {
     getArticles: PropTypes.func.isRequired,
     getTeachers: PropTypes.func.isRequired,
     getStudent: PropTypes.func.isRequired,
+    getPerson: PropTypes.func.isRequired,
     getArticlesByTid: PropTypes.func.isRequired,
     getArticlesBySid: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
@@ -38,10 +41,11 @@ export default class UserPage extends Component {
   componentDidMount() {
     // this.props.loadAuth();
     const userid = this.props.location.query.userid;
-    const { getArticlesByTid, getArticlesBySid } = this.props;
+    const { getArticlesByTid, getArticlesBySid, getPerson } = this.props;
     const getArticlesById = userid.length === 6 ? getArticlesByTid : getArticlesBySid;
 
     getArticlesById(userid);
+    getPerson(userid);
     // if (userid.length === 6) {
     //   getArticlesByTid(userid);
     // }
@@ -61,7 +65,7 @@ export default class UserPage extends Component {
 
   render() {
     const styles = require('./UserPage.scss');
-    const { user, articles, article, showEditor, showArticleModal, logout } = this.props;
+    const { user, person, articles, article, showEditor, showArticleModal, logout } = this.props;
     const userid = this.props.location.query.userid;
 
     return (
@@ -75,8 +79,8 @@ export default class UserPage extends Component {
               {articles ? this.mapArticles(articles, showArticleModal) : ''}
             </li>
           </ul>
-          {user && user.sid && <div className={styles.user_introduce_wrapper}>
-            <PersonCard personid={userid}/>
+          {user && user.sid && person && <div className={styles.user_introduce_wrapper}>
+            <PersonCard personid={userid} person={person} />
           </div>}
         </div>
       </div>

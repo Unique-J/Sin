@@ -1,0 +1,11 @@
+$background: #36465D;
+.user_info_container {
+  background: $background;
+  min-height: 100vh;
+  margin-top: 55px;
+  padding: 20px;
+}
+.main_pannel {
+  display: flex;
+  justify-content: center;
+}

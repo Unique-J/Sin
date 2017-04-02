@@ -24,3 +24,6 @@ export PersonCard from './PersonCard/PersonCard';
 export SearchPage from './SearchPage/SearchPage';
 export UserResult from './UserResult/UserResult';
 export ArticleResult from './ArticleResult/ArticleResult';
+export UserInfo from './UserInfo/UserInfo';
+export LeftNav from './LeftNav/LeftNav';
+export UserInfoPannel from './UserInfoPannel/UserInfoPannel';

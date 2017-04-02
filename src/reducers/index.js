@@ -8,6 +8,8 @@ import articleDetail from './articleDetail';
 import replyList from './replyList';
 import userpage from './userpage';
 import searchPage from './searchPage';
+import userInfo from './userInfo';
+import userInfoPannel from './userInfoPannel';
 
 const rootReducers = combineReducers({
   counter,
@@ -18,6 +20,8 @@ const rootReducers = combineReducers({
   replyList,
   userpage,
   searchPage,
+  userInfo,
+  userInfoPannel,
   async: reducerCreator()
 });
 

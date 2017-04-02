@@ -35,8 +35,8 @@ export default app => {
           });
         }
 
-        console.log('comments:');
-        console.log(comments);
+        // console.log('comments:');
+        // console.log(comments);
         res.send(comments);
       }
     });
