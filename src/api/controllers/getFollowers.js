@@ -16,12 +16,12 @@ export default app => {
           if (err1) {
             console.error(err1);
           } else {
-            followers = [...students];
+            // followers = [...students];
             Teacher.find({ tid: { $in: student.followers } }, (err2, teachers) => {
               if (err2) {
                 console.error(err2);
               } else {
-                followers = [...teachers];
+                followers = [...students, ...teachers];
                 // console.log(followers);
                 res.send(followers);
               }

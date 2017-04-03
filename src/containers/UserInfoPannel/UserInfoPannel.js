@@ -53,7 +53,7 @@ export default class UserInfoPannel extends Component {
   render() {
     const styles = require('./UserInfoPannel.scss');
     const { collections, article, followers, userInfoPannelType, showArticleModal } = this.props;
-    console.log(followers);
+    // console.log(followers);
 
     return (
       <div className={styles.user_info_pannel}>

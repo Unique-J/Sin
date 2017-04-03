@@ -27,6 +27,8 @@ import searchStudents from './searchStudents';
 import searchArticles from './searchArticles';
 import getCollections from './getCollections';
 import getFollowers from './getFollowers';
+import searchUsers from './searchUsers';
+import getUserFollowers from './getUserFollowers';
 
 export default app => {
   loadAuth(app);
@@ -69,4 +71,6 @@ export default app => {
   searchArticles(app);
   getCollections(app);
   getFollowers(app);
+  searchUsers(app);
+  getUserFollowers(app);
 };

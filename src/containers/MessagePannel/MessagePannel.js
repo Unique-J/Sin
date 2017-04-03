@@ -13,6 +13,8 @@ export default class MessagePannel extends Component {
           </div>
           <Message />
           <Message />
+          <Message />
+          <Message />
         </div>
         <div className={styles.contact_nav_wrapper}>
           <ContactNav />

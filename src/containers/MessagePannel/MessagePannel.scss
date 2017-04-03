@@ -1,10 +1,13 @@
 $background: #36465D;
 .message_pannel_container {
   display: flex;
+  // min-height: 600px;
 }
 .message_list_wrapper {
   margin: 10px;
+  margin-right: 0;
   // padding: 10px;
+  min-height: 530px;
   width: 650px;
   background: $background;
 }
@@ -20,7 +23,11 @@ $background: #36465D;
   font-weight: bold;
 }
 .contact_nav_wrapper {
-  width: 270px;
-  margin: 10px;
-  background: $background;
+  width: 300px;
+  height: 540px;
+  margin: 10px 0;
+  position: fixed;
+  padding: 0 10px;
+  padding-left: 20px;
+  background: #435268;
 }

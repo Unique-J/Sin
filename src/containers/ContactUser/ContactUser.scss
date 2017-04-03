@@ -1,0 +1,35 @@
+$line_color: rgba(255, 255, 255, 0.07);
+$font_color: rgba(255, 255, 255, 0.6);
+.contact_user_container {
+  height: 54px;
+  cursor: pointer;
+  // background: rgba(255, 255, 255, 0.07)
+  border-bottom: 1px solid $line_color;
+  padding: 8px 10px;
+  display: flex;
+  &:hover {
+    background: $line_color;
+    border-left: 2px solid $font_color;
+  }
+}
+.portrait {
+  width: 37px;
+  height: 37px;
+  background: url('/StockSnap_01.jpg');
+  background-size: cover;
+}
+.user_wrapper {
+  margin-left: 15px;
+  // font-size: 16px;
+  color: $font_color;
+}
+.name {
+  font-weight: bold;
+}
+.description {
+  width: 180px;
+  font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

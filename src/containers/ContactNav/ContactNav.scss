@@ -1,0 +1,81 @@
+$font_color: rgba(255, 255, 255, 0.6);
+$line_color: rgba(255, 255, 255, 0.07);
+$background_color: #36465D;
+.contact_nav_container {
+  // height: 500px;
+  background: $background_color;
+  user-select: none;
+}
+.contact_nav_top_wrapper {
+  height: 40px;
+  border-bottom: 2px solid $line_color;
+}
+.contact_text {
+  line-height: 40px;
+  padding-left: 15px;
+  color: $font_color;
+  font-weight: bold;
+}
+.form_group {
+  margin: 0;
+}
+.form_control {
+  border-radius: 0;
+  border: 0;
+  border-left: 1px solid $background_color;
+  border-right: 1px solid $background_color;
+  color: $font_color;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
+  background: $line_color;
+  &:focus {
+    border: 0;
+    outline: none;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
+    border-bottom: 1px solid $font_color;
+    border-left: 1px solid $background_color;
+    border-right: 1px solid $background_color;
+  }
+}
+.contact_type_wrapper {
+  display: flex;
+  height: 40px;
+  border-bottom: 1px solid $line_color;
+  color: $font_color;
+  font-size: 12px;
+  font-weight: bold;
+}
+.contact_type_teacher {
+  flex: 1;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  &:hover {
+    @extend .contact_type_active;
+  }
+}
+.contact_type_student {
+  @extend .contact_type_teacher;
+  border-left: 1px solid $line_color;
+}
+.contact_type_active {
+  border-bottom: 1px solid $font_color;
+}
+.contact_user_wrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  // height: 416px;
+  overflow-y: scroll;
+}
+.contact_user_wrapper::-webkit-scrollbar {
+  width: 5px;
+  // height: 7px;
+  border-radius: 4px;
+  background-color: $background_color;
+}
+.contact_user_wrapper::-webkit-scrollbar-track-piece {
+  display: none;
+}
+.contact_user_wrapper::-webkit-scrollbar-thumb{
+  background-color: $font_color;
+  border-radius: 4px;
+}

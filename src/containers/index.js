@@ -30,3 +30,4 @@ export UserInfoPannel from './UserInfoPannel/UserInfoPannel';
 export MessagePannel from './MessagePannel/MessagePannel';
 export Message from './Message/Message';
 export ContactNav from './ContactNav/ContactNav';
+export ContactUser from './ContactUser/ContactUser';
