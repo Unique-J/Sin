@@ -1,9 +1,10 @@
 $background: #36465D;
 .user_info_container {
   background: $background;
-  min-height: 100vh;
+  min-height: 92vh;
   margin-top: 55px;
   padding: 20px;
+  // overflow: hidden;
 }
 .main_pannel {
   display: flex;

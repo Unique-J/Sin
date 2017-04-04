@@ -145,7 +145,15 @@ export default class ContactNav extends Component {
           style={searchFlag ? { height: 455 } : { height: 416 }}
         >
           {!searchFlag && followers && this.mapContactUsers(followers)}
+
           {searchFlag && users && this.mapContactUsers(users)}
+
+          {((followers && followers.length === 0)
+            || (users && users.length === 0))
+            && <div className={styles.no_result_text}>
+              <span className={`glyphicon glyphicon-info-sign ${styles.no_result_glyphicon}`} />
+              没有符合条件的结果
+            </div>}
         </div>
       </div>
     );

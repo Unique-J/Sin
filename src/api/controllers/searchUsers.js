@@ -28,7 +28,7 @@ const searchUsers = (sid, condition, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(student);
+      // console.log(student);
       Teacher.find({
         tid: { $in: student.followers },
         $or: [...searchCondition, teacherCondition]

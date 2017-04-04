@@ -31,3 +31,6 @@ export MessagePannel from './MessagePannel/MessagePannel';
 export Message from './Message/Message';
 export ContactNav from './ContactNav/ContactNav';
 export ContactUser from './ContactUser/ContactUser';
+export ChatPannel from './ChatPannel/ChatPannel';
+export LeftBubble from './LeftBubble/LeftBubble';
+export RightBubble from './RightBubble/RightBubble';

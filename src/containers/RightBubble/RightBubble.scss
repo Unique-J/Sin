@@ -1,0 +1,33 @@
+$font_color: rgba(255, 255, 255, 0.6);
+$line_color: rgba(255, 255, 255, 0.07);
+.bubble_container {
+  display: flex;
+  margin: 20px 0;
+  margin-left: 65px;
+  font-size: 12px;
+}
+.portrait {
+  width: 40px;
+  height: 40px;
+  background: url('/StockSnap_01.jpg');
+  background-size: cover;
+  border-radius: 50%;
+}
+.triangle {
+  margin-right: 10px;
+  margin-top: 10px;
+  background: linear-gradient(to left top, transparent 50%, 
+              $line_color 0) 100% 0 no-repeat;
+  width: 10px;
+  height: 10px;
+}
+.bubble_wrapper {
+  padding: 10px;
+  background: $line_color;
+  max-width: 500px;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  color: $font_color;
+  border-radius: 2px;
+}

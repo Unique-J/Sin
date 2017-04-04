@@ -79,3 +79,11 @@ $background_color: #36465D;
   background-color: $font_color;
   border-radius: 4px;
 }
+.no_result_text {
+  color: $font_color;
+  margin-top: 30px;
+  text-align: center;
+}
+.no_result_glyphicon {
+  margin-right: 5px;
+}
