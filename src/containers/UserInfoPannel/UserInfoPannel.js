@@ -20,6 +20,7 @@ export default class UserInfoPannel extends Component {
     collections: PropTypes.any,
     article: PropTypes.any,
     followers: PropTypes.any,
+    uid: PropTypes.any,
     userInfoPannelType: PropTypes.number.isRequired,
     getCollections: PropTypes.func.isRequired,
     getFollowers: PropTypes.func.isRequired,
@@ -52,7 +53,8 @@ export default class UserInfoPannel extends Component {
 
   render() {
     const styles = require('./UserInfoPannel.scss');
-    const { collections, article, followers, userInfoPannelType, showArticleModal } = this.props;
+    const { uid, collections, article, followers,
+      userInfoPannelType, showArticleModal } = this.props;
     // console.log(followers);
 
     return (
@@ -64,7 +66,7 @@ export default class UserInfoPannel extends Component {
         {userInfoPannelType === 1 && <div className={styles.follower_wrpper}>
           {followers && this.mapPersonCard(followers)}
         </div>}
-        {userInfoPannelType === 2 && <MessagePannel />}
+        {userInfoPannelType === 2 && <MessagePannel uid={uid} />}
         {userInfoPannelType === 3 && 'UserInfoPannel-3'}
       </div>
     );

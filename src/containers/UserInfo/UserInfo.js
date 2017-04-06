@@ -14,6 +14,7 @@ export default class UserInfo extends Component {
   static propTypes = {
     user: PropTypes.any,
     userInfo: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
     showEditor: PropTypes.func.isRequired,
     changePannelType: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired
@@ -21,6 +22,8 @@ export default class UserInfo extends Component {
   render() {
     const styles = require('./UserInfo.scss');
     const { showEditor, logout, changePannelType } = this.props;
+    const uid = this.props.location.query.uid;
+    // console.log(this.props.location);
 
     return (
       <div className={styles.user_info_container}>
@@ -28,7 +31,7 @@ export default class UserInfo extends Component {
         <Editor showEditor={showEditor} />
         <div className={styles.main_pannel}>
           <LeftNav changePannelType={changePannelType} />
-          <UserInfoPannel />
+          <UserInfoPannel uid={uid} />
         </div>
       </div>
     );

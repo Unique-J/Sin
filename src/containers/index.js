@@ -34,3 +34,4 @@ export ContactUser from './ContactUser/ContactUser';
 export ChatPannel from './ChatPannel/ChatPannel';
 export LeftBubble from './LeftBubble/LeftBubble';
 export RightBubble from './RightBubble/RightBubble';
+export MessageList from './MessageList/MessageList';

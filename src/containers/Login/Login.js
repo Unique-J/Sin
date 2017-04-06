@@ -4,6 +4,7 @@ import Helmet from 'react-helmet';
 import { browserHistory } from 'react-router';
 import { FormGroup, FormControl } from 'react-bootstrap';
 import * as loginActions from '../../actions/login';
+import io from 'socket.io-client';
 
 @connect(
   state => ({
@@ -49,12 +50,20 @@ export default class Login extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let userid = this.useridInput.value;
-    let pwd = this.pwdInput.value;
-    // console.log(userid + ' ' + pwd);
-    this.props.login(userid, pwd).then(() => { browserHistory.push('/dashboard'); });
-    userid = '';
-    pwd = '';
+
+    const userid = this.useridInput.value;
+    const pwd = this.pwdInput.value;
+    const { user, login } = this.props;
+
+    login(userid, pwd).then(() => {
+      // const socket = io.connect('http://localhost:3005');
+      // socket.emit('login', user);
+
+      browserHistory.push('/dashboard');
+      console.log(user);
+    });
+    this.useridInput.value = '';
+    this.pwdInput.value = '';
   };
 
   nextStep = (e) => {

@@ -10,12 +10,14 @@
     "start-dev": "nodemon --watch src bin/server.js",
     "start-api-prod": "cross-env NODE_ENV=production node bin/api",
     "start-api-dev": "nodemon --watch src/api bin/api.js",
+    "start-chat-prod": "cross-env NODE_ENV=production node bin/chat",
+    "start-chat-dev": "nodemon --watch src/chat bin/chat.js",
     "clean": "rimraf build static/dist",
     "build-server": "babel src -d build --copy-files",
     "build-client": "webpack --config webpack/prod.config.js",
     "build": "npm run clean && npm run build-server && npm run build-client",
-    "prod": "npm run build && concurrently -k \"npm run start-api-prod\" \"npm run start-prod\"",
-    "dev": "concurrently -k \"npm run watch-client\" \"npm run start-api-dev\" \"npm run start-dev\""
+    "prod": "npm run build && concurrently -k \"npm run start-api-prod\" \"npm run start-chat-prod\" \"npm run start-prod\"",
+    "dev": "concurrently -k \"npm run watch-client\" \"npm run start-api-dev\" \"npm run start-chat-dev\" \"npm run start-dev\""
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -45,7 +47,8 @@
     "redux-thunk": "^2.1.0",
     "serialize-javascript": "^1.2.0",
     "serve-favicon": "^2.3.0",
-    "serve-static": "^1.10.0"
+    "serve-static": "^1.10.0",
+    "socket.io": "^1.7.3"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",

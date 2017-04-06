@@ -17,7 +17,7 @@ const USER_TYPE = {
   state => ({
     user: state.async.login,
     users: state.async.searchUsers,
-    followers: state.async.followers,
+    followers: state.async.userFollowers,
   }),
   actionCreator
 )
@@ -40,12 +40,15 @@ export default class ContactNav extends Component {
   }
 
   componentDidMount() {
-    this.searchInput.onkeypress = e => {
-      if (e.keyCode === 13) {
-        this.searchUsers();
-        this.chooseTeacher();
-      }
-    };
+    if (this.searchInput) {
+      this.searchInput.onkeypress = e => {
+        if (e.keyCode === 13) {
+          this.searchUsers();
+          // this.chooseTeacher();
+        }
+      };
+    }
+    this.chooseTeacher();
   }
 
   onFocus = () => {
@@ -105,56 +108,60 @@ export default class ContactNav extends Component {
 
   render() {
     const styles = require('./ContactNav.scss');
-    const { users, followers } = this.props;
+    const { user, users, followers } = this.props;
     const { userType, searchFlag } = this.state;
     // console.log(users);
     console.log(followers);
 
     return (
       <div className={styles.contact_nav_container}>
-        <div className={styles.contact_nav_top_wrapper}>
-          <span className={styles.contact_text}>联系人</span>
-        </div>
-        <FormGroup
-          controlId="formBasicText"
-          className={styles.form_group}
-        >
-          <FormControl
-            type="text"
-            placeholder="输入联系人"
-            className={styles.form_control}
-            inputRef={ref => { this.searchInput = ref; }}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-          />
-        </FormGroup>
-        {!searchFlag && <div className={styles.contact_type_wrapper}>
+        {user && user.sid && <div>
+          <div className={styles.contact_nav_top_wrapper}>
+            <span className={styles.contact_text}>联系人</span>
+          </div>
+          <FormGroup
+            controlId="formBasicText"
+            className={styles.form_group}
+          >
+            <FormControl
+              type="text"
+              placeholder="输入联系人"
+              className={styles.form_control}
+              inputRef={ref => { this.searchInput = ref; }}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+            />
+          </FormGroup>
+          {!searchFlag && <div className={styles.contact_type_wrapper}>
+            <div
+              className={styles.contact_type_teacher}
+              style={userType === 0 ? contactTypeActive : {}}
+              onClick={this.chooseTeacher}
+            >老&nbsp;师</div>
+            <div
+              className={styles.contact_type_student}
+              style={userType === 1 ? contactTypeActive : {}}
+              onClick={this.chooseStudent}
+            >学&nbsp;生</div>
+          </div>}
           <div
-            className={styles.contact_type_teacher}
-            style={userType === 0 ? contactTypeActive : {}}
-            onClick={this.chooseTeacher}
-          >老&nbsp;师</div>
-          <div
-            className={styles.contact_type_student}
-            style={userType === 1 ? contactTypeActive : {}}
-            onClick={this.chooseStudent}
-          >学&nbsp;生</div>
+            className={styles.contact_user_wrapper}
+            style={searchFlag ? { height: 455 } : { height: 416 }}
+          >
+            {!searchFlag && followers && this.mapContactUsers(followers)}
+
+            {searchFlag && users && this.mapContactUsers(users)}
+
+            {((followers && followers.length === 0)
+              || (users && users.length === 0))
+              && <div className={styles.no_result_text}>
+                <span className={`glyphicon glyphicon-info-sign ${styles.no_result_glyphicon}`} />
+                没有符合条件的结果
+              </div>}
+          </div>
         </div>}
-        <div
-          className={styles.contact_user_wrapper}
-          style={searchFlag ? { height: 455 } : { height: 416 }}
-        >
-          {!searchFlag && followers && this.mapContactUsers(followers)}
 
-          {searchFlag && users && this.mapContactUsers(users)}
-
-          {((followers && followers.length === 0)
-            || (users && users.length === 0))
-            && <div className={styles.no_result_text}>
-              <span className={`glyphicon glyphicon-info-sign ${styles.no_result_glyphicon}`} />
-              没有符合条件的结果
-            </div>}
-        </div>
+        {user && user.tid && <div>Teacher</div>}
       </div>
     );
   }

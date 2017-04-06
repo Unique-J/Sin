@@ -37,7 +37,7 @@ export function getUserFollowers(sid, type) {
   // console.log(condition);
   return {
     [ASYNC]: {
-      key: 'followers',
+      key: 'userFollowers',
       promise: () => customFetch('/getUserFollowers', option)
     }
   };

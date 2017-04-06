@@ -36,6 +36,7 @@ function Html(props) {
           charSet="UTF-8"
         />
         <script src={assets.javascript.main} charSet="UTF-8" />
+        {/* <script src="/socket.io.min.js" />*/}
       </body>
     </html>
   );
