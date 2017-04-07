@@ -111,7 +111,7 @@ export default class ContactNav extends Component {
     const { user, users, followers } = this.props;
     const { userType, searchFlag } = this.state;
     // console.log(users);
-    console.log(followers);
+    // console.log(followers);
 
     return (
       <div className={styles.contact_nav_container}>

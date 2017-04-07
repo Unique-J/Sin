@@ -3,6 +3,7 @@ module.exports = {
   port: process.env.PORT || (process.env.NODE_ENV === 'production' ? 8080 : 3000),
   apiHost: process.env.APIHOST || 'localhost',
   apiPort: process.env.APIPORT || 3030,
+  chatHost: process.env.CHATHOST || 'localhost',
   chatPort: process.env.CHATPORT || 3005,
   dataBase: 'mongodb://localhost/Sin',
   app: {

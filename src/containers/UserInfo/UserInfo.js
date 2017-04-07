@@ -19,11 +19,15 @@ export default class UserInfo extends Component {
     changePannelType: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired
   };
+
   render() {
     const styles = require('./UserInfo.scss');
     const { showEditor, logout, changePannelType } = this.props;
     const uid = this.props.location.query.uid;
     // console.log(this.props.location);
+    // if (socket) {
+    //   console.log(socket);
+    // }
 
     return (
       <div className={styles.user_info_container}>
