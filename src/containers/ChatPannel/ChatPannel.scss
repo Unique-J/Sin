@@ -80,3 +80,12 @@ $background_color: #36465D;
     background: rgba(255, 255, 255, 0.2);
   }
 }
+.history_record_line {
+  color: $font_color;
+  font-size: 11px;
+  text-align: center;
+  margin: 15px 0;
+}
+.line {
+  color: $line_color;
+}

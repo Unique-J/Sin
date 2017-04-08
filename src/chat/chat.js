@@ -1,7 +1,6 @@
 import Express from 'express';
 import http from 'http';
 import socketio from 'socket.io';
-import mongoose from 'mongoose';
 import config from '../config';
 import dbHandle from '../api/utils/dbHandle';
 import saveMessage from './controllers/saveMessage';
@@ -34,7 +33,7 @@ io.on('connection', socketPara => {
       userSockets[message.receiverid].emit(message.receiverid, message);
     }
 
-    const Teacher = mongoose.model('teacher');
+    saveMessage(message);
   });
 
   socket.on('disconnect', () => {

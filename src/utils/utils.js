@@ -40,6 +40,7 @@ export function customFetch(url, option) {
 }
 
 export function formatTime(time) {
+  // console.log(time);
   const fdate = time.substring(0, 10);
   const ftime = time.substring(11, 19);
   return `${fdate}  ${ftime}`;
@@ -55,4 +56,13 @@ export function getTime(time) {
 
 export function transformTagsToArray(tagString) {
   return tagString.split(' ').map(tag => `${tag} `);
+}
+
+export function createMessageId(sid, rid) {
+  const senderid = parseInt(sid, 10);
+  const receiverid = parseInt(rid, 10);
+  // console.log(typeof senderid);
+  // console.log(receiverid);
+  const mid = senderid < receiverid ? `${senderid}${receiverid}` : `${receiverid}${senderid}`;
+  return mid;
 }

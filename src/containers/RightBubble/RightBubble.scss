@@ -1,5 +1,13 @@
 $font_color: rgba(255, 255, 255, 0.6);
 $line_color: rgba(255, 255, 255, 0.07);
+.time_line {
+  color: $font_color;
+  font-size: 11px;
+  text-align: center;
+}
+.line {
+  color: $line_color;
+}
 .bubble_container {
   display: flex;
   // right: 0;
@@ -34,7 +42,7 @@ $line_color: rgba(255, 255, 255, 0.07);
   background: $line_color;
   max-width: 500px;
   word-wrap: break-word;
-  word-break: break-all;
+  // word-break: break-all;
   white-space: normal;
   color: $font_color;
   border-radius: 2px;

@@ -29,6 +29,7 @@ import getCollections from './getCollections';
 import getFollowers from './getFollowers';
 import searchUsers from './searchUsers';
 import getUserFollowers from './getUserFollowers';
+import getMessages from './getMessages';
 
 export default app => {
   loadAuth(app);
@@ -73,4 +74,5 @@ export default app => {
   getFollowers(app);
   searchUsers(app);
   getUserFollowers(app);
+  getMessages(app);
 };

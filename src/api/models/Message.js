@@ -14,25 +14,31 @@ export default function createMessage() {
     // articleid: Schema.Types.ObjectId
   });
 
-  const Message = mongoose.model('message', messageSchema);
-
-  const message = new Message({
-    senderid: '110001',
-    receiverid: '13110033139',
-    content: 'message',
-    time: new Date()
+  const messagesSchema = Schema({  // eslint-disable-line
+    mid: String,
+    messages: [messageSchema]
   });
 
-  Message.find({}, (error, messages) => {
-    if (error) {
-      console.error(error);
-    } else {
-      if (messages.length === 0) {
-        message.save(err => {
-          if (err) console.error(err);
-          console.log('Save Message successfully.');
-        });
-      }
-    }
-  });
+  const Message = mongoose.model('message', messagesSchema);  // eslint-disable-line
+  // const MessageInBox = mongoose.model('messageinbox', messageSchema);  // eslint-disable-line
+
+  // const message = new Message({
+  //   senderid: '110001',
+  //   receiverid: '13110033139',
+  //   content: 'message',
+  //   time: new Date()
+  // });
+
+  // Message.find({}, (error, messages) => {
+  //   if (error) {
+  //     console.error(error);
+  //   } else {
+  //     if (messages.length === 0) {
+  //       message.save(err => {
+  //         if (err) console.error(err);
+  //         console.log('Save Message successfully.');
+  //       });
+  //     }
+  //   }
+  // });
 }
