@@ -3,8 +3,12 @@ import { createMessageId } from '../../utils/utils';
 
 const saveMessageBox = (User, msg) => {
   const uid = msg.receiverid;
+
+  const updateCondition = {
+    'messagebox.senderid': msg.senderid,
+    'messagebox.receiverid': msg.receiverid };
   const findCondition = uid.length === 6 ? { tid: uid } : { sid: uid };
-  const updateCondition = { ...findCondition, 'messagebox.receiverid': msg.receiverid };
+
   const updateSet = { $set: {
     'messagebox.$.content': msg.content,
     'messagebox.$.time': (new Date()).toJSON()
