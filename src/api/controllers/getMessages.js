@@ -9,10 +9,14 @@ export default app => {
       if (err) {
         console.error(err);
       } else {
-        const length = message.messages.length;
-        // console.log(message.messages.slice(length - number, length));
-        // res.send(message.messages.reverse().slice(0, number));
-        res.send(message.messages.slice(length - number, length));
+        if (message) {
+          const length = message.messages.length;
+          // console.log(message.messages.slice(length - number, length));
+          // res.send(message.messages.reverse().slice(0, number));
+          res.send(message.messages.slice(length - number, length));
+        } else {
+          res.send(null);
+        }
       }
     });
   });

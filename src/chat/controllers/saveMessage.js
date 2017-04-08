@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
-// import { createMessageId } from '../../utils/utils';
+import { createMessageId } from '../../utils/utils';
 
-const saveMessageBox = (User, msg, mid) => {
+const saveMessageBox = (User, msg) => {
   const uid = msg.receiverid;
-  // const condition = uid.length === 6 ? { tid: uid } : { sid: uid };
-  const condition = { 'messagebox.mid': mid };
-  const update = { $addToSet: { 'messagebox.$.content': msg.content } };
+  const findCondition = uid.length === 6 ? { tid: uid } : { sid: uid };
+  const updateCondition = { ...findCondition, 'messagebox.receiverid': msg.receiverid };
+  const updateSet = { $set: { 'messagebox.$.content': msg.content } };
+  const updatePush = { $push: { messagebox: msg } };
   // $push: { messagebox: mid }
 
   // User.update(condition, update, { upsert: true }, err => {
@@ -15,11 +16,28 @@ const saveMessageBox = (User, msg, mid) => {
   //     console.log('Save CommentBox Successfully.');
   //   }
   // });
-  User.findOne(condition, (err, user) => {
-    if (err) {
-      console.error(err);
+  User.findOne(updateCondition, (error, user) => {
+    if (error) {
+      console.error(error);
     } else {
       console.log(user);
+      if (user) {
+        User.update(updateCondition, updateSet, err1 => {
+          if (err1) {
+            console.error(err1);
+          } else {
+            console.log('Update CommentBox Successfully.');
+          }
+        });
+      } else {
+        User.update(findCondition, updatePush, err2 => {
+          if (err2) {
+            console.error(err2);
+          } else {
+            console.log('Save CommentBox Successfully.');
+          }
+        });
+      }
     }
   });
 };
@@ -41,7 +59,7 @@ export default msg => {
       console.error(err);
     } else {
       // saveMessageBox(Sender, msg.senderid, mid);
-      saveMessageBox(Receiver, msg, mid);
+      saveMessageBox(Receiver, msg);
       console.log('Save Message Successfully.');
     }
   });
