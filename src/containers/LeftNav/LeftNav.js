@@ -35,6 +35,14 @@ export default class LeftNav extends Component {
         <ul className={styles.nav_wrapper}>
           <li
             className={styles.nav_choice_wrapper}
+            onClick={() => changePannelType(PANEL_TYPE.MESSAGE_PANEL)}
+            style={userInfoPannelType === 2 ? navChoiceActive : {}}
+          >
+            <div className={styles.choice}>私信</div>
+            <div className={styles.vice_choice}>查看私信、发起私信</div>
+          </li>
+          <li
+            className={styles.nav_choice_wrapper}
             onClick={() => changePannelType(PANEL_TYPE.COLLECTION_PANEL)}
             style={userInfoPannelType === 0 ? navChoiceActive : {}}
           >
@@ -48,14 +56,6 @@ export default class LeftNav extends Component {
           >
             <div className={styles.choice}>关注</div>
             <div className={styles.vice_choice}>查看关注的老师、学生</div>
-          </li>
-          <li
-            className={styles.nav_choice_wrapper}
-            onClick={() => changePannelType(PANEL_TYPE.MESSAGE_PANEL)}
-            style={userInfoPannelType === 2 ? navChoiceActive : {}}
-          >
-            <div className={styles.choice}>私信</div>
-            <div className={styles.vice_choice}>查看私信、发起私信</div>
           </li>
           <li
             className={styles.last_nav_choice_wrapper}

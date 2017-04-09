@@ -3,7 +3,8 @@ import { Route, IndexRoute } from 'react-router';
 import { Main, Home, Counter, Article, Register, LoginContainer,
   Dashboard, Headbar, FollowList, UserItem, Editor, ArticleModal,
   ArticleDetail, Comment, CommentList, ChildComment, ReplyList,
-  ReplyCard, UserPage, SearchPage, UserInfo } from './containers';
+  ReplyCard, UserPage, SearchPage, UserInfo, ForgetPassword,
+  ResetPassword } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
 
 import { FirstMainPage } from './components/index';
@@ -31,6 +32,8 @@ export default store => {
       <IndexRoute component={Main} />
       <Route path="login" component={LoginContainer} />
       <Route path="register" component={Register} />
+      <Route path="forgetpassword" component={ForgetPassword} />
+      <Route path="resetpassword" component={ResetPassword} />
       <Route onEnter={requireLogin}>
         <Route path="counter" component={Counter} />
         <Route path="test" component={FirstMainPage} />

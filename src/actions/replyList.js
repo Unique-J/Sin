@@ -29,7 +29,7 @@ export function getCommentbox(userid) {
       userid
     })
   };
-  console.log(userid);
+  // console.log(userid);
   return {
     [ASYNC]: {
       key: 'commentbox',

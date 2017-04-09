@@ -38,6 +38,13 @@ class MyChatPannel extends Component {
     const { user, uid, getMessages, getPerson } = this.props;
     const userid = user.sid || user.tid;
     const mid = createMessageId(userid, uid);
+    const messageInput = this.messageInput;
+
+    messageInput.onkeypress = e => {
+      if (e.keyCode === 13) {
+        this.sendMessage();
+      }
+    };
 
     getMessages(mid, 3);
     getPerson(uid);
@@ -62,18 +69,22 @@ class MyChatPannel extends Component {
 
   sendMessage = () => {
     const { user, uid } = this.props;
+    const msgContent = this.messageInput.value;
     // const receiverid = this.props
-    const message = {
-      senderid: user.sid || user.tid,
-      receiverid: uid,
-      content: this.messageInput.value,
-      time: new Date()
-    };
+    if (msgContent) {
+      const message = {
+        senderid: user.sid || user.tid,
+        receiverid: uid,
+        content: this.messageInput.value,
+        time: new Date()
+      };
+
+      this.socket.emit('privateMsg', message);
+      this.setState({ messages: [...this.state.messages, message] });
+      this.messageInput.value = '';
+    }
     // console.log(message);
     // this.socket.emit('privateMsg', { to: '13110033140', from: '13110033139', content: message });
-    this.socket.emit('privateMsg', message);
-    this.setState({ messages: [...this.state.messages, message] });
-    this.messageInput.value = '';
   }
 
   mapMessages = (messages) => (
@@ -90,12 +101,12 @@ class MyChatPannel extends Component {
   )
 
   goBack = () => {
-    browserHistory.goBack();
+    browserHistory.push('/userinfo');
   }
 
   render() {
     const styles = require('./ChatPannel.scss');
-    const { uid, person } = this.props;
+    const { person } = this.props;
     const { messages, historyMessages } = this.state;
     // const socket = io.connect('http://localhost:3005');
     // console.log(messages);

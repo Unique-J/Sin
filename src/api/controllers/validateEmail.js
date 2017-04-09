@@ -32,10 +32,10 @@ export default app => {
 
     if (useridLength === 6) {
       const Teacher = mongoose.model('teacher');
-      Teacher.findOne(conditions, (err, teacher) => {
-        if (err) console.error(err);
-        // console.log(teacher);
-      });
+      // Teacher.findOne(conditions, (err, teacher) => {
+      //   if (err) console.error(err);
+      //   // console.log(teacher);
+      // });
       Teacher.update(conditions, update,
         (err, result) => {
           if (err) {

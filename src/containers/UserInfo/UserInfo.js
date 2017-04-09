@@ -10,7 +10,7 @@ import * as actionCreator from '../../actions/userInfo';
   }),
   actionCreator
 )
-export default class UserInfo extends Component {
+class MyUserInfo extends Component {
   static propTypes = {
     user: PropTypes.any,
     userInfo: PropTypes.object.isRequired,
@@ -41,3 +41,11 @@ export default class UserInfo extends Component {
     );
   }
 }
+
+export default function UserInfo(props) {
+  return <MyUserInfo {...props} key={props.location.query.uid} />;
+}
+
+UserInfo.propTypes = {
+  location: PropTypes.object.isRequired,
+};

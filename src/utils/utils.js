@@ -50,6 +50,10 @@ export function getDate(time) {
   return time.substring(0, 10);
 }
 
+export function getDay(time) {
+  return `${time.substring(5, 7)}月${time.substring(8, 10)}日`;
+}
+
 export function getTime(time) {
   return time.substring(11, 19);
 }

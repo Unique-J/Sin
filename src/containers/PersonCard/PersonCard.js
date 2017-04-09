@@ -70,6 +70,11 @@ class MyPersonCard extends Component {
     return 0;
   }
 
+  sendMessage = personid => {
+    console.log(personid);
+    browserHistory.push(`/userinfo?uid=${personid}`);
+  }
+
   toUserPage = userid => {
     browserHistory.push(`/userpage?userid=${userid}`);
   }
@@ -113,7 +118,10 @@ class MyPersonCard extends Component {
             >
               {this.judgeFollow() ? '取消关注' : '关注'}
             </span>
-            <span className={styles.message_button}>私信</span>
+            <span
+              className={styles.message_button}
+              onClick={() => this.sendMessage(personid)}
+            >私信</span>
           </div>
         </div>
       </div>

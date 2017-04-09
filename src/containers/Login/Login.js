@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import { browserHistory } from 'react-router';
 import { FormGroup, FormControl } from 'react-bootstrap';
 import * as loginActions from '../../actions/login';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 @connect(
   state => ({
@@ -147,7 +147,7 @@ export default class Login extends Component {
                 </span>
               </button>
               <div className={styles.forget_pwd}>
-                <a href="#" className={styles.link_item}>忘 记 密 码？</a>
+                <a href="/forgetpassword" className={styles.link_item}>忘 记 密 码？</a>
               </div>
             </form>
           </div>
