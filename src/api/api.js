@@ -1,4 +1,6 @@
+import path from 'path';
 import Express from 'express';
+import favicon from 'serve-favicon';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import config from '../config';
@@ -7,6 +9,8 @@ import dbHandle from './utils/dbHandle';
 
 const port = config.apiPort;
 const app = new Express();
+
+app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));
 
 app.use(bodyParser.json());
 

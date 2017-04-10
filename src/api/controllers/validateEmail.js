@@ -5,6 +5,7 @@ export default app => {
     // res.send(req.query.validate);
     const userid = req.query.userid;
     const validateCode = req.query.validateCode;
+    console.log(userid);
     const email = req.query.email + '.com';
     if (!userid || !validateCode || !email) {
       res.send(404);
@@ -18,8 +19,9 @@ export default app => {
     const deltaTime = validateTime - limitTime;
     // console.log(deltaTime);
 
+    const condition = useridLength === 6 ? { tid: userid } : { sid: userid };
     const conditions = {
-      tid: userid,
+      ...condition,
       validateCode,
       createTime: { $gte: deltaTime }
     };
@@ -61,6 +63,7 @@ export default app => {
             if (result.n === 0) {
               res.send('验证邮箱失败...');
             } else {
+              // console.log(123);
               res.send('succeed');
             }
           }

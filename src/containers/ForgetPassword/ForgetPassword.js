@@ -6,14 +6,17 @@ import * as actionCreators from '../../actions/forgetPassword';
 
 @connect(
   state => ({
-    user: state.async.user
+    // user: state.async.user,
+    email: state.async.sendResetPwdEmail
   }),
   actionCreators
 )
 export default class ForgetPassword extends Component {
   static propTypes = {
-    user: PropTypes.any,
-    getUser: PropTypes.func.isRequired,
+    // user: PropTypes.any,
+    email: PropTypes.any,
+    // getUser: PropTypes.func.isRequired,
+    sendResetPwdEmail: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -26,18 +29,18 @@ export default class ForgetPassword extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user !== this.props.user) {
+    if (nextProps.email !== this.props.email) {
       this.setState({ emailValidate: true });
     }
   }
 
   resetPassword = () => {
-    const { getUser } = this.props;
+    const { sendResetPwdEmail } = this.props;
     const uid = this.uidInput.value;
     const email = this.emailInput.value;
 
     if (uid && email) {
-      getUser(uid, email);
+      sendResetPwdEmail(uid, email);
       this.uidInput.value = '';
       this.emailInput.value = '';
       this.setState({ uidEmpty: false, emailEmpty: false });
@@ -61,9 +64,9 @@ export default class ForgetPassword extends Component {
 
   render() {
     const styles = require('./ForgetPassword.scss');
-    const { user } = this.props;
+    const { email } = this.props;
     const { uidEmpty, emailEmpty, emailValidate } = this.state;
-    console.log(user);
+    console.log(email);
 
     return (
       <div className={styles.forget_password_container}>
@@ -72,7 +75,7 @@ export default class ForgetPassword extends Component {
           controlId="formBasicText"
           className={styles.form_group}
         >
-          {!(user && user.email) && <div>
+          {!(email && email.success) && <div>
             <FormControl
               type="text"
               placeholder="学生学号 / 教工工号"
@@ -90,7 +93,7 @@ export default class ForgetPassword extends Component {
             {(uidEmpty || emailEmpty) && <div className={styles.tips}>
               请输入ID号或邮箱地址
             </div>}
-            {emailValidate && user && <div className={styles.tips}>
+            {emailValidate && email && <div className={styles.tips}>
               对不起，该电子邮件地址未在此注册
               <div style={{ marginTop: 5 }}>请
                 <span className={styles.link}>
@@ -106,7 +109,7 @@ export default class ForgetPassword extends Component {
             </button>
           </div>}
 
-          {user && user.email && <div>
+          {email && email.success && <div>
             <div className={styles.tip}>
               <div>
                 我们已给你发送了一封电子邮件，其中包含了重置密码的说明。

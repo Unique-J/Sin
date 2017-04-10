@@ -2,7 +2,7 @@ import { ASYNC } from 'redux-amrc';
 import { customFetch } from '../utils/utils';
 import md5 from 'md5';
 
-export function updatePassword(uid, pwd) {
+export function resetPassword(uid, email, resetPwdCode, pwd) {
   const option = {
     method: 'post',
     headers: {
@@ -11,14 +11,16 @@ export function updatePassword(uid, pwd) {
     },
     body: JSON.stringify({
       uid,
+      email,
+      resetPwdCode,
       pwd: md5(pwd)
     })
   };
-  console.log(uid + ' ' + pwd);
+  // console.log(uid + ' ' + pwd + ' ' + resetPwdCode + ' ' + email);
   return {
     [ASYNC]: {
-      key: 'password',
-      promise: () => customFetch('/updatePassword', option)
+      key: 'resetPassword',
+      promise: () => customFetch('/resetPassword', option)
     }
   };
 }

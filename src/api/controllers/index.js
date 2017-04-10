@@ -31,9 +31,11 @@ import searchUsers from './searchUsers';
 import getUserFollowers from './getUserFollowers';
 import getMessages from './getMessages';
 import getMessageBox from './getMessageBox';
-import getUser from './getUser';
+// import getUser from './getUser';
 import resetPassword from './resetPassword';
 import updatePassword from './updatePassword';
+import sendResetPwdEmail from './sendResetPwdEmail';
+import validateResetPwdCode from './validateResetPwdCode';
 
 export default app => {
   loadAuth(app);
@@ -42,9 +44,10 @@ export default app => {
   judgeUserRegistered(app);
   registerUser(app);
   validateEmail(app);
-  getUser(app);
+  // getUser(app);
   resetPassword(app);
-  updatePassword(app);
+  sendResetPwdEmail(app);
+  validateResetPwdCode(app);
 
   // Validate
 
@@ -83,4 +86,5 @@ export default app => {
   getUserFollowers(app);
   getMessages(app);
   getMessageBox(app);
+  updatePassword(app);
 };
