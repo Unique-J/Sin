@@ -2,7 +2,7 @@ import { SHOW_EDITOR, USER_INFO_PANNEL_TYPE } from '../actions/userInfo';
 
 const initState = {
   showEditorFlag: false,
-  userInfoPannelType: 2,
+  userInfoPannelType: 3,
   // showArticleModalFlag: false
 };
 

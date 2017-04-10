@@ -37,3 +37,7 @@ export RightBubble from './RightBubble/RightBubble';
 export MessageList from './MessageList/MessageList';
 export ForgetPassword from './ForgetPassword/ForgetPassword';
 export ResetPassword from './ResetPassword/ResetPassword';
+export SettingNav from './SettingNav/SettingNav';
+export MyInfo from './MyInfo/MyInfo';
+export MyPortrait from './MyPortrait/MyPortrait';
+export InfoItem from './InfoItem/InfoItem';
