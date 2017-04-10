@@ -4,7 +4,8 @@ import { browserHistory } from 'react-router';
 export default class InfoItem extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired
+    content: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
   };
 
   constructor() {
@@ -44,21 +45,21 @@ export default class InfoItem extends Component {
 
   render() {
     const styles = require('./InfoItem.scss');
-    const { title } = this.props;
+    const { title, content } = this.props;
     const { showEidtor, showPwd, newPwd } = this.state;
 
     return (
       <div className={styles.info_item_container}>
         <div className={styles.info_item_header} onClick={this.clickItem}>
           <span className={styles.item_title}>{title}</span>
-          <span className={styles.item_content}>{showEidtor ? '' : 'YangJi'}</span>
+          <span className={styles.item_content}>{showEidtor ? '' : content}</span>
           <span className={styles.item_operate}>{this.operateLink()}</span>
         </div>
 
         {showEidtor && <div className={styles.info_item_footer}>
           <div className={styles.old_wrapper}>
             <span>现{title}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>1</span>
+            <span>{content}</span>
           </div>
           <div className={styles.new_wrapper}>
             <span>新{title}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
