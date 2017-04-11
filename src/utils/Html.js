@@ -18,6 +18,7 @@ function Html(props) {
         {head.script.toComponent()}
 
         <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="stylesheet" href="/cropper.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {Object.keys(assets.styles).map((style, key) =>
           <link

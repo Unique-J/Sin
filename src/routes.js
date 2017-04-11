@@ -6,6 +6,7 @@ import { Main, Home, Counter, Article, Register, LoginContainer,
   ReplyCard, UserPage, SearchPage, UserInfo, ForgetPassword,
   ResetPassword } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
+import { Cropper } from './components';
 
 import { FirstMainPage } from './components/index';
 
@@ -53,6 +54,8 @@ export default store => {
         <Route path="userpage" component={UserPage} />
         <Route path="searchpage" component={SearchPage} />
         <Route path="userinfo" component={UserInfo} />
+
+        <Route path="cropper" component={Cropper} />
       </Route>
     </Route>
   );

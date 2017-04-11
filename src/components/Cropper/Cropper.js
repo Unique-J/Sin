@@ -4,35 +4,6 @@ import 'cropperjs/dist/cropper.css';
 
 const src = 'child.jpg';
 
-const style = {
-  cropper: {
-     height: 300,
-     width: 550,
-     margin: '0 auto'
-  },
-  box: {
-    // width: '50%'
-    display: 'flex',
-  },
-  imgPreviewC: {
-    width: 180,
-    height: 180,
-    overflow: 'hidden',
-    borderRadius: '50%'
-  },
-  imgPreviewR1: {
-    width: 50,
-    height: 50,
-    overflow: 'hidden',
-    borderRadius: 2
-  },
-  imgPreviewR2: {
-    width: 30,
-    height: 30,
-    overflow: 'hidden',
-  }
-}
-
 export default class MyPortrait extends Component {
   constructor(props) {
     super(props);
@@ -69,7 +40,7 @@ export default class MyPortrait extends Component {
   }
 
   render() {
-    const styles = require('./MyPortrait.scss');
+    const styles = require('./Cropper.scss');
 
     return (
       <div className={styles.my_portrait_container}>
@@ -81,31 +52,20 @@ export default class MyPortrait extends Component {
             className={styles.select_btn}
           />
         </div>
-
         <div className={styles.crop_container}>
           <div className={styles.crop_wrapper}>
             <Cropper
-              style={style.cropper}
+              style={{ height: 300, width: 400, background: 'red' }}
               aspectRatio={1 / 1}
               preview=".img-preview"
+              guides={false}
               src={this.state.src}
-              viewMode={3}
-              autoCropArea={0.5}
               ref={cropper => { this.cropper = cropper; }}
             />
           </div>
           <div className={styles.preview_wrapper}>
-            <div className={styles.tip}>
-              您上传的图片将会自动生成三种尺寸的头像，请注意各尺寸头像是否清晰
-            </div>
-            <div className="box" style={style.box}>
-              <div className={styles.preview_left_wrapper}>
-                <div className="img-preview" style={style.imgPreviewC} />
-              </div>
-              <div className={styles.preview_right_wrapper}>
-                <div className="img-preview" style={style.imgPreviewR1} />
-                <div className="img-preview" style={style.imgPreviewR2} />
-              </div>
+            <div className="box" style={{ background: 'red', flex: 1 }}>
+              <div className="img-preview" style={{ height: 300, overflow: 'hidden' }} />
             </div>
           </div>
         </div>

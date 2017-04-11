@@ -31,22 +31,39 @@ $line_color: rgba(255, 255, 255, 0.07);
 }
 .crop_container {
   display: flex;
+  width: 100%;
   margin-top: 15px;
   background: $background;
 }
 .crop_wrapper {
-  flex: 1;
+  flex: 2;
+  padding: 20px;
   // height: 200px;
   border-right: 1px solid $line_color;
 }
 .preview_wrapper {
   flex: 1;
+  padding: 20px;
 }
+.preview_left_wrapper {
+  flex: 2;
+  background: red;
+}
+.preview_right_wrapper {
+  flex: 1;
+  background: green;
+}
+.tip {
+  font-size: 12px;
+  color: $font_color;
+  margin: 0 0 20px 0;
+}
+
 // .box{
 //   display: inline-block;
 //   padding: 10px;
 //   box-sizing: border-box;
 // }
-// .img-preview{
+// .img_preview{
 //   overflow: hidden;
 // }
