@@ -77,3 +77,11 @@ $line_color: rgba(255, 255, 255, 0.07);
   line-height: 24px;
   // background: #36465D;
 }
+.relogin_link {
+  // color: #FFF;
+  text-decoration: underline;
+  color: $font_color;
+  &:hover {
+    color: $font_color;
+  }
+}

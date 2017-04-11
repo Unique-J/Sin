@@ -14,10 +14,10 @@ export default app => {
       } else {
         if (result.n === 0) {
           console.log('修改密码失败');
-          res.send('修改密码失败');
+          res.send({ success: false });
         } else {
           console.log('修改密码成功');
-          res.send('修改密码成功');
+          res.send({ success: true });
         }
       }
     });

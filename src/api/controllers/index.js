@@ -36,6 +36,8 @@ import resetPassword from './resetPassword';
 import updatePassword from './updatePassword';
 import sendResetPwdEmail from './sendResetPwdEmail';
 import validateResetPwdCode from './validateResetPwdCode';
+import updateInfo from './updateInfo';
+import validatePwd from './validatePwd';
 
 export default app => {
   loadAuth(app);
@@ -87,4 +89,6 @@ export default app => {
   getMessages(app);
   getMessageBox(app);
   updatePassword(app);
+  updateInfo(app);
+  validatePwd(app);
 };
