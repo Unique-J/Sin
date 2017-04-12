@@ -1,37 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import Cropper from 'react-cropper';
-import 'cropperjs/dist/cropper.css';
+import { variable } from './const';
+// import 'cropperjs/dist/cropper.css';
 
-const src = 'child.jpg';
-
-const style = {
-  cropper: {
-     height: 300,
-     width: 550,
-     margin: '0 auto'
-  },
-  box: {
-    // width: '50%'
-    display: 'flex',
-  },
-  imgPreviewC: {
-    width: 180,
-    height: 180,
-    overflow: 'hidden',
-    borderRadius: '50%'
-  },
-  imgPreviewR1: {
-    width: 50,
-    height: 50,
-    overflow: 'hidden',
-    borderRadius: 2
-  },
-  imgPreviewR2: {
-    width: 30,
-    height: 30,
-    overflow: 'hidden',
-  }
-}
+const { src, style } = variable;
 
 export default class MyPortrait extends Component {
   constructor(props) {
@@ -40,11 +12,11 @@ export default class MyPortrait extends Component {
       src,
       cropResult: null,
     };
-    this.cropImage = this.cropImage.bind(this);
-    this.onChange = this.onChange.bind(this);
+    // this.cropImage = this.cropImage.bind(this);
+    // this.onChange = this.onChange.bind(this);
   }
 
-  onChange(e) {
+  onChange = e => {
     e.preventDefault();
     let files;
     if (e.dataTransfer) {
@@ -59,13 +31,19 @@ export default class MyPortrait extends Component {
     reader.readAsDataURL(files[0]);
   }
 
-  cropImage() {
+  cropImage = () => {
     if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
       return;
     }
     this.setState({
       cropResult: this.cropper.getCroppedCanvas().toDataURL(),
     });
+    // console.log(this.state.cropResult);
+    console.log(132);
+  }
+
+  test = () => {
+    console.log(13);
   }
 
   render() {
@@ -73,15 +51,6 @@ export default class MyPortrait extends Component {
 
     return (
       <div className={styles.my_portrait_container}>
-        <div className={styles.select_btn_wrapper}>
-          选择图片
-          <input
-            type="file"
-            onChange={this.onChange}
-            className={styles.select_btn}
-          />
-        </div>
-
         <div className={styles.crop_container}>
           <div className={styles.crop_wrapper}>
             <Cropper
@@ -89,7 +58,7 @@ export default class MyPortrait extends Component {
               aspectRatio={1 / 1}
               preview=".img-preview"
               src={this.state.src}
-              viewMode={3}
+              viewMode={1}
               autoCropArea={0.5}
               ref={cropper => { this.cropper = cropper; }}
             />
@@ -101,13 +70,40 @@ export default class MyPortrait extends Component {
             <div className="box" style={style.box}>
               <div className={styles.preview_left_wrapper}>
                 <div className="img-preview" style={style.imgPreviewC} />
+                <div className={styles.img_tip} style={{ fontSize: 12 }}>大尺寸头像，150×150像素</div>
               </div>
               <div className={styles.preview_right_wrapper}>
-                <div className="img-preview" style={style.imgPreviewR1} />
-                <div className="img-preview" style={style.imgPreviewR2} />
+                <div className={styles.simple_size_wrapper}>
+                  <div className="img-preview" style={style.imgPreviewR1} />
+                  <div className={styles.img_tip}>中尺寸头像 50×50像素</div>
+                </div>
+                <div className={styles.small_size_wrapper}>
+                  <div className="img-preview" style={style.imgPreviewR2} />
+                  <div className={styles.img_tip}>小尺寸头像 37×37像素</div>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+
+        <div className={styles.btn_wrapper}>
+          <span className={styles.select_btn_wrapper}>
+            选择图片
+            <input
+              type="file"
+              onChange={this.onChange}
+              className={styles.select_btn}
+            />
+          </span>
+          <span
+            className={styles.select_btn_wrapper}
+            onClick={this.cropImage}
+          >
+            保存
+            <button
+              className={styles.select_btn}
+            />
+          </span>
         </div>
       </div>
     );

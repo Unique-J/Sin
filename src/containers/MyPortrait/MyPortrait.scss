@@ -6,9 +6,6 @@ $line_color: rgba(255, 255, 255, 0.07);
   padding: 20px 0;
   user-select: none;
 }
-.select_wrapper {
-  // background: red;
-}
 .select_btn_wrapper {
   display: inline-block;
   width: 80px;
@@ -21,6 +18,7 @@ $line_color: rgba(255, 255, 255, 0.07);
   background: $background;
   position: relative;
   overflow: hidden;
+  margin-right: 20px;
 }
 .select_btn {
   position: absolute;
@@ -36,34 +34,48 @@ $line_color: rgba(255, 255, 255, 0.07);
   background: $background;
 }
 .crop_wrapper {
-  flex: 2;
+  flex: 5;
   padding: 20px;
   // height: 200px;
   border-right: 1px solid $line_color;
 }
 .preview_wrapper {
-  flex: 1;
+  flex: 3;
   padding: 20px;
 }
 .preview_left_wrapper {
-  flex: 2;
-  background: red;
+  flex: 3;
+  // background: red;
 }
 .preview_right_wrapper {
-  flex: 1;
-  background: green;
+  flex: 2;
+  // background: green;
+}
+.simple_size_wrapper {
+  // text-align: center;
+  width: 70px;
+  // padding: 0 10px;
+  margin: 10px auto;
+  margin-bottom: 26px;
+  // background: red;
+}
+.small_size_wrapper {
+  width: 70px;
+  // padding: 0 20px;
+  margin: 5px auto;
+  // background: greenyellow;
 }
 .tip {
   font-size: 12px;
   color: $font_color;
   margin: 0 0 20px 0;
 }
-
-// .box{
-//   display: inline-block;
-//   padding: 10px;
-//   box-sizing: border-box;
-// }
-// .img_preview{
-//   overflow: hidden;
-// }
+.img_tip {
+  color: $font_color;
+  font-size: 10px;
+  margin: 5px 0;
+  text-align: center;
+}
+.btn_wrapper {
+  margin-top: 20px;
+}
