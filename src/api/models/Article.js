@@ -12,6 +12,7 @@ export default function createArticle() {
     viewNum: { type: Number, default: 0 },
     authorid: String,
     authorName: String,
+    portrait: String,
     collectNum: { type: Number, default: 0 }
   });
 

@@ -38,8 +38,10 @@ export default app => {
       _id: mongoose.Types.ObjectId(), // eslint-disable-line
       reviewerida: user.tid || user.sid,
       reviewernamea: user.name,
+      reviewerportraita: user.portrait,
       revieweridb: (comment && comment.reviewerida) || article.authorid,
       reviewernameb: (comment && comment.reviewernamea) || article.authorName,
+      reviewerportraitb: (comment && comment.portrait) || article.portrait,
       content,
       replyContent: (comment && comment.content) || '',
       time: new Date(),

@@ -5,8 +5,10 @@ export default function createComment() {
   const commentSchema = Schema({  // eslint-disable-line
     reviewerida: String,
     reviewernamea: String,
+    reviewerportraita: String,
     revieweridb: String,
     reviewernameb: String,
+    reviewerportraitb: String,
     content: String,
     replyContent: String,
     time: Date,

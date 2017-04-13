@@ -6,24 +6,36 @@ import * as actionCreator from '../../actions/userInfo';
 @connect(
   state => ({
     user: state.async.login,
-    userInfo: state.userInfo
+    // userInfo: state.userInfo
+    person: state.async.person,
   }),
   actionCreator
 )
 class MyUserInfo extends Component {
   static propTypes = {
     user: PropTypes.any,
-    userInfo: PropTypes.object.isRequired,
+    person: PropTypes.any,
+    // userInfo: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     showEditor: PropTypes.func.isRequired,
     changePannelType: PropTypes.func.isRequired,
+    getPerson: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired
   };
 
+  componentDidMount() {
+    const { user, getPerson } = this.props;
+
+    if (user) {
+      getPerson(user.sid || user.tid);
+    }
+  }
+
   render() {
     const styles = require('./UserInfo.scss');
-    const { showEditor, logout, changePannelType } = this.props;
+    const { person, showEditor, logout, changePannelType } = this.props;
     const uid = this.props.location.query.uid;
+    // console.log(person);
     // console.log(this.props.location);
     // if (socket) {
     //   console.log(socket);
@@ -32,7 +44,7 @@ class MyUserInfo extends Component {
     return (
       <div className={styles.user_info_container}>
         <Headbar showEditor={showEditor} logout={logout} />
-        <Editor showEditor={showEditor} />
+        {person && <Editor showEditor={showEditor} person={person} />}
         <div className={styles.main_pannel}>
           <LeftNav changePannelType={changePannelType} />
           <UserInfoPannel uid={uid} />

@@ -91,7 +91,11 @@ class MyPersonCard extends Component {
           className={styles.top_wrapper}
           onClick={() => this.toUserPage(personid)}
         >
-          <div className={styles.portrait_wrapper}></div>
+          <div
+            className={styles.portrait_wrapper}
+            style={{ background: `url(${person.portrait || 'StockSnap_01.jpg'})`,
+            backgroundSize: 'cover' }}
+          />
           <div className={styles.name_sex_wrapper}>
             {person && person.name}&nbsp;
             <span

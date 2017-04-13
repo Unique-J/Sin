@@ -6,7 +6,8 @@ import { ChildComment } from '../index';
 
 @connect(
   state => ({
-    user: state.async.login
+    user: state.async.login,
+    person: state.async.person,
   })
 )
 export default class Comment extends Component {
@@ -14,6 +15,7 @@ export default class Comment extends Component {
     comment: PropTypes.any,
     user: PropTypes.any,
     article: PropTypes.any,
+    person: PropTypes.any,
     getComments: PropTypes.func.isRequired,
     saveComment: PropTypes.func.isRequired,
     saveChildComment: PropTypes.func.isRequired
@@ -49,11 +51,11 @@ export default class Comment extends Component {
   }
 
   saveComment = () => {
-    const { user, article, comment, getComments, saveComment } = this.props;
+    const { person, article, comment, getComments, saveComment } = this.props;
     const content = this.comment_input.value;
 
-    if (user) {
-      saveComment(article, content, user, comment);
+    if (person) {
+      saveComment(article, content, person, comment);
       getComments(article._id);
 
       this.comment_input.value = '';
@@ -95,10 +97,12 @@ export default class Comment extends Component {
     return (
       <div className={styles.comment_container}>
         <div className={styles.portrait_wrapper}>
-          <div
+          {comment && <div
             className={styles.portrait}
             onClick={comment ? () => this.toUserPage(comment.reviewerida) : ''}
-          />
+            style={{ background: `url(${comment.reviewerportraita || 'StockSnap_01.jpg'})`,
+            backgroundSize: 'cover' }}
+          />}
         </div>
         <div className={styles.comment_wrapper}>
           <span

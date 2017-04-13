@@ -71,7 +71,7 @@ export default class UserPage extends Component {
     return (
       <div className={styles.dashboard_container}>
         <Headbar showEditor={showEditor} logout={logout} />
-        <Editor showEditor={showEditor} />
+        {person && <Editor showEditor={showEditor} person={person} />}
         <ArticleModal showArticleModal={showArticleModal} article={article} />
         <div className={styles.content_wrapper}>
           <ul className={styles.article_wrapper}>

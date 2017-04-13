@@ -30,7 +30,6 @@ function Html(props) {
       </head>
       <body>
         <div id="app" dangerouslySetInnerHTML={{ __html: content }} />
-        <script src="/jquery-3.1.0.min.js" />
         <script
           dangerouslySetInnerHTML={{
             __html: `window.__INITIAL_STATE__=${serialize(store.getState())};`

@@ -10,7 +10,7 @@ import * as ActionCreators from '../../actions/editor';
   state => ({
     user: state.async.login,
     dashboard: state.dashboard,
-    saveState: state.async.saveArticle
+    saveState: state.async.saveArticle,
   }),
   ActionCreators
 )
@@ -19,6 +19,7 @@ export default class Editor extends Component {
     dashboard: PropTypes.any,
     saveState: PropTypes.any,
     user: PropTypes.any,
+    person: PropTypes.object.isRequired,
     showEditor: PropTypes.func.isRequired,
     saveArticle: PropTypes.func.isRequired,
     getArticlesByTid: PropTypes.func.isRequired,
@@ -43,19 +44,22 @@ export default class Editor extends Component {
   }
 
   sendArticle = () => {
-    if (this.props.user) {
-      const tid = this.props.user.tid;
-      const title = this.titleInput.value;
-      const description = this.descriptionInput.value;
-      const content = marked(this.editArea.value);
-      const tags = this.tagInput.value;
-      const authorName = this.props.user.name;
-      this.props.saveArticle(title, description, content, tags, new Date(), tid, authorName)
-        .then(() => {
-          this.props.showEditor();
-          this.props.getArticlesByTid(tid);
-        });
-    }
+    const { person, saveArticle, showEditor, getArticlesByTid } = this.props;
+
+    const tid = person.tid;
+    const title = this.titleInput.value;
+    const description = this.descriptionInput.value;
+    const content = marked(this.editArea.value);
+    const tags = this.tagInput.value;
+    const authorName = person.name;
+    const portrait = person.portrait;
+    // console.log(person);
+
+    saveArticle(title, description, content, tags, new Date(), tid, authorName, portrait)
+      .then(() => {
+        showEditor();
+        getArticlesByTid(tid);
+      });
   }
 
   render() {

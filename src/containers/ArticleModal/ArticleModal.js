@@ -125,11 +125,13 @@ export default class ArticleModal extends Component {
               >{article && formatTime(article.date)}</span>
             </Modal.Title>
             <div className={styles.author_wrapper}>
-              <div
+              {article && <div
+                style={{ background: `url(${article.portrait || '/StockSnap_01.jpg'})`,
+                backgroundSize: 'cover' }}
                 className={styles.author_portrait_wrapper}
                 onClick={this.toUserPage}
               >
-              </div>
+              </div>}
               <div
                 className={styles.author_info_wrapper}
                 onClick={this.toUserPage}

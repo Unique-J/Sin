@@ -57,6 +57,7 @@ export default class Reply extends Component {
   render() {
     const styles = require('./Reply.scss');
     const { comment, user } = this.props;
+    console.log(comment);
 
     return (
       <div className={styles.reply_container}>
@@ -74,6 +75,8 @@ export default class Reply extends Component {
               <div
                 className={styles.portrait}
                 onClick={() => this.toUserPage(comment.reviewerida)}
+                style={{ background: `url(${comment.reviewerportraita || 'StockSnap_01.jpg'})`,
+                backgroundSize: 'cover' }}
               ></div>
             </div>
             <div className={styles.reply_wrapper}>

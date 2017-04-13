@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 export default app => {
   app.post('/saveArticle', (req, res) => {
     // console.log(111);
-    const { title, description, content, tags, date, tid, authorName } = req.body;
+    const { title, description, content, tags, date, tid, authorName, portrait } = req.body;
     // res.send(200);
     // console.log(title + ' ' + description + ' ' + content + ' ' + tags + ' ' + date);
     const Article = mongoose.model('article');
@@ -14,7 +14,8 @@ export default app => {
       tags,
       date,
       authorid: tid,
-      authorName
+      authorName,
+      portrait,
     });
 
     article.save(err => {

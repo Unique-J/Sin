@@ -2,21 +2,34 @@ import React, { Component, PropTypes } from 'react';
 import { Comment } from '../index';
 import { FormGroup, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import * as actionCreators from '../../actions/commentList';
 
 @connect(
   state => ({
     user: state.async.login,
-  })
+    person: state.async.person,
+  }),
+  actionCreators
 )
 export default class CommentList extends Component {
   static propTypes = {
     user: PropTypes.any,
+    person: PropTypes.any,
     article: PropTypes.any,
     comments: PropTypes.any,
     getComments: PropTypes.func.isRequired,
     saveComment: PropTypes.func.isRequired,
     saveChildComment: PropTypes.func.isRequired,
+    getPerson: PropTypes.func.isRequired,
   };
+
+  componentDidMount() {
+    const { user, getPerson } = this.props;
+
+    if (user) {
+      getPerson(user.sid || user.tid);
+    }
+  }
 
   mapComments = (comments, article, getComments, saveComment, saveChildComment) => (
     comments.map((comment, index) => (
@@ -29,11 +42,11 @@ export default class CommentList extends Component {
   );
 
   saveComment = () => {
-    const { user, article, getComments, saveComment } = this.props;
+    const { person, article, getComments, saveComment } = this.props;
     const content = this.comment_input.value;
 
-    if (user) {
-      saveComment(article, content, user);
+    if (person) {
+      saveComment(article, content, person);
       getComments(article._id);
 
       this.comment_input.value = '';
@@ -42,7 +55,8 @@ export default class CommentList extends Component {
 
   render() {
     const styles = require('./CommentList.scss');
-    const { user, comments, article, getComments, saveComment, saveChildComment } = this.props;
+    const { user, person, comments, article,
+      getComments, saveComment, saveChildComment } = this.props;
     // console.log(123);
     // console.log(comments);
 
@@ -55,7 +69,11 @@ export default class CommentList extends Component {
           controlId="formBasicText"
           className={styles.input_group}
         >
-          <div className={styles.portrait_wrapper}></div>
+          {person && <div
+            className={styles.portrait_wrapper}
+            style={{ background: `url(${person.portrait || 'StockSnap_01.jpg'})`,
+            backgroundSize: 'cover' }}
+          />}
           <FormControl
             type="text"
             placeholder="请输入评论"

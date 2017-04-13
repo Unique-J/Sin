@@ -98,6 +98,7 @@ export default class ReplyCard extends Component {
     const styles = require('./ReplyCard.scss');
     const { reply, comments, saveChildComment, getComment } = this.props;
     const article = this.article;
+    // console.log(reply);
     // console.log(comments);
 
     return (
@@ -108,6 +109,8 @@ export default class ReplyCard extends Component {
               <div
                 className={styles.portrait}
                 onClick={() => this.toUserPage(reply.reviewerida)}
+                style={{ background: `url(${reply.reviewerportraita || 'StockSnap_01.jpg'})`,
+                backgroundSize: 'cover' }}
               ></div>
             </div>
             <div className={styles.reply}>

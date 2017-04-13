@@ -13,8 +13,10 @@ export default app => {
         const firstComment = {
           reviewerida: comment.reviewerida,
           reviewernamea: comment.reviewernamea,
+          reviewerportraita: comment.reviewerportraita,
           revieweridb: comment.revieweridb,
           reviewernameb: comment.reviewernameb,
+          reviewerportraitb: comment.reviewerportraitb,
           content: comment.content,
           time: comment.time
         };
@@ -26,8 +28,10 @@ export default app => {
             const childComment = {
               reviewerida: cmt.reviewerida,
               reviewernamea: cmt.reviewernamea,
+              reviewerportraita: cmt.reviewerportraita,
               revieweridb: cmt.revieweridb,
               reviewernameb: cmt.reviewernameb,
+              reviewerportraitb: cmt.reviewerportraitb,
               content: cmt.content,
               time: cmt.time
             };
