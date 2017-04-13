@@ -10,7 +10,8 @@ import * as actionCreators from '../../actions/replyCard';
   state => ({
     article: state.async.article,
     user: state.async.login,
-    comments: state.async.comment
+    comments: state.async.comment,
+    person: state.async.person,
   }),
   actionCreators
 )
@@ -19,10 +20,12 @@ export default class ReplyCard extends Component {
     article: PropTypes.any,
     user: PropTypes.any,
     comments: PropTypes.any,
+    person: PropTypes.any,
     reply: PropTypes.object.isRequired,
     getArticle: PropTypes.func.isRequired,
     saveChildComment: PropTypes.func.isRequired,
-    getComment: PropTypes.func.isRequired
+    getComment: PropTypes.func.isRequired,
+    getPerson: PropTypes.func.isRequired,
   };
 
   constructor() {
@@ -34,11 +37,15 @@ export default class ReplyCard extends Component {
   }
 
   componentDidMount() {
-    const { reply, getArticle } = this.props;
+    const { user, reply, getArticle, getPerson } = this.props;
 
     getArticle(reply.articleid).then(res => {
       this.article = res.payload.data;
     });
+
+    if (user) {
+      getPerson(user.sid || person.tid);
+    }
 
     // getComment(reply.commentid);
     // setInterval(() => getComment(reply.commentid), 5000);
@@ -58,12 +65,12 @@ export default class ReplyCard extends Component {
   }
 
   saveComment = () => {
-    const { user, reply, saveChildComment } = this.props;
+    const { person, reply, saveChildComment } = this.props;
     const content = this.replyInput.value;
     // console.log(reply);
 
-    if (user) {
-      saveChildComment(content, user, reply, reply.commentid);
+    if (person) {
+      saveChildComment(content, person, reply, reply.commentid);
       this.replyBlock();
       this.replyInput.value = '';
     }

@@ -8,12 +8,14 @@ import { browserHistory } from 'react-router';
   state => ({
     // article: state.async.article,
     user: state.async.login,
+    person: state.async.person,
     // comments: state.async.comment
   })
 )
 export default class Reply extends Component {
   static propTypes = {
     user: PropTypes.any,
+    person: PropTypes.any,
     comment: PropTypes.object.isRequired,
     reply: PropTypes.object.isRequired,
     saveChildComment: PropTypes.func.isRequired,
@@ -38,12 +40,12 @@ export default class Reply extends Component {
   }
 
   saveComment = () => {
-    const { user, reply, saveChildComment, getComment } = this.props;
+    const { person, reply, saveChildComment, getComment } = this.props;
     const content = this.replyInput.value;
     // console.log(reply);
 
-    if (user) {
-      saveChildComment(content, user, reply, reply.commentid);
+    if (person) {
+      saveChildComment(content, person, reply, reply.commentid);
       getComment(reply.commentid);
       this.showReplyBlock();
       this.replyInput.value = '';
@@ -57,7 +59,8 @@ export default class Reply extends Component {
   render() {
     const styles = require('./Reply.scss');
     const { comment, user } = this.props;
-    console.log(comment);
+    // console.log(comment);
+    // console.log(person);
 
     return (
       <div className={styles.reply_container}>
