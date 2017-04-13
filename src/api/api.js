@@ -12,7 +12,8 @@ const app = new Express();
 
 app.use(favicon(path.join(__dirname, '..', '..', 'static', 'favicon.ico')));
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '5mb' }));
+app.use(bodyParser.urlencoded({ limit: '5mb', extended: true, parameterLimit: 50000 }));
 
 app.use(session({
   secret: 'react project',

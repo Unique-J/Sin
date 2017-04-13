@@ -15,7 +15,7 @@ export default function createStudent() {
     validateCode: { type: String, default: '' },
     resetPwdCode: { type: String, default: '' },
     identity: { type: Number, default: 0 },
-    portrait: Buffer,
+    portrait: String,
     description: String,
     location: String,
     followers: [{ type: String }],

@@ -1,11 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import Cropper from 'react-cropper';
 import { variable } from './const';
-// import 'cropperjs/dist/cropper.css';
+import { connect } from 'react-redux';
+import * as actionCreators from '../../actions/myPortrait';
 
 const { src, style } = variable;
 
+@connect(
+  state => ({
+    user: state.async.login,
+    upload: state.async.upload,
+  }),
+  actionCreators
+)
 export default class MyPortrait extends Component {
+  static propTypes = {
+    upload: PropTypes.any,
+    uploadPortrait: PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -32,18 +45,40 @@ export default class MyPortrait extends Component {
   }
 
   cropImage = () => {
-    if (typeof this.cropper.getCroppedCanvas() === 'undefined') {
-      return;
-    }
-    this.setState({
-      cropResult: this.cropper.getCroppedCanvas().toDataURL(),
-    });
+    // const croppedCanvas = this.cropper.getCroppedCanvas();
+    // if (typeof croppedCanvas === 'undefined') {
+    //   return;
+    // }
+    // const cropResult = croppedCanvas.toDataURL();
+    // this.setState({
+    //   cropResult
+    // });
+    // console.log(this.cropper.getCroppedCanvas().toDataURL());
+    // const { uploadPortrait } = this.props;
+    // uploadPortrait(cropResult);
+
     // console.log(this.state.cropResult);
-    console.log(132);
+    // const { uploadPortrait } = this.props;
+    // this.cropper.getCroppedCanvas().toBlob(blob => {
+    //   const formData = new FormData();
+
+    //   formData.append('portrait', blob);
+    //   uploadPortrait(formData);
+    // });
+    // console.log(132);
   }
 
-  test = () => {
-    console.log(13);
+  uploadPortrait = () => {
+    const { user, uploadPortrait } = this.props;
+    const uid = user.sid || user.tid;
+
+    const croppedCanvas = this.cropper.getCroppedCanvas();
+    if (typeof croppedCanvas === 'undefined') {
+      return;
+    }
+
+    const cropResult = croppedCanvas.toDataURL();
+    uploadPortrait(uid, cropResult);
   }
 
   render() {
@@ -63,6 +98,7 @@ export default class MyPortrait extends Component {
               ref={cropper => { this.cropper = cropper; }}
             />
           </div>
+
           <div className={styles.preview_wrapper}>
             <div className={styles.tip}>
               您上传的图片将会自动生成三种尺寸的头像，请注意各尺寸头像是否清晰
@@ -86,25 +122,36 @@ export default class MyPortrait extends Component {
           </div>
         </div>
 
-        <div className={styles.btn_wrapper}>
+        <form className={styles.btn_wrapper} ref="uploadForm" encType="multipart/form-data">
           <span className={styles.select_btn_wrapper}>
             选择图片
             <input
               type="file"
+              name="cropPortrait"
               onChange={this.onChange}
               className={styles.select_btn}
             />
           </span>
           <span
             className={styles.select_btn_wrapper}
-            onClick={this.cropImage}
+            onClick={this.uploadPortrait}
           >
             保存
             <button
               className={styles.select_btn}
             />
           </span>
-        </div>
+        </form>
+
+        {/* {<div className="box" style={{ width: '50%', float: 'right' }}>
+          <h1>
+            <span>Crop</span>
+            <button onClick={this.cropImage} style={{ float: 'right' }}>
+              Crop Image
+            </button>
+          </h1>
+          <img style={{ width: '100%' }} src={this.state.cropResult} alt="cropped" />
+        </div>}*/}
       </div>
     );
   }

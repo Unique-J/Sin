@@ -15,7 +15,7 @@ export default function createTeacher() {
     resetPwdTime: Number,
     validateCode: { type: String, default: '' },
     resetPwdCode: { type: String, default: '' },
-    portrait: Buffer,
+    portrait: String,
     description: String,
     location: String,
     fans: [Number],

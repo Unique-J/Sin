@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Cropper from 'react-cropper';
-import 'cropperjs/dist/cropper.css';
+// import 'cropperjs/dist/cropper.css';
+import { customFetch } from '../../utils/utils';
 
 const src = 'child.jpg';
 
@@ -39,36 +40,38 @@ export default class MyPortrait extends Component {
     });
   }
 
+  // uploadImg = () => {
+  //   console.log(123);
+  //   const portrait = this.refs.uploadForm;
+  //   console.log(portrait);
+    // const option = {
+    //   method: 'post',
+    //   headers: {
+    //     // Accept: 'multipart/form-data',
+    //     // 'Content-Type': 'multipart/form-data'
+    //   },
+    //   body: portrait
+    // };
+    // customFetch('/uploadPortrait', option);
+  // }
+
   render() {
     const styles = require('./Cropper.scss');
 
     return (
       <div className={styles.my_portrait_container}>
-        <div className={styles.select_btn_wrapper}>
+        <form encType="multipart/form-data" ref="uploadForm">
           选择图片
           <input
             type="file"
             onChange={this.onChange}
             className={styles.select_btn}
           />
-        </div>
-        <div className={styles.crop_container}>
-          <div className={styles.crop_wrapper}>
-            <Cropper
-              style={{ height: 300, width: 400, background: 'red' }}
-              aspectRatio={1 / 1}
-              preview=".img-preview"
-              guides={false}
-              src={this.state.src}
-              ref={cropper => { this.cropper = cropper; }}
-            />
-          </div>
-          <div className={styles.preview_wrapper}>
-            <div className="box" style={{ background: 'red', flex: 1 }}>
-              <div className="img-preview" style={{ height: 300, overflow: 'hidden' }} />
-            </div>
-          </div>
-        </div>
+        </form>
+        <button
+          className={styles.select_btn}
+          onClick={this.uploadImg}
+        >上传</button >
       </div>
     );
   }

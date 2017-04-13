@@ -38,6 +38,7 @@ import sendResetPwdEmail from './sendResetPwdEmail';
 import validateResetPwdCode from './validateResetPwdCode';
 import updateInfo from './updateInfo';
 import validatePwd from './validatePwd';
+import uploadPortrait from './uploadPortrait';
 
 export default app => {
   loadAuth(app);
@@ -91,4 +92,5 @@ export default app => {
   updatePassword(app);
   updateInfo(app);
   validatePwd(app);
+  uploadPortrait(app);
 };

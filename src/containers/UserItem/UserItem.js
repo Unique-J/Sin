@@ -55,6 +55,7 @@ export default class UserItem extends Component {
   render() {
     const styles = require('./UserItem.scss');
     const { user } = this.props;
+    // if (user.tid === '110001') console.log(user.portrait);
 
     return (
       <div className={styles.item_container}>
@@ -62,7 +63,12 @@ export default class UserItem extends Component {
           className={styles.portrait_wrapper}
           onClick={this.toUserPage}
         >
-          <div className={styles.portrait}></div>
+          <div
+            className={styles.portrait}
+            style={{ background: `url(${user.portrait || '/StockSnap_01.jpg'})`,
+            backgroundSize: 'cover' }}
+          >
+          </div>
         </div>
         <div
           className={styles.user_info}

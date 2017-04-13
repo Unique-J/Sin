@@ -10,6 +10,7 @@ import { match, RouterContext } from 'react-router';
 import configureStore from './utils/configureStore';
 import getRoutes from './routes';
 import Html from './utils/Html';
+// import bodyParser from 'body-parser';
 import config from './config';
 
 const app = new Express();
@@ -26,6 +27,9 @@ app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use('/api', (req, res) => {
   proxy.web(req, res, { target: targetUrl });
 });
+
+// app.use(bodyParser.json({ limit: '50mb' }));
+// app.use(bodyParser.urlencoded({ limit: '50mb', extended: true, parameterLimit: 50000 }));
 
 app.use((req, res) => {
   global.__COOKIE__ = req.get('cookie');
