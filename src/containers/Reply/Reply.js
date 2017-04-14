@@ -78,7 +78,7 @@ export default class Reply extends Component {
               <div
                 className={styles.portrait}
                 onClick={() => this.toUserPage(comment.reviewerida)}
-                style={{ background: `url(${comment.reviewerportraita || 'StockSnap_01.jpg'})`,
+                style={{ backgroundImage: `url(${comment.reviewerportraita || 'StockSnap_01.jpg'})`,
                 backgroundSize: 'cover' }}
               ></div>
             </div>

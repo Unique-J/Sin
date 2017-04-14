@@ -48,7 +48,7 @@ export default class Headbar extends Component {
     if (user) {
       logout().then(() => {
         // const socket = io.connect('http://localhost:3005');
-        console.log(user);
+        // console.log(user);
         // socket.emit('disconnect');
         browserHistory.push('/');
       });

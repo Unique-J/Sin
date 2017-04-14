@@ -66,7 +66,7 @@ export default class ForgetPassword extends Component {
     const styles = require('./ForgetPassword.scss');
     const { email } = this.props;
     const { uidEmpty, emailEmpty, emailValidate } = this.state;
-    console.log(email);
+    // console.log(email);
 
     return (
       <div className={styles.forget_password_container}>

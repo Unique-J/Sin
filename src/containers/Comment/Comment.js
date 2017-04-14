@@ -100,7 +100,7 @@ export default class Comment extends Component {
           {comment && <div
             className={styles.portrait}
             onClick={comment ? () => this.toUserPage(comment.reviewerida) : ''}
-            style={{ background: `url(${comment.reviewerportraita || 'StockSnap_01.jpg'})`,
+            style={{ backgroundImage: `url(${comment.reviewerportraita || 'StockSnap_01.jpg'})`,
             backgroundSize: 'cover' }}
           />}
         </div>

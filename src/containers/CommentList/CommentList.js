@@ -71,7 +71,7 @@ export default class CommentList extends Component {
         >
           {person && <div
             className={styles.portrait_wrapper}
-            style={{ background: `url(${person.portrait || 'StockSnap_01.jpg'})`,
+            style={{ backgroundImage: `url(${person.portrait || 'StockSnap_01.jpg'})`,
             backgroundSize: 'cover' }}
           />}
           <FormControl

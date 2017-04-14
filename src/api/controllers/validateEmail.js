@@ -5,7 +5,7 @@ export default app => {
     // res.send(req.query.validate);
     const userid = req.query.userid;
     const validateCode = req.query.validateCode;
-    console.log(userid);
+    // console.log(userid);
     const email = req.query.email + '.com';
     if (!userid || !validateCode || !email) {
       res.send(404);

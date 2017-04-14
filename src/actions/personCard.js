@@ -1,6 +1,15 @@
 import { ASYNC } from 'redux-amrc';
 import { customFetch } from '../utils/utils';
 
+export const USER_INFO_PANNEL_TYPE = 'USER_INFO_PANNEL_TYPE';
+
+export function changePannelType(type) {
+  return {
+    type: USER_INFO_PANNEL_TYPE,
+    userInfoPannelType: type
+  };
+}
+
 export function followTeacher(tid, sid) {
   const option = {
     method: 'post',

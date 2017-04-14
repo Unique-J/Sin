@@ -24,7 +24,7 @@ export default class SettingNav extends Component {
   constructor() {
     super();
     this.state = {
-      activeTab: 2,
+      activeTab: 1,
     };
   }
 

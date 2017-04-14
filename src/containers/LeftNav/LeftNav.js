@@ -23,12 +23,15 @@ const navChoiceActive = {
 )
 export default class LeftNav extends Component {
   static propTypes = {
+    user: PropTypes.any,
     userInfoPannelType: PropTypes.number.isRequired,
     changePannelType: PropTypes.func.isRequired
   };
+
   render() {
     const styles = require('./LeftNav.scss');
-    const { userInfoPannelType, changePannelType } = this.props;
+    const { user, userInfoPannelType, changePannelType } = this.props;
+    // console.log(user);
 
     return (
       <div className={styles.left_nav_container}>
@@ -41,22 +44,22 @@ export default class LeftNav extends Component {
             <div className={styles.choice}>私信</div>
             <div className={styles.vice_choice}>查看私信、发起私信</div>
           </li>
-          <li
+          {user && user.sid && <li
             className={styles.nav_choice_wrapper}
             onClick={() => changePannelType(PANEL_TYPE.COLLECTION_PANEL)}
             style={userInfoPannelType === 0 ? navChoiceActive : {}}
           >
             <div className={styles.choice}>收藏</div>
             <div className={styles.vice_choice}>查看收藏的文章</div>
-          </li>
-          <li
+          </li>}
+          {user && user.sid && <li
             className={styles.nav_choice_wrapper}
             onClick={() => changePannelType(PANEL_TYPE.FOLLOWERS_PANEL)}
             style={userInfoPannelType === 1 ? navChoiceActive : {}}
           >
             <div className={styles.choice}>关注</div>
             <div className={styles.vice_choice}>查看关注的老师、学生</div>
-          </li>
+          </li>}
           <li
             className={styles.last_nav_choice_wrapper}
             onClick={() => changePannelType(PANEL_TYPE.SETTING_PANEL)}

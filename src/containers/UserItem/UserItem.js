@@ -65,7 +65,7 @@ export default class UserItem extends Component {
         >
           <div
             className={styles.portrait}
-            style={{ background: `url(${user.portrait || '/StockSnap_01.jpg'})`,
+            style={{ backgroundImage: `url(${user.portrait || '/StockSnap_01.jpg'})`,
             backgroundSize: 'cover' }}
           >
           </div>

@@ -8,20 +8,25 @@ export default class ContactUser extends Component {
 
   toChatPage = () => {
     const { follower } = this.props;
-    console.log(follower.sid || follower.tid);
+    // console.log(follower.sid || follower.tid);
     browserHistory.push(`/userinfo?uid=${follower.sid || follower.tid}`);
   }
 
   render() {
     const styles = require('./ContactUser.scss');
     const { follower } = this.props;
+    // console.log(follower);
 
     return (
       <div
         className={styles.contact_user_container}
         onClick={this.toChatPage}
       >
-        <div className={styles.portrait}></div>
+        <div
+          className={styles.portrait}
+          style={{ backgroundImage: `url(${follower.portrait || 'StockSnap_01.jpg'}`,
+          backgroundSize: 'cover' }}
+        />
         <div className={styles.user_wrapper}>
           <div className={styles.name}>{follower.name}</div>
           <div className={styles.description}>{follower.description}</div>

@@ -20,7 +20,7 @@ export function searchArticles(searchCondition) {
       searchCondition
     })
   };
-  console.log(searchCondition);
+  // console.log(searchCondition);
   return {
     [ASYNC]: {
       key: 'searchArticles',

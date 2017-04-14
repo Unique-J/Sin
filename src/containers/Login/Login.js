@@ -37,7 +37,7 @@ export default class Login extends Component {
 
   judgeIdValid = () => {
     const userid = this.useridInput.value;
-    console.log(userid);
+    // console.log(userid);
     this.setState({ init: false });
     if (!/^(\d){6}$/.test(userid) && !/^(\d){11}$/.test(userid)) {
       this.setState({ idValidFlag: false });

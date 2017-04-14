@@ -126,7 +126,7 @@ export default class ArticleModal extends Component {
             </Modal.Title>
             <div className={styles.author_wrapper}>
               {article && <div
-                style={{ background: `url(${article.portrait || '/StockSnap_01.jpg'})`,
+                style={{ backgroundImage: `url(${article.portrait || '/StockSnap_01.jpg'})`,
                 backgroundSize: 'cover' }}
                 className={styles.author_portrait_wrapper}
                 onClick={this.toUserPage}

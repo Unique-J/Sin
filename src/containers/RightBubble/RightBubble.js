@@ -1,14 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import { formatTime } from '../../utils/utils';
+import { connect } from 'react-redux';
 
+@connect(
+  state => ({
+    person: state.async.person,
+  })
+)
 export default class RightBubble extends Component {
   static propTypes = {
-    message: PropTypes.object.isRequired
+    message: PropTypes.object.isRequired,
+    person: PropTypes.any,
   };
 
   render() {
     const styles = require('./RightBubble.scss');
-    const { message } = this.props;
+    const { message, person } = this.props;
+    // console.log(person);
 
     return (
       <div>
@@ -30,7 +38,11 @@ export default class RightBubble extends Component {
             {message.content}
           </div>
           <div className={styles.triangle}></div>
-          <div className={styles.portrait}></div>
+          {person && <div
+            className={styles.portrait}
+            style={{ backgroundImage: `url(${person.portrait || 'StockSnap_01.jpg'}`,
+            backgroundSize: 'cover' }}
+          />}
         </div>
       </div>
     );

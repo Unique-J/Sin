@@ -27,7 +27,7 @@ const saveMessageBox = (User, msg) => {
     if (error) {
       console.error(error);
     } else {
-      console.log(user);
+      // console.log(user);
       if (user) {
         User.update(updateCondition, updateSet, err1 => {
           if (err1) {
@@ -52,6 +52,8 @@ const saveMessageBox = (User, msg) => {
 export default msg => {
   const Teacher = mongoose.model('teacher');
   const Student = mongoose.model('student');
+  // console.log('msg:');
+  // console.log(msg);
 
   // const Sender = msg.senderid.length === 6 ? Teacher : Student;
   const Receiver = msg.receiverid.length === 6 ? Teacher : Student;
@@ -60,6 +62,7 @@ export default msg => {
   const mid = createMessageId(msg.senderid, msg.receiverid);
   // console.log(mid);
   const update = { $push: { messages: msg } };
+  // console.log(update);
 
   Message.update({ mid }, update, { upsert: true }, err => {
     if (err) {

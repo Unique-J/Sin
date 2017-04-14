@@ -149,7 +149,7 @@ export default class Article extends Component {
           <div
             className={styles.portrait}
             onClick={() => this.toUserPage(article.authorid)}
-            style={{ background: `url(${article.portrait || '/StockSnap_01.jpg'})`,
+            style={{ backgroundImage: `url(${article.portrait || '/StockSnap_01.jpg'})`,
             backgroundSize: 'cover' }}
           ></div>
           <a

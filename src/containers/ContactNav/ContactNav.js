@@ -40,15 +40,19 @@ export default class ContactNav extends Component {
   }
 
   componentDidMount() {
-    if (this.searchInput) {
-      this.searchInput.onkeypress = e => {
-        if (e.keyCode === 13) {
-          this.searchUsers();
-          // this.chooseTeacher();
-        }
-      };
+    const { user } = this.props;
+    if (user && user.sid) {
+      if (this.searchInput) {
+        this.searchInput.onkeypress = e => {
+          if (e.keyCode === 13) {
+            this.searchUsers();
+            // this.chooseTeacher();
+          }
+        };
+      }
+
+      this.chooseTeacher();
     }
-    this.chooseTeacher();
   }
 
   onFocus = () => {

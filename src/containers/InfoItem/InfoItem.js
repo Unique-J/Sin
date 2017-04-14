@@ -160,7 +160,7 @@ export default class InfoItem extends Component {
     // console.log(person[title]);
     // console.log(oldPwdCorrect);
     // const reloginLink = <a href="/" className={styles.relogin_link} />;
-    console.log(pwd);
+    // console.log(pwd);
 
     return (
       <div className={styles.info_item_container}>

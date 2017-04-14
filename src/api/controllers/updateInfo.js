@@ -24,7 +24,7 @@ export default app => {
           console.info('Update Infomation Failed.');
           return;
         }
-        console.log(result);
+        // console.log(result);
         res.send({ success: true });
         console.info('Update Infomation Successfully.');
       }

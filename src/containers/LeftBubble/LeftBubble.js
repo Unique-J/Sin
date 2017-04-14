@@ -9,6 +9,7 @@ export default class LeftBubble extends Component {
   render() {
     const styles = require('./LeftBubble.scss');
     const { message } = this.props;
+    // console.log(message);
 
     return (
       <div>
@@ -25,7 +26,11 @@ export default class LeftBubble extends Component {
           </span>
         </div>
         <div className={styles.bubble_container}>
-          <div className={styles.portrait}></div>
+          <div
+            className={styles.portrait}
+            style={{ backgroundImage: `url(${message.senderportrait || 'StockSnap_01.jpg'}`,
+            backgroundSize: 'cover' }}
+          />
           <div className={styles.triangle}></div>
           <div className={styles.bubble_wrapper}>
             {message.content}

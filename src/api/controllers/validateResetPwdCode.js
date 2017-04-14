@@ -6,7 +6,7 @@ export default app => {
     const resetPwdCode = req.query.resetPwdCode;
     const email = req.query.email + '.com';
     // console.log(123);
-    console.log(uid + ' ' + email);
+    // console.log(uid + ' ' + email);
     if (!uid || !email || !resetPwdCode) {
       res.send({});
       return;
@@ -20,7 +20,7 @@ export default app => {
       if (err) {
         console.error(err);
       } else {
-        console.log(user);
+        // console.log(user);
         res.send(user);
       }
     });

@@ -34,7 +34,7 @@ export function getPerson(uid) {
   };
   return {
     [ASYNC]: {
-      key: 'person',
+      key: 'chatPerson',
       promise: () => customFetch('/getPerson', option)
     }
   };

@@ -12,6 +12,7 @@ import { createMessageId } from '../../utils/utils';
   state => ({
     user: state.async.login,
     historyMessages: state.async.messages,
+    chatPerson: state.async.chatPerson,
     person: state.async.person,
   }),
   actionCreators
@@ -20,6 +21,7 @@ class MyChatPannel extends Component {
   static propTypes = {
     user: PropTypes.any,
     historyMessages: PropTypes.any,
+    chatPerson: PropTypes.any,
     person: PropTypes.any,
     uid: PropTypes.string.isRequired,
     getMessages: PropTypes.func.isRequired,
@@ -68,12 +70,14 @@ class MyChatPannel extends Component {
   }
 
   sendMessage = () => {
-    const { user, uid } = this.props;
+    const { person, user, uid } = this.props;
     const msgContent = this.messageInput.value;
     // const receiverid = this.props
-    if (msgContent) {
+    if (msgContent && person) {
       const message = {
         senderid: user.sid || user.tid,
+        senderportrait: person.portrait,
+        sendername: person.name,
         receiverid: uid,
         content: this.messageInput.value,
         time: new Date()
@@ -106,7 +110,7 @@ class MyChatPannel extends Component {
 
   render() {
     const styles = require('./ChatPannel.scss');
-    const { person } = this.props;
+    const { chatPerson } = this.props;
     const { messages, historyMessages } = this.state;
     // const socket = io.connect('http://localhost:3005');
     // console.log(messages);
@@ -119,7 +123,7 @@ class MyChatPannel extends Component {
             onClick={this.goBack}
           />
           <span style={{ fontSize: '13px' }}>与&nbsp;</span>
-          <span style={{ fontWeight: 'bold' }}>{person && person.name}</span>
+          <span style={{ fontWeight: 'bold' }}>{chatPerson && chatPerson.name}</span>
           <span style={{ fontSize: '13px' }}>&nbsp;对话中</span>
         </div>
 

@@ -3,7 +3,7 @@ import Helmet from 'react-helmet';
 
 function Counter(props) {
   const { counter, increment, asyncPost } = props;
-  console.log(counter.counter);
+  // console.log(counter.counter);
   return (
     <div>
       <Helmet title="TEST" />

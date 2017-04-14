@@ -37,10 +37,14 @@ export default class Message extends Component {
         className={styles.message_container}
         onClick={() => this.toChatPannel(message)}
       >
-        <div className={styles.portrait}></div>
+        <div
+          className={styles.portrait}
+          style={{ backgroundImage: `url(${message.senderportrait || 'StockSnap_01.jpg'})`,
+          backgroundSize: 'cover' }}
+        />
         <div className={styles.right_wrapper}>
           <div className={styles.top_wrapper}>
-            <span className={styles.name}>Name</span>
+            <span className={styles.name}>{message.sendername}</span>
             <span className={styles.date}>
               {`${getDay(message.time)} ${getTime(message.time)}`}
             </span>

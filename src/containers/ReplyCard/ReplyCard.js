@@ -116,7 +116,7 @@ export default class ReplyCard extends Component {
               <div
                 className={styles.portrait}
                 onClick={() => this.toUserPage(reply.reviewerida)}
-                style={{ background: `url(${reply.reviewerportraita || 'StockSnap_01.jpg'})`,
+                style={{ backgroundImage: `url(${reply.reviewerportraita || 'StockSnap_01.jpg'})`,
                 backgroundSize: 'cover' }}
               ></div>
             </div>

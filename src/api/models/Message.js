@@ -4,6 +4,8 @@ export default function createMessage() {
   const Schema = mongoose.Schema;
   const messageSchema = Schema({  // eslint-disable-line
     senderid: String,
+    sendername: String,
+    senderportrait: String,
     // reviewernamea: String,
     receiverid: String,
     // reviewernameb: String,

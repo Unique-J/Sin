@@ -7,6 +7,7 @@ $font_color: rgba(255, 255, 255, 0.6);
   border-bottom: 1px solid $line_color;
   padding: 8px 10px;
   display: flex;
+  // background-size: cover;
   &:hover {
     background: $line_color;
     border-left: 2px solid $font_color;
@@ -15,8 +16,8 @@ $font_color: rgba(255, 255, 255, 0.6);
 .portrait {
   width: 37px;
   height: 37px;
-  background: url('/StockSnap_01.jpg');
-  background-size: cover;
+  // background: url('/StockSnap_01.jpg');
+  // background-size: cover;
 }
 .user_wrapper {
   margin-left: 15px;

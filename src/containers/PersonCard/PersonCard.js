@@ -22,6 +22,7 @@ class MyPersonCard extends Component {
     getStudent: PropTypes.func.isRequired,
     followTeacher: PropTypes.func.isRequired,
     cancelFollowTeacher: PropTypes.func.isRequired,
+    changePannelType: PropTypes.func.isRequired,
   };
 
   componentDidMount() {
@@ -71,7 +72,10 @@ class MyPersonCard extends Component {
   }
 
   sendMessage = personid => {
-    console.log(personid);
+    // console.log(personid);
+    const { changePannelType } = this.props;
+
+    changePannelType(2);
     browserHistory.push(`/userinfo?uid=${personid}`);
   }
 
@@ -92,9 +96,8 @@ class MyPersonCard extends Component {
           onClick={() => this.toUserPage(personid)}
         >
           <div
+            style={{ backgroundImage: `url(${person.portrait || 'StockSnap_01.jpg'})` }}
             className={styles.portrait_wrapper}
-            style={{ background: `url(${person.portrait || 'StockSnap_01.jpg'})`,
-            backgroundSize: 'cover' }}
           />
           <div className={styles.name_sex_wrapper}>
             {person && person.name}&nbsp;

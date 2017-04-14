@@ -31,8 +31,8 @@ function updateCommentbox(comment) {
 export default app => {
   app.post('/saveComment', (req, res) => {
     const { article, content, user, comment } = req.body;
-    console.log('API');
-    console.log(comment);
+    // console.log('API');
+    // console.log(comment);
     const Comment = mongoose.model('comment');
     const commentObj = {
       _id: mongoose.Types.ObjectId(), // eslint-disable-line
@@ -51,8 +51,8 @@ export default app => {
     if (!comment) {
       commentObj.commentid = commentObj._id;
       const commentInstance = new Comment(commentObj);
-      console.log('commentobj');
-      console.log(commentObj);
+      // console.log('commentobj');
+      // console.log(commentObj);
 
       commentInstance.save(err => {
         if (err) {
@@ -63,7 +63,7 @@ export default app => {
         }
       });
     } else {
-      console.log(commentObj);
+      // console.log(commentObj);
       commentObj.commentid = comment._id;
       const update = { $push: { comments: commentObj } };
       Comment.update({ _id: comment._id }, update, err => {

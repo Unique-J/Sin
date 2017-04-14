@@ -50,7 +50,7 @@ export default app => {
     const update = { $push: { comments: newChildComment } };
     // console.log(123);
     // console.log(newChildComment);
-    console.log(commentid);
+    // console.log(commentid);
 
     Comment.update({ _id: commentid }, update, err => {
       if (err) {
