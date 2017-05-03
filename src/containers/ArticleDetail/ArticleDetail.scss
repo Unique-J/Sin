@@ -1,3 +1,6 @@
+$font_color: rgba(255, 255, 255, 0.6);
+$line_color: rgba(255, 255, 255, 0.07);
+
 .article_detail_container {
   background: #36455D;
   min-height: 100vh;
@@ -20,4 +23,25 @@
   flex: 1;
   margin-left: 50px;
   background: #36455D;
+}
+.tips {
+  // background: red;
+  width: 320px;
+  border-radius: 2px;
+  height: 140px;
+  margin-top: 10px;
+  background: $line_color;
+  color: $font_color;
+}
+.tip_header {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 15px;
+  border-bottom: 1px solid $font_color;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.tip {
+  padding: 5px 10px;
+  font-size: 12px;
 }

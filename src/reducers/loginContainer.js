@@ -1,4 +1,5 @@
-import { ADD_ACTIVE_INDEX, SUBTRACT_ACTIVE_INDEX, CHANGE_SCROLL_STATE } from '../actions/loginContainer';
+import { ADD_ACTIVE_INDEX,
+  SUBTRACT_ACTIVE_INDEX, CHANGE_SCROLL_STATE } from '../actions/loginContainer';
 
 const initState = {
   activeIndex: 0,

@@ -110,3 +110,14 @@ $pink: #FFC09F;
 .modal_container {
   width: 40%;
 }
+.close_btn {
+  height: 24px;
+  line-height: 10px;
+  font-size: 12px;
+  border-radius: 2px;
+  color: #CCC;
+  &:hover {
+    color: #CCC;
+    background: #FFF;
+  }
+}

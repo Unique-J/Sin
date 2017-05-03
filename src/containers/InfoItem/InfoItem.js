@@ -85,6 +85,7 @@ export default class InfoItem extends Component {
       case 'EDITOR': this.setState({ showEidtor: !this.state.showEidtor }); return;
       case 'PWD': this.setState({
         showPwd: !this.state.showPwd,
+        oldPwdEmpty: false,
         oldPwdCorrect: false,
         oldSuccess: false,
         samePwd: true,
@@ -125,6 +126,9 @@ export default class InfoItem extends Component {
     if (oldPwd) {
       validatePwd(uid, oldPwd);
       this.refs.oldPwdInput.value = '';
+    } else {
+      this.setState({ oldPwdEmpty: true });
+      setTimeout(() => this.setState({ oldPwdEmpty: false }), 2000);
     }
   }
 
@@ -156,7 +160,7 @@ export default class InfoItem extends Component {
     const styles = require('./InfoItem.scss');
     const { title, content, info, person, pwd } = this.props;
     const { showEidtor, showPwd, oldPwdCorrect,
-      success, oldSuccess, samePwd, emptyPwd } = this.state;
+      success, oldSuccess, samePwd, emptyPwd, oldPwdEmpty } = this.state;
     // console.log(person[title]);
     // console.log(oldPwdCorrect);
     // const reloginLink = <a href="/" className={styles.relogin_link} />;
@@ -196,6 +200,7 @@ export default class InfoItem extends Component {
                 type="password" ref="oldPwdInput"
               />
               {oldSuccess && <span className={styles.tip}>请输入正确的密码</span>}
+              {oldPwdEmpty && <span className={styles.tip}>密码不能为空</span>}
             </div>
             <button className={styles.save_btn} onClick={this.validatePwd}>下一步</button>
           </div>}

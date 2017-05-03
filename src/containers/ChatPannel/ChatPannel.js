@@ -54,11 +54,9 @@ class MyChatPannel extends Component {
     this.socket = io.connect(`http://${config.chatHost}:${config.chatPort}`);
     this.socket.emit('login', user);
     this.socket.on(userid, message => {
-      // console.log(message);
       if (message.senderid === uid) {
         this.setState({ messages: [...this.state.messages, message] });
       }
-      // console.log(message);
     });
   }
 

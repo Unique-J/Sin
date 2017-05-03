@@ -17,7 +17,11 @@
     "build-client": "webpack --config webpack/prod.config.js",
     "build": "npm run clean && npm run build-server && npm run build-client",
     "prod": "npm run build && concurrently -k \"npm run start-api-prod\" \"npm run start-chat-prod\" \"npm run start-prod\"",
-    "dev": "concurrently -k \"npm run watch-client\" \"npm run start-api-dev\" \"npm run start-chat-dev\" \"npm run start-dev\""
+    "dev": "concurrently -k \"npm run watch-client\" \"npm run start-api-dev\" \"npm run start-chat-dev\" \"npm run start-dev\"",
+    "lint": "eslint src",
+    "pretest": "webpack --config webpack/dev.config.js",
+    "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./test/setup.js",
+    "test:watch": "npm test -- --watch"
   },
   "dependencies": {
     "body-parser": "^1.17.1",

@@ -96,7 +96,7 @@ class Register extends Component {
           <Thumbnail className={styles.register_box}>
             <span className={styles.register_box_top}></span>
             <div className={styles.sin_logo}>
-              <div className={styles.logo_img}></div>
+              <div className={styles.logo_img}>S</div>
             </div>
             <div>
               <div className={styles.register_text}>注 册</div>

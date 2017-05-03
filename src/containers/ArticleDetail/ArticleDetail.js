@@ -67,7 +67,13 @@ export default class ArticleDetail extends Component {
             }
           </div>
           <div className={styles.follow_list_wrapper}>
-            {teachers && <FollowList users={teachers}/>}
+            {person && person.sid && teachers && <FollowList users={teachers}/>}
+            {person && person.tid && <div className={styles.tips}>
+              <div className={styles.tip_header}>注意事项</div>
+              <div className={styles.tip}>1. 教师无法评论自己的文章</div>
+              <div className={styles.tip}>2. 教师可以对学生的评论进行回复</div>
+              <div className={styles.tip}>3. 教师无法回复自己的评论</div>
+            </div>}
           </div>
         </div>
       </div>

@@ -22,7 +22,6 @@ export default store => {
   const authPromise = () => store.dispatch(loadAuthIfNeeded());
   const requireLogin = (nextState, replace, cb) => {
     const user = store.getState().async.login;
-    // console.log(user);
     if (!user) {
       replace('/');
     }

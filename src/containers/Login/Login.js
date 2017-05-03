@@ -9,7 +9,8 @@ import * as loginActions from '../../actions/login';
 @connect(
   state => ({
     user: state.async.verifyUser,
-    loadState: state.async.loadState && state.async.loadState.verifyUser
+    loadState: state.async.loadState && state.async.loadState.verifyUser,
+    person: state.async.login,
   }),
   loginActions
 )
@@ -17,6 +18,8 @@ export default class Login extends Component {
   static propTypes = {
     user: PropTypes.any,
     loadState: PropTypes.any,
+    person: PropTypes.any,
+    location: PropTypes.object.isRequired,
     verifyUser: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired
   };
@@ -26,13 +29,23 @@ export default class Login extends Component {
     this.state = {
       idValidFlag: false,
       nextStepClicked: false,
-      init: true
+      init: true,
+      pwdFlag: false,
     };
   }
 
   componentDidMount() {
     const useridInput = this.useridInput;
     useridInput.onchange = this.judgeIdValid;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps.person);
+    if (nextProps.person && nextProps.person.name) {
+      // this.useridInput.value = '';
+      // this.pwdInput.value = '';
+      browserHistory.push('/dashboard');
+    }
   }
 
   judgeIdValid = () => {
@@ -53,17 +66,27 @@ export default class Login extends Component {
 
     const userid = this.useridInput.value;
     const pwd = this.pwdInput.value;
-    const { user, login } = this.props;
+    const { location, login } = this.props;
 
+    // login(userid, pwd).then(() => {
+    //   // const socket = io.connect('http://localhost:3005');
+    //   // socket.emit('login', user);
+    //   // console.log(this.props.person);
+    //   if (person) {
+    //     this.useridInput.value = '';
+    //     this.pwdInput.value = '';
+    //     browserHistory.push('/dashboard');
+    //   } else {
+    //     this.setState({ pwdFlag: true });
+    //   }
+    //   // console.log(user);
+    // });
     login(userid, pwd).then(() => {
-      // const socket = io.connect('http://localhost:3005');
-      // socket.emit('login', user);
-
-      browserHistory.push('/dashboard');
-      console.log(user);
+      // console.log(this.props.location);
+      if (location.pathname === '/login') {
+        this.setState({ pwdFlag: true });
+      }
     });
-    this.useridInput.value = '';
-    this.pwdInput.value = '';
   };
 
   nextStep = (e) => {
@@ -73,8 +96,9 @@ export default class Login extends Component {
 
   render() {
     const styles = require('./Login.scss');
-    const { user, loadState } = this.props;
-    const { init, idValidFlag, nextStepClicked } = this.state;
+    const { user, loadState, } = this.props;
+    const { init, idValidFlag, nextStepClicked, pwdFlag } = this.state;
+    // console.log(person);
 
     return (
       <div className={styles.container}>
@@ -88,7 +112,7 @@ export default class Login extends Component {
           <div className={styles.form_container}>
             <form className={styles.form}>
               <div>
-                <h1 className={styles.title}>S . I . N</h1>
+                <h1 className={styles.title}>S I N</h1>
               </div>
               <FormGroup bsSize="large" className={styles.form_group}>
                 <FormControl
@@ -136,6 +160,11 @@ export default class Login extends Component {
                     inputRef={ref => { this.pwdInput = ref; }}
                   />
                 }
+                {pwdFlag && <div className={styles.prompt_container}>
+                  <span className={styles.prompt_text}>
+                    密码错误
+                  </span>
+                </div>}
               </FormGroup>
               <button
                 className={`${styles.btn_login} btn`}

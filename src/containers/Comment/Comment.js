@@ -159,6 +159,7 @@ export default class Comment extends Component {
           bsSize="large" aria-labelledby="contained-modal-title-lg"
           show={this.state.commentModalFlag}
           dialogClassName={styles.modal_container}
+          onHide={this.showAllComments}
         >
           <Modal.Header closeButton>
           </Modal.Header>
@@ -167,7 +168,7 @@ export default class Comment extends Component {
             this.mapAllChildComment(comment, saveChildComment, getComments)}
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.showAllComments}>Close</Button>
+            <Button onClick={this.showAllComments} className={styles.close_btn}>关&nbsp;闭</Button>
           </Modal.Footer>
         </Modal>
       </div>

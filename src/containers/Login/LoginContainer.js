@@ -18,6 +18,7 @@ class LoginContainer extends Component {
   static propTypes = {
     user: PropTypes.any,
     loginContainer: PropTypes.any,
+    location: PropTypes.object.isRequired,
     addActiveIndex: PropTypes.func.isRequired,
     subtractActiveIndex: PropTypes.func.isRequired,
     changeScrollState: PropTypes.func.isRequired,
@@ -63,7 +64,9 @@ class LoginContainer extends Component {
 
   render() {
     const styles = require('./LoginContainer.scss');
-    const { user, loginContainer } = this.props;
+    const { user, loginContainer, location } = this.props;
+    // console.log(location);
+
     return (
       <div>
         <Helmet {...config.app.head} />
@@ -76,7 +79,7 @@ class LoginContainer extends Component {
             activeIndex={loginContainer.activeIndex}
           >
             <Carousel.Item>
-              <Login />
+              <Login location={location} />
             </Carousel.Item>
             <Carousel.Item>
             </Carousel.Item>

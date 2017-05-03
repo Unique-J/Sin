@@ -165,7 +165,11 @@ export default class ContactNav extends Component {
           </div>
         </div>}
 
-        {user && user.tid && <div>Teacher</div>}
+        {user && user.tid && <div className={styles.tips}>
+          <div className={styles.tip_head}>注意事项</div>
+          <div className={styles.tip}>1. 教师没有权限主动向学生发起私信，请等待学生发起私信后回复</div>
+          <div className={styles.tip}>2. 您可以通过点击左侧私信列表中的消息回复学生</div>
+        </div>}
       </div>
     );
   }

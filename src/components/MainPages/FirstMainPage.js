@@ -17,7 +17,7 @@ function FirstMainPage() {
         <div className={styles.form_container}>
           <div className={styles.form}>
             <div>
-              <h1 className={styles.title}>S . I . N</h1>
+              <h1 className={styles.title}>S  I  N</h1>
               <h2 className={styles.subtitle}>为你的所爱而来。</h2>
               <h2 className={styles.subtitle}>为你的发现停留。</h2>
             </div>

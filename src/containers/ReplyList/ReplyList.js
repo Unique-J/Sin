@@ -69,7 +69,13 @@ export default class ReplyList extends Component {
           <div className={styles.reply_list}>
             {commentbox && this.mapReplyCard(commentbox, getArticle, saveChildComment)}
           </div>
-          <div className={styles.right_module}>13</div>
+          <div className={styles.right_module}>
+            <div className={styles.tip_header}>评论使用帮助</div>
+            <div className={styles.tip}>1. 点击「查看评论」可查看相关评论</div>
+            <div className={styles.tip}>2. 点击「回复」可回复相关评论</div>
+            <div className={styles.tip}>3. 点击「用户头像」或「用户名字」可进入用户主页</div>
+            <div className={styles.tip}>4. 点击「文章」或「评论」可查看文章及其评论</div>
+          </div>
         </div>
       </div>
     );

@@ -32,7 +32,6 @@ io.on('connection', socketPara => {
     if (message.receiverid in userSockets) {
       userSockets[message.receiverid].emit(message.receiverid, message);
     }
-    // console.log(message);
 
     saveMessage(message);
   });

@@ -33,7 +33,7 @@ export function customFetch(url, option) {
       credentials: 'same-origin'
     };
   }
-  // console.log(prefix + url);
+
   return fetch(prefix + url, opt)
     .then(handle401)
     .then(handleErrors);

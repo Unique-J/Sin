@@ -64,7 +64,7 @@ export default app => {
               res.send('验证邮箱失败...');
             } else {
               // console.log(123);
-              res.send('succeed');
+              res.send('验证邮箱成功，请登录...');
             }
           }
         }

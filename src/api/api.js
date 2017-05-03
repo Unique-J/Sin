@@ -16,7 +16,7 @@ app.use(bodyParser.json({ limit: '5mb' }));
 app.use(bodyParser.urlencoded({ limit: '5mb', extended: true, parameterLimit: 50000 }));
 
 app.use(session({
-  secret: 'react project',
+  secret: 'Sin',
   resave: false,
   saveUninitialized: false,
   cookie: { maxAge: 100000000 }

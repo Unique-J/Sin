@@ -69,7 +69,7 @@ export default class MyPortrait extends Component {
   }
 
   uploadPortrait = () => {
-    const { user, uploadPortrait } = this.props;
+    const { uploadPortrait } = this.props;
     const uid = user.sid || user.tid;
 
     const croppedCanvas = this.cropper.getCroppedCanvas();

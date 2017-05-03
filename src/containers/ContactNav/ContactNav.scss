@@ -87,3 +87,22 @@ $background_color: #36465D;
 .no_result_glyphicon {
   margin-right: 5px;
 }
+.tips {
+  color: $font_color;
+  padding-bottom: 15px;
+}
+.tip_head {
+  border-bottom: 2px solid $line_color;
+  margin-bottom: 10px;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 15px;
+  // background: red;
+  font-weight: bold;
+}
+.tip {
+  margin-bottom: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 12px;
+}
