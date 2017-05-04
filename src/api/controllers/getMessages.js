@@ -13,7 +13,9 @@ export default app => {
           const length = message.messages.length;
           // console.log(message.messages.slice(length - number, length));
           // res.send(message.messages.reverse().slice(0, number));
-          res.send(message.messages.slice(length - number, length));
+
+          // res.send(message.messages.slice(length - number, length));
+          res.send(message.messages.slice(0, length));
         } else {
           res.send(null);
         }

@@ -7,6 +7,8 @@ export default app => {
     const update = { $pull: { followers: tid } };
     // console.log(sid + ' ' + tid);
 
+    const Teacher = mongoose.model('teacher');
+
     Student.update({ sid }, update, err => {
       if (err) {
         console.error(err);
@@ -15,7 +17,14 @@ export default app => {
           if (error) {
             console.error(error);
           } else {
-            res.send(student);
+            Teacher.update({ tid }, { $inc: { fansNum: -1 } }, (error1, result) => {
+              // console.log(result);
+              if (result.n === 0) {
+                console.log(error1);
+              } else {
+                res.send(student);
+              }
+            });
           }
         });
       }

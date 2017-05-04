@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Headbar, Article, FollowList, Editor, ArticleModal } from '../index';
 import { connect } from 'react-redux';
-import * as ActionCreators from '../../actions/dashboard';
+import * as ActionCreators from '../../actions/explorePage';
 
 @connect(
   state => ({
@@ -15,7 +15,7 @@ import * as ActionCreators from '../../actions/dashboard';
   }),
   ActionCreators
 )
-export default class Dashboard extends Component {
+export default class ExplorePage extends Component {
   static propTypes = {
     user: PropTypes.any,
     dashboard: PropTypes.any,
@@ -26,7 +26,7 @@ export default class Dashboard extends Component {
     person: PropTypes.any,
     showEditor: PropTypes.func.isRequired,
     showArticleModal: PropTypes.func.isRequired,
-    getArticles: PropTypes.func.isRequired,
+    getArticlesByHeat: PropTypes.func.isRequired,
     getTeachers: PropTypes.func.isRequired,
     getStudent: PropTypes.func.isRequired,
     getArticlesByTid: PropTypes.func.isRequired,
@@ -37,7 +37,7 @@ export default class Dashboard extends Component {
 
   componentDidMount() {
     // this.props.loadAuth();
-    const { user, getArticlesByTid, getArticles,
+    const { user, getArticlesByTid, getArticlesByHeat,
       getStudent, getTeachers, getPerson } = this.props;
 
     if (user && user.tid) {
@@ -45,7 +45,7 @@ export default class Dashboard extends Component {
     }
 
     if (user && user.sid) {
-      getArticles();
+      getArticlesByHeat();
       getStudent(user.sid);
     }
     // this.props.getArticles().then(() => console.log('Get Articles Successfully'));
@@ -63,7 +63,7 @@ export default class Dashboard extends Component {
   );
 
   render() {
-    const styles = require('./Dashboard.scss');
+    const styles = require('./ExplorePage.scss');
     const { user, articles, teachers, person, article,
       showEditor, showArticleModal, logout } = this.props;
 

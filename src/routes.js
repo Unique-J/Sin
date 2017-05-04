@@ -4,7 +4,7 @@ import { Main, Home, Counter, Article, Register, LoginContainer,
   Dashboard, Headbar, FollowList, UserItem, Editor, ArticleModal,
   ArticleDetail, Comment, CommentList, ChildComment, ReplyList,
   ReplyCard, UserPage, SearchPage, UserInfo, ForgetPassword,
-  ResetPassword } from './containers';
+  ResetPassword, ExplorePage } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
 // import { JumpPage } from './components';
 
@@ -54,6 +54,7 @@ export default store => {
         <Route path="userpage" component={UserPage} />
         <Route path="searchpage" component={SearchPage} />
         <Route path="userinfo" component={UserInfo} />
+        <Route path="explorepage" component={ExplorePage} />
       </Route>
     </Route>
   );

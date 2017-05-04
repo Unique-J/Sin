@@ -5,6 +5,16 @@ export default app => {
     const { id, sid } = req.body;
     const Student = mongoose.model('student');
     const update = { $push: { collections: id } };
+    // console.log(id);
+
+    const Article = mongoose.model('article');
+    // Article.findOne({ _id: id }, (err, article) => {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log(article);
+    //   }
+    // });
 
     Student.update({ sid }, update, err => {
       if (err) {
@@ -14,7 +24,16 @@ export default app => {
           if (err) {
             console.error(error);
           } else {
-            res.send(student);
+            Article.update({ _id: id }, { $inc: { collectNum: 1 } }, (error1, result) => {
+              console.log(result);
+              if (result.n === 0) {
+                console.log(error1);
+              } else {
+                res.send(student);
+              }
+            });
+            // console.log('article');
+            // res.send(student);
           }
         });
       }

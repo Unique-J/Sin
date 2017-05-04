@@ -29,7 +29,7 @@ class MyArticleResult extends Component {
   mapArticles = (articles, showArticleModal) => (
     articles.map((article, index) => (
       <Article
-        article={article} key={index} width={300}
+        article={article} key={index} width={300} type={0}
         showArticleModal={showArticleModal}
       />
     ))

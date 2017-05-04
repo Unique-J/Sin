@@ -41,3 +41,4 @@ export SettingNav from './SettingNav/SettingNav';
 export MyInfo from './MyInfo/MyInfo';
 export MyPortrait from './MyPortrait/MyPortrait';
 export InfoItem from './InfoItem/InfoItem';
+export ExplorePage from './ExplorePage/ExplorePage';

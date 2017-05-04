@@ -138,7 +138,7 @@ export default class ArticleModal extends Component {
               >
                 <div className={styles.author_name}>作者:&nbsp;{article && article.authorName}</div>
                 <div className={styles.author_description}>
-                  介绍:&nbsp;{article && article.description}
+                  描述:&nbsp;{article && article.description}
                 </div>
               </div>
               {user && user.sid && <div className={styles.follow_wrapper}>
@@ -161,7 +161,7 @@ export default class ArticleModal extends Component {
               <a
                 style={{ float: 'left' }}
                 className={styles.note_link}
-              >1002&nbsp;热度</a>
+              >{article && article.collectNum}&nbsp;热度</a>
               {user && user.sid && <div
                 onClick={this.judgeCollection() ? this.cancelCollectArticle : this.collectArticle}
                 className={`${styles.glyphicon_heart_link} glyphicon

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 export default app => {
-  app.get('/getArticles', (req, res) => {
+  app.get('/getArticlesByHeat', (req, res) => {
     const Article = mongoose.model('article');
 
     Article.find({}, (err, articles) => {
@@ -10,6 +10,6 @@ export default app => {
       } else {
         res.send(articles);
       }
-    }).sort({ date: -1 });
+    }).sort({ collectNum: -1 });
   });
 };

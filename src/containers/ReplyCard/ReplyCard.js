@@ -44,7 +44,7 @@ export default class ReplyCard extends Component {
     });
 
     if (user) {
-      getPerson(user.sid || person.tid);
+      getPerson(user.sid || user.tid);
     }
 
     // getComment(reply.commentid);
@@ -68,8 +68,9 @@ export default class ReplyCard extends Component {
     const { person, reply, saveChildComment } = this.props;
     const content = this.replyInput.value;
     // console.log(reply);
-
+    console.log(person);
     if (person) {
+      console.log(123);
       saveChildComment(content, person, reply, reply.commentid);
       this.replyBlock();
       this.replyInput.value = '';

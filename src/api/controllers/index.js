@@ -39,6 +39,7 @@ import validateResetPwdCode from './validateResetPwdCode';
 import updateInfo from './updateInfo';
 import validatePwd from './validatePwd';
 import uploadPortrait from './uploadPortrait';
+import getArticlesByHeat from './getArticlesByHeat';
 
 export default app => {
   loadAuth(app);
@@ -93,4 +94,5 @@ export default app => {
   updateInfo(app);
   validatePwd(app);
   uploadPortrait(app);
+  getArticlesByHeat(app);
 };

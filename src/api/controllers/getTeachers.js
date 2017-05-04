@@ -8,6 +8,6 @@ export default app => {
       if (err) console.error(err);
       // console.log(teachers);
       res.send(teachers);
-    }).limit(5);
+    }).sort({ fansNum: -1 }).limit(5);
   });
 };

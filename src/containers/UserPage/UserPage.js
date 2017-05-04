@@ -57,7 +57,7 @@ export default class UserPage extends Component {
   mapArticles = (articles, showArticleModal) => (
     articles.map((article, index) => (
       <Article
-        article={article} key={index} width={520}
+        article={article} key={index} width={520} type={0}
         showArticleModal={showArticleModal}
       />
     ))
@@ -79,9 +79,14 @@ export default class UserPage extends Component {
               {articles ? this.mapArticles(articles, showArticleModal) : ''}
             </li>
           </ul>
-          {user && user.sid && person && <div className={styles.user_introduce_wrapper}>
-            <PersonCard personid={userid} person={person} />
-          </div>}
+          <div className={styles.user_introduce_wrapper}>
+            {user && user.sid && person && <PersonCard personid={userid} person={person} />}
+            <div className={styles.tips}>
+              <div className={styles.tip_header}>说&nbsp;明</div>
+              <div className={styles.tip}>1. 若当前为教师主页，则显示该教师所发表的所有文章</div>
+              <div className={styles.tip}>2. 若当前为学生主页，则显示该学生所收藏的所有文章</div>
+            </div>
+          </div>
         </div>
       </div>
     );

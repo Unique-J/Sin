@@ -1,3 +1,5 @@
+$font_color: rgba(255, 255, 255, 0.6);
+
 .user_info_pannel {
   width: 960px;
   margin: 10px;
@@ -14,4 +16,11 @@
 .follower_wrpper {
   display: flex;
   flex-wrap: wrap;
+}
+.tip {
+  color: $font_color;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 200px;
+  margin: 0 auto;
 }

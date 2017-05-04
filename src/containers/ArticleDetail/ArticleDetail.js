@@ -57,7 +57,7 @@ export default class ArticleDetail extends Component {
         {person && <Editor showEditor={showEditor} person={person} />}
         <div className={styles.content_wrapper}>
           <div className={styles.article_wrapper}>
-            {article && <Article article={article} width={520} />}
+            {article && <Article article={article} width={520} type={1} />}
             {comments &&
               <CommentList
                 article={article} comments={comments}

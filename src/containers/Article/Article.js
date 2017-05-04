@@ -18,6 +18,7 @@ export default class Article extends Component {
     student: PropTypes.any,
     article: PropTypes.object.isRequired,
     width: PropTypes.number.isRequired,
+    type: PropTypes.number.isRequired,
     showArticleModal: PropTypes.any,
     getArticle: PropTypes.func.isRequired,
     getStudent: PropTypes.func.isRequired,
@@ -136,7 +137,7 @@ export default class Article extends Component {
 
   render() {
     const styles = require('./Article.scss');
-    const { user, article, width, showArticleModal, getArticle } = this.props;
+    const { user, article, width, type, showArticleModal, getArticle } = this.props;
     // console.log(showArticleModal);
     // console.log(article.content);
     // <[^>]+>
@@ -165,7 +166,8 @@ export default class Article extends Component {
             onClick={this.judgeFollow() ? this.cancelFollowTeacher : this.followTeacher}
           >{this.judgeFollow() ? '取消关注' : '关注'}</div>}
         </section>
-        <section
+        <div className={styles.post_title}>{article.title}</div>
+        {type === 0 && <section
           className={styles.post_content}
           dangerouslySetInnerHTML={{
             __html: width === 520 ?
@@ -174,7 +176,16 @@ export default class Article extends Component {
           }}
           onClick={() => { showArticleModal(); getArticle(article._id); }}
         >
-        </section>
+        </section>}
+
+        {type === 1 && <section
+          className={styles.post_content}
+          dangerouslySetInnerHTML={{
+            __html: article.content
+          }}
+          onClick={() => { showArticleModal(); getArticle(article._id); }}
+        >
+        </section>}
         <section className={styles.post_tag}>
           <div className={styles.post_tag_container}>
             <div
@@ -191,7 +202,7 @@ export default class Article extends Component {
         <section className={styles.post_footer}>
           <a
             className={styles.note_link}
-          >1002&nbsp;热度</a>
+          >{article.collectNum}&nbsp;热度</a>
           {user && user.sid && <div
             onClick={this.judgeCollection() ? this.cancelCollectArticle : this.collectArticle}
             className={`${styles.glyphicon_heart_link} glyphicon

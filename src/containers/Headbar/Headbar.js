@@ -87,14 +87,14 @@ export default class Headbar extends Component {
             <NavItem eventKey={1} href="/dashboard">
               <span className={`glyphicon glyphicon-home ${styles.icon_link}`}></span>
             </NavItem>
-            <NavItem eventKey={2} href="#">
+            <NavItem eventKey={2} href="/explorepage">
               <span className={`glyphicon glyphicon-send ${styles.icon_link}`}></span>
             </NavItem>
             <NavItem eventKey={3} href="/replylist">
               <span className={`glyphicon glyphicon-comment ${styles.icon_link}`}></span>
               <span className={styles.point}></span>
             </NavItem>
-            <NavItem eventKey={4} href="#">
+            <NavItem eventKey={4} href="/userinfo">
               <span className={`glyphicon glyphicon-envelope ${styles.icon_link}`}></span>
               <span className={styles.point}></span>
             </NavItem>

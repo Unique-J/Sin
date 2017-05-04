@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ReactDOM from 'react-dom';
 import { FormGroup, FormControl } from 'react-bootstrap';
 import { LeftBubble, RightBubble } from '../index';
 import io from 'socket.io-client';
@@ -14,6 +15,7 @@ import { createMessageId } from '../../utils/utils';
     historyMessages: state.async.messages,
     chatPerson: state.async.chatPerson,
     person: state.async.person,
+    messages: state.async.messages,
   }),
   actionCreators
 )
@@ -23,6 +25,7 @@ class MyChatPannel extends Component {
     historyMessages: PropTypes.any,
     chatPerson: PropTypes.any,
     person: PropTypes.any,
+    messages: PropTypes.any,
     uid: PropTypes.string.isRequired,
     getMessages: PropTypes.func.isRequired,
     getPerson: PropTypes.func.isRequired,
@@ -65,6 +68,21 @@ class MyChatPannel extends Component {
       this.setState({ historyMessages: [...this.state.historyMessages,
         ...nextProps.historyMessages] });
     }
+
+    // if (nextProps.messages !== this.props.messages && nextProps.messages.length > 3) {
+    //   console.log(ReactDOM.findDOMNode(RightBubble));
+    //   ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(RightBubble));
+    //   this.setState({ messages });
+    // }
+  }
+
+  getHistoryMessages = () => {
+    const { user, uid, getMessages } = this.props;
+    const userid = user.sid || user.tid;
+    const mid = createMessageId(userid, uid);
+    console.log(ReactDOM.findDOMNode(<RightBubble />));
+
+    getMessages(mid, 4);
   }
 
   sendMessage = () => {
@@ -96,7 +114,7 @@ class MyChatPannel extends Component {
       // console.log(message);
 
       if (message.receiverid === uid) {
-        return <RightBubble message={message} key={index} />;
+        return <RightBubble message={message} key={index} ref="rightbubble" />;
       }
       return <LeftBubble message={message} key={index} />;
     })
@@ -112,6 +130,7 @@ class MyChatPannel extends Component {
     const { messages, historyMessages } = this.state;
     // const socket = io.connect('http://localhost:3005');
     // console.log(messages);
+    // console.log(this.props.messages);
 
     return (
       <div className={styles.chat_pannel_container}>
@@ -126,6 +145,10 @@ class MyChatPannel extends Component {
         </div>
 
         <div className={styles.chat_pannel} ref="chatPannel">
+          {/* historyMessages && historyMessages.length > 2 && <div className={styles.show_history}
+              onClick={this.getHistoryMessages}>
+            查看更多历史记录
+          </div>*/}
           {historyMessages && historyMessages.length > 0 && this.mapMessages(historyMessages)}
 
           <div className={styles.history_record_line}>

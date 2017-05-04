@@ -39,7 +39,7 @@ export default class UserInfoPannel extends Component {
   mapArticles = (articles, showArticleModal) => (
     articles.map((article, index) => (
       <Article
-        article={article} key={index} width={300}
+        article={article} key={index} width={300} type={0}
         showArticleModal={showArticleModal}
       />
     ))
@@ -60,11 +60,15 @@ export default class UserInfoPannel extends Component {
     return (
       <div className={styles.user_info_pannel}>
         {userInfoPannelType === 0 && <div className={styles.collection_wrpper}>
-          {collections && this.mapArticles(collections, showArticleModal)}
+          {collections && collections.length > 0 && this.mapArticles(collections, showArticleModal)}
+          {collections && collections.length === 0 &&
+            <div className={styles.tip}>暂无关注用户</div>}
           <ArticleModal showArticleModal={showArticleModal} article={article} />
         </div>}
         {userInfoPannelType === 1 && <div className={styles.follower_wrpper}>
-          {followers && this.mapPersonCard(followers)}
+          {followers && followers.length > 0 && this.mapPersonCard(followers)}
+          {followers && followers.length === 0 &&
+            <div className={styles.tip}>暂无关注用户</div>}
         </div>}
         {userInfoPannelType === 2 && <MessagePannel uid={uid} />}
         {userInfoPannelType === 3 && <SettingNav />}

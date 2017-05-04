@@ -21,7 +21,8 @@ export default function createTeacher() {
     fans: [Number],
     collections: [Number],
     commentbox: [],
-    messagebox: []
+    messagebox: [],
+    fansNum: { type: Number, default: 0 },
   });
 
   teacherSchema.statics.findTeacher = function (teacher, cb) {   // eslint-disable-line

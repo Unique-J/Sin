@@ -162,6 +162,7 @@ export default class Comment extends Component {
           onHide={this.showAllComments}
         >
           <Modal.Header closeButton>
+            <div style={{ fontSize: 16, fontWeight: 700 }}>子评论</div>
           </Modal.Header>
           <Modal.Body>
             {comment && comment.comments &&

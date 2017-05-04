@@ -6,6 +6,8 @@ export default app => {
     const Student = mongoose.model('student');
     const update = { $pull: { collections: id } };
 
+    const Article = mongoose.model('article');
+
     Student.update({ sid }, update, err => {
       if (err) {
         console.error(err);
@@ -14,7 +16,14 @@ export default app => {
           if (err) {
             console.error(error);
           } else {
-            res.send(student);
+            Article.update({ _id: id }, { $inc: { collectNum: -1 } }, (error1, result) => {
+              // console.log(result);
+              if (result.n === 0) {
+                console.log(error1);
+              } else {
+                res.send(student);
+              }
+            });
           }
         });
       }

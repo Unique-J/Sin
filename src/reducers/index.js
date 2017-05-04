@@ -10,6 +10,7 @@ import userpage from './userpage';
 import searchPage from './searchPage';
 import userInfo from './userInfo';
 import userInfoPannel from './userInfoPannel';
+import explorePage from './explorePage';
 
 const rootReducers = combineReducers({
   counter,
@@ -22,6 +23,7 @@ const rootReducers = combineReducers({
   searchPage,
   userInfo,
   userInfoPannel,
+  explorePage,
   async: reducerCreator()
 });
 

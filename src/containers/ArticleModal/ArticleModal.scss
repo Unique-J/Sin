@@ -35,10 +35,12 @@ $line_gray: #E5E5E5;
   // background: url('/StockSnap_01.jpg');
   // background-size: cover;
   cursor: pointer;
+  // width: 100px;
+  // background: red;
 }
 .author_info_wrapper {
   margin: 10px;
-  flex: 10;
+  // flex: 1;
   cursor: pointer;
 }
 .author_name {
@@ -46,17 +48,19 @@ $line_gray: #E5E5E5;
 }
 .author_description {
   color: #333;
-  width: 600px;
+  width: 576px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 .follow_wrapper {
-  flex: 1;
+  // flex: 1;
   margin-top: 16px;
+  // background: red;
   // right: 0;
 }
 .follow_link {
+  width: 60px;
   text-decoration: none;
   cursor: pointer;
   color: #2B6DAD;

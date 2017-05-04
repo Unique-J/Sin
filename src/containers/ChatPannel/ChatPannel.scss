@@ -89,3 +89,10 @@ $background_color: #36465D;
 .line {
   color: $line_color;
 }
+.show_history {
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  color: $font_color;
+  margin-bottom: 10px;
+}

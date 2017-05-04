@@ -52,7 +52,7 @@ $light_gray: #EEE;
   }
 }
 .post_content {
-  padding: 15px;
+  padding: 0 15px;
   word-wrap: break-word;
   word-break: break-all;
   cursor: pointer;
@@ -122,4 +122,9 @@ $light_gray: #EEE;
     text-decoration: none;
     color: $gray;
   }
+}
+.post_title {
+  padding: 5px 15px;
+  font-size: 18px;
+  font-weight: bold;
 }

@@ -12,6 +12,7 @@ export default app => {
       } else {
         // console.log(user);
         // console.log(user.commentbox);
+        user.commentbox.sort((comment1, comment2) => comment2.time - comment1.time);
         res.send(user.commentbox);
       }
     });
