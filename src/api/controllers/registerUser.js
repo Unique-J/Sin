@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import nodemailer from 'nodemailer';
 import crypto from 'crypto';
 
-const sendEmail = (userid, email, shaid) => {
+const sendEmail = (userid, email, shaid, res) => {
   const urlEmail = email.substring(0, email.length - 4);
   const url = `http://localhost:3030/validateemail?userid=${userid}&email=${urlEmail}&validateCode=${shaid}`;
   // create reusable transporter object using the default SMTP transport
@@ -11,7 +11,7 @@ const sendEmail = (userid, email, shaid) => {
     secureConnection: true,
     auth: {
       user: 'yangji_1005@sina.com',
-      pass: ''
+      pass: 'yjlLQY100513--'
     }
   });
 
@@ -28,8 +28,10 @@ const sendEmail = (userid, email, shaid) => {
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.log(error);
+      res.send({ success: 0 });
     }
     console.log('Message %s sent: %s', info.messageId, info.response);
+    res.send({ success: 1 });
   });
 };
 
@@ -62,7 +64,7 @@ export default app => {
           if (err) {
             console.error(err);
           } else {
-            sendEmail(user.id, user.email, shaid);
+            sendEmail(user.id, user.email, shaid, res);
             console.info('update succeed');
           }
         }
@@ -75,7 +77,7 @@ export default app => {
           if (err) {
             console.error(err);
           } else {
-            sendEmail(user.id, user.email, shaid);
+            sendEmail(user.id, user.email, shaid, res);
             console.info('update succeed');
           }
         }

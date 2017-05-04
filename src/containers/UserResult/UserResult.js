@@ -23,11 +23,11 @@ class MyUserResult extends Component {
   };
 
   componentDidMount() {
-    const { searchCondition, personType, searchTeachers, searchStudents } = this.props;
+    const { searchCondition, personType, searchTeachers, searchStudents, user } = this.props;
     const searchUser = personType === 0 ? searchTeachers : searchStudents;
     // console.log(searchCondition);
 
-    searchUser(searchCondition);
+    searchUser(searchCondition, user.sid || user.tid);
   }
 
   mapPersonCard = persons => (

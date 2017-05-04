@@ -53,13 +53,16 @@ export default class Editor extends Component {
     const tags = this.tagInput.value;
     const authorName = person.name;
     const portrait = person.portrait;
-    // console.log(person);
 
-    saveArticle(title, description, content, tags, new Date(), tid, authorName, portrait)
+    if (title && description && content && tags) {
+      saveArticle(title, description, content, tags, new Date(), tid, authorName, portrait)
       .then(() => {
         showEditor();
         getArticlesByTid(tid);
       });
+    } else {
+      alert('输入不能为空.');
+    }
   }
 
   render() {
@@ -73,7 +76,7 @@ export default class Editor extends Component {
       </Popover>
     );
     const { showEditorFlag } = this.props.dashboard;
-    const { showEditor } = this.props;
+    const { showEditor, user } = this.props;
 
     return (
       <Modal
@@ -85,7 +88,7 @@ export default class Editor extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            t-mac-j
+            {user.name}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className={styles.modal_body}>

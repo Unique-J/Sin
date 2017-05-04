@@ -1,7 +1,7 @@
 import { ASYNC } from 'redux-amrc';
 import { customFetch } from '../utils/utils';
 
-export function searchTeachers(tid) {
+export function searchTeachers(condition, uid) {
   const option = {
     method: 'post',
     headers: {
@@ -9,7 +9,8 @@ export function searchTeachers(tid) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      tid
+      condition,
+      uid
     })
   };
   // console.log(tid);
@@ -21,7 +22,7 @@ export function searchTeachers(tid) {
   };
 }
 
-export function searchStudents(sid) {
+export function searchStudents(condition, uid) {
   const option = {
     method: 'post',
     headers: {
@@ -29,7 +30,8 @@ export function searchStudents(sid) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      sid
+      condition,
+      uid
     })
   };
   return {

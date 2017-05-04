@@ -15,7 +15,7 @@ export default app => {
     const useridLength = userid.length;
 
     const validateTime = new Date().getTime();
-    const limitTime = 3600000;
+    const limitTime = 3600000000000;
     const deltaTime = validateTime - limitTime;
     // console.log(deltaTime);
 
@@ -46,7 +46,7 @@ export default app => {
             if (result.n === 0) {
               res.send('验证邮箱失败...');
             } else {
-              res.send('succeed');
+              res.send('验证邮箱成功，请登录...');
             }
           }
         }

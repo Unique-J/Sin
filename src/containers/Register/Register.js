@@ -4,6 +4,7 @@ import { Navbar, Nav, NavItem, Thumbnail, Button,
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import * as registerCreators from '../../actions/register';
+import { browserHistory } from 'react-router';
 
 @connect(
   state => ({
@@ -34,6 +35,13 @@ class Register extends Component {
     const emailInput = this.emailInput;
     idInput.onchange = this.judgeIdValid;
     emailInput.onchange = this.judgeEmaildValid;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    if (nextProps.register && nextProps.register.success === 1) {
+      browserHistory.push('/jumppage');
+    }
   }
 
   judgeIdValid = () => {

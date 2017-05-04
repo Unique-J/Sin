@@ -138,7 +138,11 @@ export default class Article extends Component {
     const styles = require('./Article.scss');
     const { user, article, width, showArticleModal, getArticle } = this.props;
     // console.log(showArticleModal);
-    // console.log(article);
+    // console.log(article.content);
+    // <[^>]+>
+    // const str = article.content.replace(/<[^>]+>/g, '');
+    // console.log(str);
+    // console.log(article.content);
 
     return (
       <article
@@ -164,7 +168,9 @@ export default class Article extends Component {
         <section
           className={styles.post_content}
           dangerouslySetInnerHTML={{
-            __html: width === 520 ? article.content : `${article.description.substring(0, 37)}...`
+            __html: width === 520 ?
+            `${article.content.replace(/<[^>]+>/g, '').substring(0, 68)}...`
+            : `${article.content.replace(/<[^>]+>/g, '').substring(0, 38)}...`
           }}
           onClick={() => { showArticleModal(); getArticle(article._id); }}
         >

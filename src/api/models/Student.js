@@ -54,9 +54,7 @@ export default function createStudent() {
       if (students.length === 0) {
         const student = new Student({
           sid: '13110033139',
-          name: 'YangJi',
-          pwd: md5('111111'),
-          email: 'YangJi_1005@163.com',
+          name: 'Student',
           birthday: '1994-10-05',
           gender: 'male',
           identity: 0,

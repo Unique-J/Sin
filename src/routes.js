@@ -6,9 +6,9 @@ import { Main, Home, Counter, Article, Register, LoginContainer,
   ReplyCard, UserPage, SearchPage, UserInfo, ForgetPassword,
   ResetPassword } from './containers';
 import { loadAuthIfNeeded } from './actions/login';
-// import { Cropper } from './components';
+// import { JumpPage } from './components';
 
-import { FirstMainPage } from './components/index';
+import { FirstMainPage, JumpPage } from './components';
 
 const preload = promise => (nextState, replace, cb) => {
   if (__SERVER__ || nextState.location.action === 'PUSH') {
@@ -34,6 +34,7 @@ export default store => {
       <Route path="register" component={Register} />
       <Route path="forgetpassword" component={ForgetPassword} />
       <Route path="resetpassword" component={ResetPassword} />
+      <Route path="jumppage" component={JumpPage} />
       <Route onEnter={requireLogin}>
         <Route path="counter" component={Counter} />
         <Route path="test" component={FirstMainPage} />

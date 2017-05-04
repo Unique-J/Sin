@@ -40,9 +40,7 @@ export default function createTeacher() {
       if (teachers.length === 0) {
         const teacher = new Teacher({
           tid: '110001',
-          name: 'YangJi',
-          pwd: md5('111111'),
-          email: 'YangJi_1005@163.com',
+          name: 'Teacher',
           birthday: '1994-10-05',
           gender: 'male',
           identity: 1,
